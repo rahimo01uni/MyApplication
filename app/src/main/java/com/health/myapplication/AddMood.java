@@ -20,6 +20,7 @@ public class AddMood extends AppCompatActivity {
         setContentView(R.layout.activity_add_mood);
 
 
+
     }
 
 }
