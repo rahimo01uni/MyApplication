@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="alert_unit">Choice your Unit</string>
+
+    <string-array name="unit_item">
+        <item>Pill(s)</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
 </resources>

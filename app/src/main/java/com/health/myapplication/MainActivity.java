@@ -1,5 +1,6 @@
 package com.health.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.os.Handler;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Handler handler;
@@ -32,6 +34,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+            }
+        });
+
+
+        final TextView reminderID = (TextView) findViewById(R.id.txt_reminder);
+        reminderID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(view.getContext(), AddReminderActivity.class);
+                startActivityForResult(myIntent, 0);
             }
         });
     }
