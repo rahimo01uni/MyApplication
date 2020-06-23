@@ -15,4 +15,15 @@
         <item>D</item>
     </string-array>
 
+
+    <string name="alert_sym">Choice your Mood</string>
+
+    <string-array name="mood_item">
+        <item>Bad</item>
+        <item>Good</item>
+        <item>Happy</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
 </resources>

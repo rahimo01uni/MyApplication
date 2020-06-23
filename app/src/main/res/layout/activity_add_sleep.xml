@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddMood">
+    tools:context=".AddSleep">
 
     <Button
-        android:id="@+id/btn_medicationM"
+        android:id="@+id/btn_medicationS"
         android:layout_width="166dp"
         android:layout_height="49dp"
         android:layout_marginStart="35dp"
@@ -24,108 +24,86 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_sleepM"
+        android:id="@+id/btn_sleepS"
         android:layout_width="166dp"
         android:layout_height="49dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/btn_simple"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btn_blue"
         android:drawableLeft="@drawable/ic_measure"
         android:padding="16dp"
         android:text="Sleep"
+        android:textColor="@color/bpWhite"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_medicationM" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_medicationS" />
 
     <Button
-        android:id="@+id/btn_symM"
+        android:id="@+id/btn_symS"
         android:layout_width="166dp"
         android:layout_height="49dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:background="@drawable/btn_blue"
-        android:drawableLeft="@drawable/ic_smilew"
+        android:background="@drawable/btn_simple"
+        android:drawableLeft="@drawable/ic_smile"
         android:padding="16dp"
         android:text="Symptom check"
-        android:textColor="@color/bpWhite"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_mood"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_angle_down"
-        android:text="Add Additional Symptoms"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sleepM" />
-
-    <EditText
-        android:id="@+id/txt_descM"
-        android:layout_width="342dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/Backgroundcolor"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Description"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_mood" />
-
-    <TextView
-    android:id="@+id/txt_DateM"
-    android:layout_width="341dp"
-    android:layout_height="42dp"
-    android:layout_marginTop="24dp"
-    android:background="@color/Backgroundcolor"
-    android:drawableRight="@drawable/ic_calender"
-    android:text="Date"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/txt_descM" />
-
-    <TextView
-        android:id="@+id/txt_TimeM"
+        android:id="@+id/txt_DateS"
         android:layout_width="341dp"
         android:layout_height="42dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="51dp"
         android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_clock_three"
-        android:text="Time"
+        android:drawableRight="@drawable/ic_calender"
+        android:text="Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_DateM" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_sleepS" />
+
+
+    <TextView
+        android:id="@+id/txt_StartTimeS"
+        android:layout_width="341dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/Backgroundcolor"
+        android:drawableRight="@drawable/ic_clock_three"
+        android:text="Start Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_DateS" />
+
+    <TextView
+        android:id="@+id/txt_EndTimeS"
+        android:layout_width="341dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/Backgroundcolor"
+        android:drawableRight="@drawable/ic_clock_three"
+        android:text="End Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_StartTimeS" />
 
     <Button
-        android:id="@+id/btn_saveM"
-        android:layout_width="0dp"
+        android:id="@+id/btn_saveS"
+        android:layout_width="341dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginTop="56dp"
         android:background="@drawable/btn_blue"
         android:text="Save"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_TimeM" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_EndTimeS" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
