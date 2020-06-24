@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -23,7 +25,27 @@ public class AddReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reminder);
 
-        //alert radio button
+        //go to AddMood Activity
+       Button btnSym = findViewById(R.id.btn_sym);
+        btnSym.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddReminderActivity.this, AddMood.class);
+                startActivity(intent);
+            }
+        });
+
+        //go to AddSleep Activity
+        Button btnSleep = findViewById(R.id.btn_sleep);
+        btnSleep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddReminderActivity.this, AddSleep.class);
+                startActivity(intent);
+            }
+        });
+
+        //alert radio button Unit
         listItems = getResources().getStringArray(R.array.unit_item);
         final TextView txtunit = findViewById(R.id.txt_unit);
 
@@ -33,6 +55,7 @@ public class AddReminderActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddReminderActivity.this);
                 mBuilder.setTitle("Choose an item");
+                mBuilder.setPositiveButton("Add", null);
                 mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
