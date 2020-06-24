@@ -37,13 +37,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //Reminder
         final TextView reminderID = (TextView) findViewById(R.id.txt_reminder);
         reminderID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent myIntent = new Intent(view.getContext(), AddReminderActivity.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
+
+        //Team
+        final TextView teamID = (TextView) findViewById(R.id.txt_team);
+        teamID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(view.getContext(), TeamActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });
