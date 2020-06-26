@@ -10,23 +10,42 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.w3c.dom.Text;
+
 public class AddReminderActivity extends AppCompatActivity {
     String[] listItems;
-
+    Button btnSym;
+    Button btnSleep;
+    EditText txt_medicationname;
+    TextView txt_unit;
+    TextView txt_Count;
+    TextView txt_SDate;
+    TextView txt_EDate;
+    TextView txt_Period;
+    TextView txt_Time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reminder);
 
+        txt_medicationname = findViewById(R.id.txt_medicationname);
+        txt_unit = findViewById(R.id.txt_unit);
+        txt_Count = findViewById(R.id.txt_Count);
+        txt_SDate = findViewById(R.id.txt_SDate);
+        txt_EDate = findViewById(R.id.txt_EDate);
+        txt_Period = findViewById(R.id.txt_Period);
+        txt_Time = findViewById(R.id.txt_Time);
+
         //go to AddMood Activity
-       Button btnSym = findViewById(R.id.btn_sym);
+        btnSym = findViewById(R.id.btn_sym);
         btnSym.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +55,7 @@ public class AddReminderActivity extends AppCompatActivity {
         });
 
         //go to AddSleep Activity
-        Button btnSleep = findViewById(R.id.btn_sleep);
+        btnSleep = findViewById(R.id.btn_sleep);
         btnSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,51 +177,51 @@ public class AddReminderActivity extends AppCompatActivity {
 
 
         //Repeat
-        final TextView txtrepeat = findViewById(R.id.txt_Repeat);
-        final String[] pickerValsRepeat = new String[] { "Every hour","Every two hours",
-                                                         "Every three hours","Every 4 hours",
-                                                         "Every 5 hours", "Every 6 hours","Every 8 hours","Every 12 hours"};
-
-        txtrepeat.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                final NumberPicker picker = new NumberPicker(AddReminderActivity.this);
-                picker.setMinValue(0);
-                picker.setMaxValue(7);
-                picker.setDisplayedValues( new String[] { "Every hour","Every two hours",
-                                                           "Every three hours","Every 4 hours",
-                                                           "Every 5 hours", "Every 6 hours","Every 8 hours","Every 12 hours" } );
-
-                picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-                    @Override
-                    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                        int valuePicker1 = picker.getValue();
-
-                    }
-                });
-
-                new AlertDialog.Builder(AddReminderActivity.this)
-                        .setTitle("Repeat")
-                        .setView(picker)
-                        .setNegativeButton("ADD",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                })
-                        .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Snackbar.make(findViewById(R.id.txt_Repeat), "You picked : " + pickerValsRepeat[picker.getValue()], Snackbar.LENGTH_LONG).show();
-                                txtrepeat.setText(String.valueOf(pickerValsRepeat[picker.getValue()]));
-                            }
-                        })
-                        .show();
-
-            }
-
-        });
+//        final TextView txtrepeat = findViewById(R.id.txt_Repeat);
+//        final String[] pickerValsRepeat = new String[] { "Every hour","Every two hours",
+//                                                         "Every three hours","Every 4 hours",
+//                                                         "Every 5 hours", "Every 6 hours","Every 8 hours","Every 12 hours"};
+//
+//        txtrepeat.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//                final NumberPicker picker = new NumberPicker(AddReminderActivity.this);
+//                picker.setMinValue(0);
+//                picker.setMaxValue(7);
+//                picker.setDisplayedValues( new String[] { "Every hour","Every two hours",
+//                                                           "Every three hours","Every 4 hours",
+//                                                           "Every 5 hours", "Every 6 hours","Every 8 hours","Every 12 hours" } );
+//
+//                picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+//                    @Override
+//                    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+//                        int valuePicker1 = picker.getValue();
+//
+//                    }
+//                });
+//
+//                new AlertDialog.Builder(AddReminderActivity.this)
+//                        .setTitle("Repeat")
+//                        .setView(picker)
+//                        .setNegativeButton("ADD",
+//                                new DialogInterface.OnClickListener() {
+//                                    public void onClick(DialogInterface dialog, int id) {
+//                                        dialog.cancel();
+//                                    }
+//                                })
+//                        .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                Snackbar.make(findViewById(R.id.txt_Repeat), "You picked : " + pickerValsRepeat[picker.getValue()], Snackbar.LENGTH_LONG).show();
+//                                txtrepeat.setText(String.valueOf(pickerValsRepeat[picker.getValue()]));
+//                            }
+//                        })
+//                        .show();
+//
+//            }
+//
+//        });
     }
 }

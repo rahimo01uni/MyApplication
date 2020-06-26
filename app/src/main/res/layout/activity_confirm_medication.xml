@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditMemList">
-
-
+    tools:context=".ConfirmMedicationActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -27,46 +25,51 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <EditText
-                android:id="@+id/txt_EditmemEmail"
+                android:id="@+id/txt_MCdesc"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="76dp"
+                android:layout_marginTop="104dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
+                android:gravity="start|top"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.609"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/txt_EditmemName"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/btn_simpleborder"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_EditmemEmail" />
-
             <Button
-                android:id="@+id/btn_EditAddmem"
-                android:layout_width="281dp"
+                android:id="@+id/btn_MConfirm"
+                android:layout_width="150dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="84dp"
+                android:layout_marginTop="68dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
                 android:background="@drawable/btn_blue"
-                android:text="Save"
+                android:text="Confirm"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_MCdesc" />
+
+            <Button
+                android:id="@+id/btn_MCancel"
+                android:layout_width="136dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="68dp"
+                android:background="@drawable/btn_red"
+                android:text="Cancel"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_MConfirm"
+                app:layout_constraintHorizontal_bias="0.704"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_EditmemName" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_MCdesc" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

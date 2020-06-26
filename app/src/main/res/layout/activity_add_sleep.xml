@@ -54,56 +54,79 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_DateS"
-        android:layout_width="341dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="51dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_calender"
-        android:text="Date"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/Card"
+        android:layout_width="363dp"
+        android:layout_height="386dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="@dimen/CardRadius"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sleepS" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_sleepS">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/txt_StartTimeS"
-        android:layout_width="341dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_clock_three"
-        android:text="Start Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_DateS" />
+            <TextView
+                android:id="@+id/txt_DateS"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_calender"
+                android:text="Date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_EndTimeS"
-        android:layout_width="341dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_clock_three"
-        android:text="End Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_StartTimeS" />
+            <TextView
+                android:id="@+id/txt_StartTimeS"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:text="Start Time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_DateS" />
 
-    <Button
-        android:id="@+id/btn_saveS"
-        android:layout_width="341dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/btn_blue"
-        android:text="Save"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_EndTimeS" />
+            <TextView
+                android:id="@+id/txt_EndTimeS"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:text="End Time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_StartTimeS" />
+
+            <Button
+                android:id="@+id/btn_saveS"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="56dp"
+                android:background="@drawable/btn_blue"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.542"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_EndTimeS" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
