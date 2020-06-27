@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,14 +21,27 @@ import android.widget.TextView;
 public class AddMood extends AppCompatActivity {
 
     String[] listItems;
-
+    Button btnReminder;
+    Button btnSleep;
+    TextView txtMoodName;
+    EditText txt_descM;
+    TextView txt_DateM;
+    TextView txt_TimeM;
+    Button btn_saveM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_mood);
 
+        txtMoodName = findViewById(R.id.txt_mood);
+        txt_descM = findViewById(R.id.txt_descM);
+        txt_DateM = findViewById(R.id.txt_DateM);
+        txt_TimeM = findViewById(R.id.txt_TimeM);
+        btn_saveM = findViewById(R.id.btn_saveM);
+
+
         //go to AddReminder Activity
-        Button btnReminder = findViewById(R.id.btn_medicationM);
+        btnReminder = findViewById(R.id.btn_medicationM);
         btnReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +51,7 @@ public class AddMood extends AppCompatActivity {
         });
 
         //go to AddSleep Activity
-        Button btnSleep = findViewById(R.id.btn_sleepM);
+        btnSleep = findViewById(R.id.btn_sleepM);
         btnSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

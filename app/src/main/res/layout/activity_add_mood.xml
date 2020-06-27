@@ -54,78 +54,97 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_mood"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_angle_down"
-        android:text="Add Additional Symptoms"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sleepM" />
 
-    <EditText
-        android:id="@+id/txt_descM"
-        android:layout_width="342dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/Backgroundcolor"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Description"
-        android:inputType="textMultiLine"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/Card"
+        android:layout_width="355dp"
+        android:layout_height="422dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="@dimen/CardRadius"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_mood" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_sleepM">
 
-    <TextView
-    android:id="@+id/txt_DateM"
-    android:layout_width="341dp"
-    android:layout_height="42dp"
-    android:layout_marginTop="24dp"
-    android:background="@color/Backgroundcolor"
-    android:drawableRight="@drawable/ic_calender"
-    android:text="Date"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/txt_descM" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txt_TimeM"
-        android:layout_width="341dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_clock_three"
-        android:text="Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_DateM" />
+            <TextView
+                android:id="@+id/txt_mood"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:gravity="center_vertical"
+                android:text="Add Additional Symptoms"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_saveM"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@drawable/btn_blue"
-        android:text="Save"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_TimeM" />
+            <EditText
+                android:id="@+id/txt_descM"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_mood" />
+
+            <TextView
+                android:id="@+id/txt_DateM"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_calender"
+                android:gravity="center_vertical"
+                android:text="Date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_descM" />
+
+            <TextView
+                android:id="@+id/txt_TimeM"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:gravity="center_vertical"
+                android:text="Time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_DateM" />
+
+            <Button
+                android:id="@+id/btn_saveM"
+                android:layout_width="281dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/btn_blue"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_TimeM" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

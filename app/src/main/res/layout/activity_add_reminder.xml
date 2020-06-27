@@ -6,74 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".AddReminderActivity">
 
-    <TextView
-        android:id="@+id/txt_EDate"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_calender"
-        android:text="End Date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_unit" />
-
-    <TextView
-        android:id="@+id/txt_Period"
-        android:layout_width="153dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_angle_down"
-        android:text="Period"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_EDate" />
-
-    <TextView
-        android:id="@+id/txt_Repeat"
-        android:layout_width="153dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_angle_down"
-        android:text="Repeat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Period" />
-
-    <TextView
-        android:id="@+id/txt_STime"
-        android:layout_width="152dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_clock_three"
-        android:text="Start Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toEndOf="@+id/txt_Repeat"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Count" />
-
-    <TextView
-        android:id="@+id/txt_Count"
-        android:layout_width="152dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_angle_down"
-        android:text="Quantity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txt_Period"
-        app:layout_constraintTop_toBottomOf="@+id/txt_EDate" />
-
     <Button
         android:id="@+id/btn_medication"
         android:layout_width="166dp"
@@ -124,95 +56,152 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txt_medicationname"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@color/Backgroundcolor"
-        android:ems="10"
-        android:hint="Medication Name"
-        android:inputType="textPersonName"
-        android:text="Medicine Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sleep" />
-
-    <TextView
-        android:id="@+id/txt_unit"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_angle_down"
-        android:text="Unit"
-        android:textColor="@color/ampm_text_color"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
-
-    <TextView
-        android:id="@+id/txt_SDate"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_calender"
-        android:text="Start Date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_unit" />
-
-    <EditText
-        android:id="@+id/txt_desc"
-        android:layout_width="342dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/Backgroundcolor"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Description"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Repeat" />
-
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@drawable/btn_blue"
-        android:text="Save"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/Card"
+        android:layout_width="363dp"
+        android:layout_height="447dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="@dimen/CardRadius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_desc"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_sleep">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
+            <TextView
+                android:id="@+id/txt_EDate"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_calender"
+                android:text="End Date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_SDate" />
+
+            <TextView
+                android:id="@+id/txt_SDate"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_calender"
+                android:text="Start Date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_Count" />
+
+            <TextView
+                android:id="@+id/txt_Period"
+                android:layout_width="130dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:text="Frequency"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_Time"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/txt_desc"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_Period" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_blue"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
+
+            <EditText
+                android:id="@+id/txt_medicationname"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:hint="Medication Name"
+                android:inputType="textPersonName"
+                android:text="Medicine Name"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_Time"
+                android:layout_width="130dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:text="Add Time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.023"
+                app:layout_constraintStart_toEndOf="@+id/txt_Period"
+                app:layout_constraintTop_toBottomOf="@+id/txt_EDate" />
+
+            <TextView
+                android:id="@+id/txt_unit"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:text="Unit"
+                android:textColor="@color/ampm_text_color"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
+
+            <TextView
+                android:id="@+id/txt_Count"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:text="Doze"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_unit" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -21,12 +22,15 @@ public class TeamActivity extends AppCompatActivity implements MemberRecycleview
     List<GroupMember> models;
     MemberRecycleviewAdapter adapter;
     FloatingActionButton btnAddmem;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team);
 
+        searchView = findViewById(R.id.searchView);
+        btnAddmem = findViewById(R.id.btn_addmember);
 
         models = new ArrayList<>();
         models.add(new GroupMember("Dentist"));
@@ -43,7 +47,7 @@ public class TeamActivity extends AppCompatActivity implements MemberRecycleview
         recyclerView.setItemAnimator((animator));
         recyclerView.setAdapter(adapter);
 
-        btnAddmem = findViewById(R.id.btn_addmember);
+
         btnAddmem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

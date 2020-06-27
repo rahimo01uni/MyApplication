@@ -2,8 +2,18 @@
 <resources>
     <color name="colorPrimary">#183BFA</color>
     <color name="colorPrimaryDark">#1714EC</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#FB0D1D</color>
     <color name="Black">#111111</color>
     <color name="Backgroundcolor">#FFFFFF</color>
+    <color name="colorError">#F40707</color>
+    <color name="CardB">#CEE4FA</color>
+
+    <!--colors for modern ui-->
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#1714EC</color>
+    <color name="BkColor">#f0f0f0</color>
+
+    <!--colros for card-->
+    <color name="whiteCardColor">#F4F1F1</color>
 
 </resources>
