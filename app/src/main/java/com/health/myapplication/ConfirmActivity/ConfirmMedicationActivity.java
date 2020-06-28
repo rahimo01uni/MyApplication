@@ -1,10 +1,12 @@
-package com.health.myapplication;
+package com.health.myapplication.ConfirmActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.health.myapplication.R;
 
 public class ConfirmMedicationActivity extends AppCompatActivity {
 TextView txt_MCdesc;

@@ -1,4 +1,4 @@
-package com.health.myapplication;
+package com.health.myapplication.TeamActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.provider.ContactsContract;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.health.myapplication.R;
 
 public class AddMember extends AppCompatActivity {
 EditText Email;

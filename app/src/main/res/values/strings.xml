@@ -3,9 +3,6 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="alert_unit">Choice your Unit</string>
 
     <string-array name="unit_item">
         <item>Pill(s)</item>
@@ -14,9 +11,8 @@
         <item>C</item>
         <item>D</item>
     </string-array>
+    <string name="title_activity_overview">overview</string>
 
-
-    <string name="alert_sym">Choice your Mood</string>
 
     <string-array name="mood_item">
         <item>Bad</item>
@@ -25,6 +21,7 @@
         <item>C</item>
         <item>D</item>
     </string-array>
+    <string name="title_activity_reminder">Reminder</string>
 
 
 

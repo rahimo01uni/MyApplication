@@ -9,16 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".progressActivity"></activity>
-        <activity android:name=".ConfirmSympthomActivity" />
-        <activity android:name=".ConfirmSleepActivity" />
-        <activity android:name=".ConfirmMedicationActivity" />
-        <activity android:name=".AddMember" />
-        <activity android:name=".EditMemList" />
-        <activity android:name=".TeamActivity" />
-        <activity android:name=".AddSleep" />
-        <activity android:name=".AddMood" />
-        <activity android:name=".AddReminderActivity" />
+        <activity android:name=".Progress.progressActivity"></activity>
+        <activity android:name=".ConfirmActivity.ConfirmSympthomActivity" />
+        <activity android:name=".ConfirmActivity.ConfirmSleepActivity" />
+        <activity android:name=".ConfirmActivity.ConfirmMedicationActivity" />
+        <activity android:name=".TeamActivity.AddMember" />
+        <activity
+            android:name=".Reminder.Reminder"
+            android:label="@string/title_activity_reminder"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Overview.overview"
+            android:label="@string/title_activity_overview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Reminder.AddSleep" />
+
+        <activity android:name=".TeamActivity.EditMemList" />
+        <activity android:name=".TeamActivity.TeamActivity" />
+
+        <activity android:name=".Reminder.AddMood" />
+        <activity android:name=".Reminder.AddReminderActivity" />
         <activity
             android:name=".splashActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -44,6 +54,23 @@
         <meta-data
             android:name="fontProviderRequests"
             android:value="Noto Color Emoji Compat" />
+        <receiver
+            android:name=".UnlockReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".WakeUpReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".SleepService">
+        </service>
     </application>
 
 </manifest>

@@ -1,8 +1,10 @@
-package com.health.myapplication;
+package com.health.myapplication.Progress;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.health.myapplication.R;
 
 public class progressActivity extends AppCompatActivity {
 

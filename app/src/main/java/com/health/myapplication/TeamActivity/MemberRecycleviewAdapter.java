@@ -1,10 +1,12 @@
-package com.health.myapplication;
+package com.health.myapplication.TeamActivity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.health.myapplication.R;
 
 import java.util.List;
 

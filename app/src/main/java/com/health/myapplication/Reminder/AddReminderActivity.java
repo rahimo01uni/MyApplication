@@ -1,28 +1,44 @@
-package com.health.myapplication;
+package com.health.myapplication.Reminder;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 
 import com.google.android.material.snackbar.Snackbar;
+import com.health.myapplication.Database.MedicationDbHelber;
+import com.health.myapplication.R;
+import com.health.myapplication.utils.Adapter;
+import com.health.myapplication.utils.AdapterTime;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class AddReminderActivity extends AppCompatActivity {
     String[] listItems;
     Button btnSym;
     Button btnSleep;
+    Button save;
     EditText txt_medicationname;
     TextView txt_unit;
     TextView txt_Count;
@@ -30,19 +46,109 @@ public class AddReminderActivity extends AppCompatActivity {
     TextView txt_EDate;
     TextView txt_Period;
     TextView txt_Time;
+    RecyclerView    recyclerView;
+   ArrayList times;
+    AdapterTime adapter;
+    DatePickerDialog picker;
+    Calendar sleep,startDate,endDate;
+    ImageView delete;
+    MedicationDbHelber mdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reminder);
-
+        mdb=new MedicationDbHelber(this);
+        times=new ArrayList();
+        delete=findViewById(R.id.delete);
         txt_medicationname = findViewById(R.id.txt_medicationname);
-        txt_unit = findViewById(R.id.txt_unit);
+        txt_Time=findViewById(R.id.txt_Time);
         txt_Count = findViewById(R.id.txt_Count);
         txt_SDate = findViewById(R.id.txt_SDate);
         txt_EDate = findViewById(R.id.txt_EDate);
         txt_Period = findViewById(R.id.txt_Period);
-        txt_Time = findViewById(R.id.txt_Time);
+        save=findViewById(R.id.btn_save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Log.d("timesLength",""+times.size());
+            }
+        });
+        recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
+        adapter=new AdapterTime(this,times);
+//        Log.d("what",""+db.getReminders().get(db.getReminders().size()-1).getSleep_log().getSleepTime());
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        txt_SDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(AddReminderActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                startDate=Calendar.getInstance();
+                                startDate.set(year,monthOfYear,dayOfMonth);
+                                txt_SDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+        });
+        txt_EDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(AddReminderActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                endDate=Calendar.getInstance();
+                                endDate.set(year,monthOfYear,dayOfMonth);
+                                txt_EDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+        });
+         txt_Time.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 TimePickerDialog timePickerDialog = new TimePickerDialog(AddReminderActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                     @Override
+                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                         sleep = Calendar.getInstance();
+                         String hours=""+hourOfDay,minutess=""+minutes;
+                         if(hourOfDay==0)hours="00";
+                         if(minutes==0)minutess="00";
+                         if(hours.length()==1) hours="0"+hours;
+                         if(minutess.length()==1)minutess="0"+minutess;
+                         times.add(hourOfDay+":"+minutes);
+                         recyclerView.setVisibility( View.VISIBLE);
+                         adapter.setData(times);
+                         sleep.set(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DATE),hourOfDay,minutes,0);
+
+
+                     }
+                 }, 0, 0, false);
+                 timePickerDialog.show();
+
+             }
+         });
+
+
 
         //go to AddMood Activity
         btnSym = findViewById(R.id.btn_sym);
