@@ -12,6 +12,7 @@ import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.health.myapplication.R;
+import com.health.myapplication.TeamActivity.MemList.MemListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class TeamActivity extends AppCompatActivity implements MemberRecycleview
         models.add(new GroupMember("Zahra"));
 
 
-        recyclerView = findViewById(R.id.recycleView_member);
+        recyclerView = findViewById(R.id.mem_recycleView);
         adapter = new MemberRecycleviewAdapter(this, models, this);
         RecyclerView.LayoutManager LManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         RecyclerView.ItemAnimator animator = new DefaultItemAnimator();
@@ -61,7 +62,7 @@ public class TeamActivity extends AppCompatActivity implements MemberRecycleview
 
   @Override
     public void onMemberClick(int position) {
-        Intent intent = new Intent(this, EditMemList.class);
+        Intent intent = new Intent(this, MemListActivity.class);
         //intent.putExtra("denti","ddd");
         startActivity(intent);
     }

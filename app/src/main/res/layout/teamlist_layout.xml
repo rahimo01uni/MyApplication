@@ -35,11 +35,13 @@
 
             <TextView
                 android:id="@+id/txt_drug"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="45dp"
+                android:layout_width="152dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="161dp"
+                android:layout_toStartOf="@+id/toggle"
+                android:layout_toEndOf="@+id/checkBox"
                 android:text="Blood Pressure"
                 android:textColor="@color/colorDtext"
                 android:textSize="20sp" />
@@ -69,13 +71,12 @@
 
                 />
 
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp" />
 
-            <ImageView
-                android:id="@+id/img_drug"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp" />
+
         </RelativeLayout>
 
 
@@ -87,27 +88,27 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:context=".Reminder.AddSleep"
-       android:visibility="gone"
+        android:visibility="gone"
         tools:layout_editor_absoluteX="0dp">
 
 
-    <TextView
-        android:id="@+id/txt_StartTimeS"
-        android:layout_width="341dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="122dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_clock_three"
-        android:text="Start Time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txt_StartTimeS"
+            android:layout_width="341dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="122dp"
+            android:background="@color/Backgroundcolor"
+            android:drawableRight="@drawable/ic_clock_three"
+            android:text="Start Time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+        <TextView
             android:id="@+id/txt_EndTimeS"
             android:layout_width="341dp"
             android:layout_height="42dp"
