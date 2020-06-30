@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Progress.progressActivity"></activity>
+        <activity android:name=".TeamActivity.MemList.TeamLogActivity"></activity>
+        <activity android:name=".TeamActivity.MemList.MemListActivity" />
+        <activity android:name=".Progress.progressActivity" />
         <activity android:name=".ConfirmActivity.ConfirmSympthomActivity" />
         <activity android:name=".ConfirmActivity.ConfirmSleepActivity" />
         <activity android:name=".ConfirmActivity.ConfirmMedicationActivity" />
@@ -17,16 +19,14 @@
         <activity
             android:name=".Reminder.Reminder"
             android:label="@string/title_activity_reminder"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Overview.overview"
             android:label="@string/title_activity_overview"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Reminder.AddSleep" />
-
         <activity android:name=".TeamActivity.EditMemList" />
         <activity android:name=".TeamActivity.TeamActivity" />
-
         <activity android:name=".Reminder.AddMood" />
         <activity android:name=".Reminder.AddReminderActivity" />
         <activity
@@ -54,6 +54,7 @@
         <meta-data
             android:name="fontProviderRequests"
             android:value="Noto Color Emoji Compat" />
+
         <receiver
             android:name=".UnlockReceiver"
             android:enabled="true">
@@ -75,9 +76,8 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-        <service
-            android:name=".SleepService">
-        </service>
+
+        <service android:name=".SleepService" />
     </application>
 
 </manifest>
