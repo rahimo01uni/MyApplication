@@ -104,74 +104,7 @@ public    class DatabaseHelper {
             Log.d("HowMANYTIMES",cursor.getString(cursor.getColumnIndex("NIGHTWOKEUP")));
             return 1;
         }
-       public ArrayList<general_model> getReminders()
-       {
-           ArrayList<general_model> list=new ArrayList<>();
-           SQLiteDatabase db = myhelper.getWritableDatabase();
-           //SleepLogs
-           sleep_model sleep_log;
-           Cursor cursor =db.query("SleepReminder",null,null,null,null,null,null);
-           while (cursor.moveToNext())
 
-           {          sleep_log=new sleep_model();
-               sleep_log.setId(cursor.getString(cursor.getColumnIndex("ID")));
-               sleep_log.setSleepTime(cursor.getString(cursor.getColumnIndex("SLEEPTIME")));
-               sleep_log.setWakeUpTime(cursor.getString(cursor.getColumnIndex("WAKEUPTIME")));
-               list.add(new general_model("sleep",sleep_log.getTime(),sleep_log));
-           }
-           return list;
-       }
-    public boolean EditSleepReminder(String id, String sleep_time, String wakeUp) {
-        SQLiteDatabase db = myhelper.getWritableDatabase();
-        String strFilter = "ID=" + id;
-        ContentValues args = new ContentValues();
-        args.put("SLEEPTIME", sleep_time);
-        args.put("WAKEUPTIME", wakeUp);
-        db.update("SleepReminder", args, strFilter, null);
-        return true;
-    }
-
-        public ArrayList<general_model> getData(String Date)
-        {
-            ArrayList<general_model> list=new ArrayList<>();
-            SQLiteDatabase db = myhelper.getWritableDatabase();
-            //SleepLogs
-            Cursor cursor =db.query("SleepLog",null,"Date",new String[]{Date},null,null,null);
-             sleep_model sleep_log;
-            while (cursor.moveToNext())
-            {          sleep_log=new sleep_model();
-                       sleep_log.setId(cursor.getString(cursor.getColumnIndex("ID")));
-                       sleep_log.setDate(cursor.getString(cursor.getColumnIndex("QUALITYOFSLEEP")));
-                sleep_log.setDuration(cursor.getString(cursor.getColumnIndex("DURATION")));
-                sleep_log.setNightWokeUp(cursor.getString(cursor.getColumnIndex("NIGHTWOKEUP")));
-                sleep_log.setNote(cursor.getString(cursor.getColumnIndex("NOTES ")));
-                sleep_log.setTime(cursor.getString(cursor.getColumnIndex("TIME ")));
-                 list.add(new general_model("sleep",sleep_log.getTime(),sleep_log));
-            }
-            return list;
-        }
-    public  ArrayList<general_model> bubble_srt(ArrayList<general_model> List) {
-        int n = List.size();
-        int k;
-        for (int m = n; m >= 0; m--) {
-            for (int i = 0; i < n - 1; i++) {
-                k = i + 1;
-                if (List.get(i).getTime().compareTo(List.get(k).getTime())>0) {
-                    swapNumbers(i, k, List);
-                }
-            }
-        }
-        return List;
-    }
-
-    private static void swapNumbers(int i, int j, ArrayList<general_model> List) {
-
-        general_model temp;
-        temp = List.get(i);
-        List.set(i,List.get(j));
-        List.set(j,temp);
-
-    }
 /*
 
         public  int delete(String uname)
@@ -213,15 +146,15 @@ public    class DatabaseHelper {
                 final String SleepLogs="Create Table SleepLogs(ID INTEGER PRIMARY KEY AUTOINCREMENT,DATE VARCHAR(20),STARTTIME VARCHAR(10),ENDTIME VARCHAR(10),DURATION VARCHAR(100),QUALITYOFSLEEP VARCHAR(20)," +
                         "NIGHTWOKEUP VARCHAR(2),NOTES VARCHAR(20));";
 
-                final String ReminderTimes="Create table REMINDER(ID INTEGER PRIMARY KEY AUTOINCREMENT,TABLER VARCHAR(100),IDR INTEGER,ALARMTIME VARCHAR(50)" +
+                final String ReminderTimes="Create table REMINDER(ID INTEGER PRIMARY KEY AUTOINCREMENT,IDR INTEGER,ALARMTIME VARCHAR(50)" +
                         ",FREQUENCY VARCHAR(50));";
 
                 final String MedicationReminder="CREATE TABLE MEDREMINDER(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME VARCHAR(250),UNIT VARCHAR(50)," +
-                        "DOZE VARCHAR(50),STARTDATE VARCHAR(50),ENDDATE VARCHAR(50),FREQUENCY VARCHAR(50),DESCRIPTION VARCHAR(1000);";
+                        "DOZE VARCHAR(50),STARTDATE VARCHAR(50),ENDDATE VARCHAR(50),FREQUENCY VARCHAR(50),DESCRIPTION VARCHAR(1000));";
                 final String DROP_TABLE_1="DROP TABLE IF EXISTS SleepReminder";
                 final String DROP_TABLE_2="DROP TABLE IF EXISTS  SleepLogs";
                 final String DROP_TABLE_3="DROP TABLE IF EXISTS REMINDER";
-                final String DROP_TABLE_4="DROP TABLE IF EXISTS NOTES";
+                final String DROP_TABLE_4="DROP TABLE IF EXISTS MEDREMINDER";
                 final String DROP_TABLE_5="DROP TABLE IF EXISTS SUBCATEGORIES";
 
 
@@ -239,6 +172,7 @@ public    class DatabaseHelper {
                     db.execSQL(SleepReminder);
                     db.execSQL(SleepLogs);
                     db.execSQL(ReminderTimes);
+                    db.execSQL(MedicationReminder);
 
                 } catch (Exception e) {
 

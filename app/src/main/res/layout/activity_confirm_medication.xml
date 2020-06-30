@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ConfirmActivity.ConfirmMedicationActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/Card"
         android:layout_width="363dp"
-        android:layout_height="447dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:elevation="5dp"
         app:cardCornerRadius="@dimen/CardRadius"
@@ -22,53 +22,113 @@
         app:layout_constraintVertical_bias="0.298">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="374dp"
+            android:layout_height="236dp">
 
 
-            <EditText
-                android:id="@+id/txt_MCdesc"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
+            <TextView
+                android:id="@+id/txt_doze"
+                android:layout_width="77dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="142dp"
                 android:layout_marginTop="104dp"
+                android:layout_marginEnd="144dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="Description"
+                android:hint="Doze"
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.609"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_time"
+                android:layout_width="77dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="104dp"
+                android:layout_marginEnd="259dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Time"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_unit"
+                android:layout_width="79dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="104dp"
+                android:layout_marginEnd="34dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Unit"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btn_MConfirm"
-                android:layout_width="150dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="68dp"
+                android:layout_width="90dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="189dp"
+                android:layout_marginTop="176dp"
+
                 android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginBottom="28dp"
                 android:background="@drawable/btn_blue"
                 android:text="Confirm"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_MCdesc" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btn_MCancel"
-                android:layout_width="136dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="68dp"
+                android:layout_width="80dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="172dp"
+                android:layout_marginEnd="228dp"
+                android:layout_marginBottom="28dp"
                 android:background="@drawable/btn_red"
                 android:text="Cancel"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_MConfirm"
-                app:layout_constraintHorizontal_bias="0.704"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_MCdesc" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="152dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="152dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="152dp"
+                android:background="@drawable/btn_simpleborder"
+                android:text="Aspirine"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

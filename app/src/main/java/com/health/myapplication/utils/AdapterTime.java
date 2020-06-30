@@ -52,7 +52,8 @@ public class AdapterTime extends RecyclerView.Adapter<AdapterTime.myViewHolder> 
         // we should change here later
        Calendar sleep = Calendar.getInstance();
       // sleep.setTimeInMillis();
-holder.txtTitle.setText(models.get(position));
+        sleep.setTimeInMillis(Long.parseLong(models.get(position)));
+holder.txtTitle.setText(TimeFormat(sleep.get(Calendar.HOUR_OF_DAY),sleep.get(Calendar.MINUTE)));
 holder.delete.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -90,55 +91,14 @@ holder.delete.setOnClickListener(new View.OnClickListener() {
         models = times;
         notifyDataSetChanged();
     }
- public  void sleep_lay(final myViewHolder holder, final general_model item){
-     if(holder.ring.isChecked()){
-         holder.sleep.setVisibility(View.GONE);
-         holder.ring.setChecked(false);
-     } else {
-         holder.sleep.setVisibility(View.VISIBLE);
-         holder.ring.setChecked(true);
+    private  String TimeFormat(int hourOfDay, int minutes){
 
-         holder.start_time.setText(item.getSleep_log().getSleepTime());
-         holder.end_time.setText(item.getSleep_log().getWakeUpTime());
-     }
-     holder.start_time.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             TimePickerDialog timePickerDialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
-                 @Override
-                 public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                     holder.start_time.setText(hourOfDay+":"+minutes);
-                 }
-             }, 0, 0, false);
-             timePickerDialog.show();
-         }
-     });
-     holder.end_time.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             TimePickerDialog timePickerDialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
-                 @Override
-                 public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                     holder.end_time.setText(hourOfDay+":"+minutes);
-                 }
-             }, 0, 0, false);
-             timePickerDialog.show();
-         }
-
-     });
-
-     holder.save.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             Log.d("Result",""+holder.start_time.getText().toString()+" ");
-             item.getSleep_log().setSleepTime(holder.start_time.getText().toString());
-             item.getSleep_log().setWakeUpTime(holder.end_time.getText().toString());
-             if(db.EditSleepReminder(item.getSleep_log().getId(),holder.start_time.getText().toString(),holder.end_time.getText().toString()))
-                 sleep_lay(holder,item);
-
-         }
-     });
- }
+        String hours=""+hourOfDay,
+                minutess=""+minutes;
+        if(hours.length()==1) hours="0"+hours;
+        if(minutess.length()==1)minutess="0"+minutess;
+        return hours+":"+minutess;
+    }
 }
 
 

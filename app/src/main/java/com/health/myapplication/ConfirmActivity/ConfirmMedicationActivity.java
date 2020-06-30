@@ -17,7 +17,7 @@ Button btn_MConfirm;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_medication);
 
-        txt_MCdesc = findViewById(R.id.txt_MCdesc);
+
         btn_MCancel = findViewById(R.id.btn_MCancel);
         btn_MConfirm = findViewById(R.id.btn_MConfirm);
     }

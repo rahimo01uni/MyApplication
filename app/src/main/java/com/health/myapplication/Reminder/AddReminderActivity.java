@@ -2,6 +2,7 @@ package com.health.myapplication.Reminder;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
@@ -46,6 +47,7 @@ public class AddReminderActivity extends AppCompatActivity {
     TextView txt_EDate;
     TextView txt_Period;
     TextView txt_Time;
+    TextView txtunit;
     RecyclerView    recyclerView;
    ArrayList times;
     AdapterTime adapter;
@@ -53,7 +55,8 @@ public class AddReminderActivity extends AppCompatActivity {
     Calendar sleep,startDate,endDate;
     ImageView delete;
     MedicationDbHelber mdb;
-
+    TextView txtperiod;
+    TextView desc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,10 +70,14 @@ public class AddReminderActivity extends AppCompatActivity {
         txt_SDate = findViewById(R.id.txt_SDate);
         txt_EDate = findViewById(R.id.txt_EDate);
         txt_Period = findViewById(R.id.txt_Period);
+        desc=findViewById(R.id.txt_desc);
         save=findViewById(R.id.btn_save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+              mdb.insertMedReminder(txt_medicationname.getText().toString(),txtunit.getText().toString(),txt_Count.getText().toString(),""+startDate.getTimeInMillis(),
+                      ""+endDate.getTimeInMillis(),txt_Period.getText().toString(),desc.getText().toString(),times);
 
 
                 Log.d("timesLength",""+times.size());
@@ -80,7 +87,7 @@ public class AddReminderActivity extends AppCompatActivity {
         adapter=new AdapterTime(this,times);
 //        Log.d("what",""+db.getReminders().get(db.getReminders().size()-1).getSleep_log().getSleepTime());
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(adapter);
 
         txt_SDate.setOnClickListener(new View.OnClickListener() {
@@ -135,12 +142,16 @@ public class AddReminderActivity extends AppCompatActivity {
                          if(minutes==0)minutess="00";
                          if(hours.length()==1) hours="0"+hours;
                          if(minutess.length()==1)minutess="0"+minutess;
-                         times.add(hourOfDay+":"+minutes);
+
+                         sleep.set(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DATE),hourOfDay,minutes,0);
+                         int i=0;
+                         while (sleep.getTimeInMillis()<=Calendar.getInstance().getTimeInMillis()) {
+                             i++;
+                             sleep.set(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DATE) + i, hourOfDay, minutes, 0);
+                         }
+                         times.add(""+sleep.getTimeInMillis());
                          recyclerView.setVisibility( View.VISIBLE);
                          adapter.setData(times);
-                         sleep.set(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DATE),hourOfDay,minutes,0);
-
-
                      }
                  }, 0, 0, false);
                  timePickerDialog.show();
@@ -172,7 +183,7 @@ public class AddReminderActivity extends AppCompatActivity {
 
         //alert radio button Unit
         listItems = getResources().getStringArray(R.array.unit_item);
-        final TextView txtunit = findViewById(R.id.txt_unit);
+           txtunit = findViewById(R.id.txt_unit);
 
 
         txtunit.setOnClickListener(new View.OnClickListener() {
@@ -238,7 +249,7 @@ public class AddReminderActivity extends AppCompatActivity {
 
 
         //period
-        final TextView txtperiod = findViewById(R.id.txt_Period);
+        txtperiod = findViewById(R.id.txt_Period);
         final String[] pickerVals = new String[] { "Daily","Weekly", "Monthly" };
 
         txtperiod.setOnClickListener(new View.OnClickListener() {

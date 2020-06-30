@@ -62,6 +62,13 @@
             </intent-filter>
         </receiver>
         <receiver
+            android:name=".MedReciever"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver
             android:name=".WakeUpReceiver"
             android:enabled="true">
             <intent-filter>
