@@ -145,7 +145,7 @@
         android:id="@+id/cardView"
         style="@style/Card"
         android:layout_width="334dp"
-        android:layout_height="468dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:elevation="5dp"
         android:visibility="gone"
@@ -159,7 +159,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
 
 
             <TextView
@@ -203,7 +204,7 @@
                 android:id="@+id/txt_desc"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
@@ -211,24 +212,11 @@
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.528"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname"
                 tools:ignore="MissingConstraints" />
 
-            <Button
-                android:id="@+id/btn_save"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/btn_blue"
-                android:text="Save"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.528"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
             <EditText
                 android:id="@+id/txt_medicationname"
@@ -263,39 +251,53 @@
                 android:id="@+id/txt_unit"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:text="Unit"
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.434"
+                app:layout_constraintHorizontal_bias="0.456"
                 app:layout_constraintStart_toEndOf="@+id/txt_Count"
-                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
             <TextView
                 android:id="@+id/txt_Count"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:text="Doze"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
-                android:layout_width="281dp"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.528"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_Period" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/btn_blue"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

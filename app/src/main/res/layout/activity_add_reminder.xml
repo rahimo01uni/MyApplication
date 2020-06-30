@@ -74,6 +74,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintTop_toTopOf="parent">
@@ -127,7 +128,7 @@
                 android:drawableRight="@drawable/ic_angle_down"
                 android:text="Doze"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
             <TextView
                 android:id="@+id/txt_unit"
@@ -140,8 +141,9 @@
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.507"
                 app:layout_constraintStart_toEndOf="@+id/txt_Count"
-                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
             <TextView
                 android:id="@+id/txt_SDate"
@@ -167,25 +169,9 @@
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.524"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-            <Button
-                android:id="@+id/btn_save"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/btn_blue"
-                android:text="Save"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.465"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
 
             <EditText
                 android:id="@+id/txt_medicationname"
@@ -203,17 +189,37 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/btn_blue"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="278dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.524"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_Period" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_Period">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
