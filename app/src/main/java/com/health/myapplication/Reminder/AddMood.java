@@ -53,7 +53,7 @@ public class AddMood extends AppCompatActivity {
         adapter=new AdapterTime(this,times);
 //        Log.d("what",""+db.getReminders().get(db.getReminders().size()-1).getSleep_log().getSleepTime());
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setAdapter(adapter);
 
         btn_saveM.setOnClickListener(new View.OnClickListener() {

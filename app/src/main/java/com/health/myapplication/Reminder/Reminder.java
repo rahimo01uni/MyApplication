@@ -7,23 +7,29 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.health.myapplication.Database.DatabaseHelper;
 import com.health.myapplication.Database.ReminderOverviewDbHelper;
+import com.health.myapplication.Database.general_model;
 import com.health.myapplication.R;
 import com.health.myapplication.bubles.med_bubble;
 import com.health.myapplication.bubles.sleep_buble;
 import com.health.myapplication.utils.Adapter;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class Reminder extends AppCompatActivity {
 RecyclerView recyclerView;
 Adapter adapter;
 ReminderOverviewDbHelper db;
+ArrayList<general_model> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +37,11 @@ ReminderOverviewDbHelper db;
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         db=new ReminderOverviewDbHelper(this);
-
+        list=db.getReminders();
         recyclerView=(RecyclerView)findViewById(R.id.reminder_recycler);
-        adapter=new Adapter(this,db.getReminders(),db);
+        adapter=new Adapter(this,list,db);
 //        Log.d("what",""+db.getReminders().get(db.getReminders().size()-1).getSleep_log().getSleepTime());
-
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -49,6 +55,23 @@ ReminderOverviewDbHelper db;
               //sleep_buble b=new sleep_buble(Reminder.this,"sleep" );
             }
         });
+
+
     }
+
+
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            list.remove(viewHolder.getAdapterPosition());
+            adapter.notifyDataSetChanged();
+
+        }
+    };
 
 }

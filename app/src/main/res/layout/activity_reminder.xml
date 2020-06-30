@@ -20,7 +20,10 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_reminder" />
+    <include
+        layout="@layout/content_reminder"
+        android:layout_height="675dp"
+        android:paddingTop="20dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

@@ -78,7 +78,7 @@ public class AddSleep extends AppCompatActivity {
         end_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(AddSleep.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddSleep.this, R.style.MyDatePickerDialogTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         String hours=""+hourOfDay,minutess=""+minutes;

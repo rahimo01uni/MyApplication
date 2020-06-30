@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -18,19 +17,11 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="75dp"
             android:layout_marginTop="5dp"
             android:layout_weight="0.5"
             android:background="@drawable/list_mshape"
-            android:paddingBottom="10dp">
-
-            <Button
-                android:layout_width="20dp"
-                android:layout_height="6dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="55dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/more_icon" />
+            android:padding="10dp">
 
 
             <TextView
@@ -56,20 +47,6 @@
                 android:textOn="" />
 
 
-            <TextView
-                android:id="@+id/txt_drug_instruction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="40dp"
-                android:text="Daily, 2 times a day"
-                android:textColor="@color/colorHighlight"
-                android:textSize="12sp"
-
-
-                />
-
-
             <ImageView
                 android:id="@+id/img_drug"
                 android:layout_width="30dp"
@@ -81,59 +58,87 @@
 
     </LinearLayout>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sleep_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:context=".Reminder.AddSleep"
-       android:visibility="gone"
-        tools:layout_editor_absoluteX="0dp">
-
-
-    <TextView
-        android:id="@+id/txt_StartTimeS"
-        android:layout_width="341dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="122dp"
-        android:background="@color/Backgroundcolor"
-        android:drawableRight="@drawable/ic_clock_three"
-        android:text="Start Time"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="384dp"
+        android:layout_height="153dp"
+        android:padding="10dp"
+        android:paddingBottom="20dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:context=".Reminder.AddSleep">
 
-    <TextView
-            android:id="@+id/txt_EndTimeS"
-            android:layout_width="341dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/Backgroundcolor"
-            android:drawableRight="@drawable/ic_clock_three"
-            android:text="End Time"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewsleep"
+            style="@style/Card"
+            android:layout_width="351dp"
+            android:layout_height="136dp"
+            android:layout_gravity="center"
+            android:elevation="5dp"
+            android:visibility="visible"
+            app:cardCornerRadius="@dimen/CardRadius"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintHorizontal_bias="0.242"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_StartTimeS" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
-        <Button
-            android:id="@+id/btn_saveS"
-            android:layout_width="341dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_blue"
-            android:text="Save"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.542"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_EndTimeS" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent">
 
+                <TextView
+                    android:id="@+id/txt_StartTimeS"
+                    android:layout_width="120dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/btn_simpleborder"
+                    android:drawableRight="@drawable/ic_clock_three"
+                    android:gravity="center_vertical"
+                    android:text="Start Time"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_EndTimeS"
+                    android:layout_width="120dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="28dp"
+                    android:background="@drawable/btn_simpleborder"
+                    android:drawableRight="@drawable/ic_clock_three"
+                    android:gravity="center_vertical"
+                    android:text="End Time"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txt_StartTimeS"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_saveS"
+                    android:layout_width="144dp"
+                    android:layout_height="37dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/btn_blue"
+                    android:text="Save"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_EndTimeS" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
@@ -159,86 +164,71 @@
 
             <TextView
                 android:id="@+id/txt_EDate"
-                android:layout_width="145dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="170dp"
-                android:layout_marginTop="150dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="276dp"
+                android:layout_width="130dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_calender"
                 android:text="End Date"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.142"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintHorizontal_bias="0.434"
+                app:layout_constraintStart_toEndOf="@+id/txt_SDate"
+                app:layout_constraintTop_toBottomOf="@+id/txt_unit" />
 
             <TextView
                 android:id="@+id/txt_SDate"
-                android:layout_width="145dp"
-                android:layout_height="39dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="151dp"
-                android:layout_marginEnd="184dp"
-                android:layout_marginBottom="276dp"
+                android:layout_width="130dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_calender"
                 android:text="Start Date"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_Count" />
 
             <TextView
                 android:id="@+id/txt_Period"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="204dp"
-                android:layout_marginEnd="184dp"
-                android:layout_marginBottom="222dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:text="Frequency"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_SDate" />
 
             <EditText
                 android:id="@+id/txt_desc"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Description"
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.528"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-                tools:layout_editor_absoluteX="27dp" />
+                tools:ignore="MissingConstraints" />
 
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="42dp"
-                android:layout_marginBottom="36dp"
                 android:background="@drawable/btn_blue"
                 android:text="Save"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.528"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_desc"
-                app:layout_constraintVertical_bias="0.409" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
             <EditText
                 android:id="@+id/txt_medicationname"
@@ -260,62 +250,52 @@
                 android:id="@+id/txt_Time"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="222dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
                 android:text="Add Time"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.023"
+                app:layout_constraintHorizontal_bias="0.434"
                 app:layout_constraintStart_toEndOf="@+id/txt_Period"
                 app:layout_constraintTop_toBottomOf="@+id/txt_EDate" />
 
             <TextView
                 android:id="@+id/txt_unit"
-                android:layout_width="140dp"
+                android:layout_width="130dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="196dp"
-                android:layout_marginTop="86dp"
-                android:layout_marginEnd="58dp"
-                android:layout_marginBottom="336dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:text="Unit"
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0.434"
+                app:layout_constraintStart_toEndOf="@+id/txt_Count"
+                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
 
             <TextView
                 android:id="@+id/txt_Count"
-                android:layout_width="109dp"
-                android:layout_height="43dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="86dp"
-                android:layout_marginEnd="202dp"
-                android:layout_marginBottom="336dp"
+                android:layout_width="130dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:text="Doze"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
-                android:layout_width="311dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="12dp"
+                android:layout_width="281dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.528"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_Time" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_Period" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

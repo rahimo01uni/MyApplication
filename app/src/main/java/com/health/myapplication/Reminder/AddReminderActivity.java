@@ -108,6 +108,7 @@ public class AddReminderActivity extends AppCompatActivity {
                             }
                         }, year, month, day);
                 picker.show();
+
             }
         });
         txt_EDate.setOnClickListener(new View.OnClickListener() {
@@ -182,28 +183,28 @@ public class AddReminderActivity extends AppCompatActivity {
         });
 
         //alert radio button Unit
-        listItems = getResources().getStringArray(R.array.unit_item);
-           txtunit = findViewById(R.id.txt_unit);
-
-
-        txtunit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddReminderActivity.this);
-                mBuilder.setTitle("Choose an item");
-                mBuilder.setPositiveButton("Add", null);
-                mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        txtunit.setText(listItems[i]);
-                        dialogInterface.dismiss();
-                    }
-                });
-
-                AlertDialog mDialog = mBuilder.create();
-                mDialog.show();
-            }
-        });
+//        listItems = getResources().getStringArray(R.array.unit_item);
+//
+//
+//
+//        txtunit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddReminderActivity.this);
+//                mBuilder.setTitle("Choose an item");
+//                mBuilder.setPositiveButton("Add", null);
+//                mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        txtunit.setText(listItems[i]);
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//
+//                AlertDialog mDialog = mBuilder.create();
+//                mDialog.show();
+//            }
+//        });
 
        //count
        final TextView txtCount = findViewById(R.id.txt_Count);
@@ -224,7 +225,7 @@ public class AddReminderActivity extends AppCompatActivity {
                         .wrapSelectorWheel(true)
                         .build();
 
-                new AlertDialog.Builder(AddReminderActivity.this)
+                new AlertDialog.Builder(AddReminderActivity.this, R.style.AlertDialogTheme)
                         .setTitle("Count")
                         .setView(numberPicker)
                         .setNegativeButton("ADD",
@@ -270,7 +271,7 @@ public class AddReminderActivity extends AppCompatActivity {
                     }
                 });
 
-                new AlertDialog.Builder(AddReminderActivity.this)
+                new AlertDialog.Builder(AddReminderActivity.this, R.style.AlertDialogTheme)
                         .setTitle("period")
                         .setView(picker)
                         .setNegativeButton("ADD",
@@ -286,12 +287,59 @@ public class AddReminderActivity extends AppCompatActivity {
                                                 txtperiod.setText(String.valueOf(pickerVals[picker.getValue()]));
                                             }
                         })
+
                         .show();
 
             }
 
         });
 
+
+
+        //Unit
+        txtunit = findViewById(R.id.txt_unit);
+
+        final String[] pickerValsUnit = new String[] { "Pill","A", "B" };
+
+        txtunit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                final NumberPicker picker = new NumberPicker(AddReminderActivity.this);
+                picker.setMinValue(0);
+                picker.setMaxValue(2);
+                picker.setDisplayedValues( new String[] { "Pill","A", "B" } );
+
+                picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                        int valuePicker1 = picker.getValue();
+
+                    }
+                });
+
+                new AlertDialog.Builder(AddReminderActivity.this,R.style.AlertDialogTheme)
+                        .setTitle("Unit")
+                        .setView(picker)
+                        .setNegativeButton("ADD",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                })
+                        .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Snackbar.make(findViewById(R.id.txt_unit), "You picked : " + pickerValsUnit[picker.getValue()], Snackbar.LENGTH_LONG).show();
+                                txtunit.setText(String.valueOf(pickerValsUnit[picker.getValue()]));
+                            }
+                        })
+                        .show();
+
+            }
+
+        });
 
         //Repeat
 //        final TextView txtrepeat = findViewById(R.id.txt_Repeat);
