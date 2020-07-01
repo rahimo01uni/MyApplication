@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.health.myapplication.Database.DatabaseHelper;
+import com.health.myapplication.Database.SleepDbHelper;
 import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.R;
 
@@ -36,14 +37,14 @@ public class wakeUp_buble {
     View mPointer;
     Button mClose,con;
     Boolean sleeping=false;
- DatabaseHelper db;
+ SleepDbHelper db;
     @RequiresApi(api = Build.VERSION_CODES.M)
     public wakeUp_buble(Context context, String type){
         getmView(context);
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
     View getmView(final Context context) {
-        db=new DatabaseHelper(context);
+        db=new SleepDbHelper(context);
         gestureDetector = new GestureDetector(new SingleTapConfirm());
         windowManager = (WindowManager) context.getSystemService(context.WINDOW_SERVICE);
 

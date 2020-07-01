@@ -17,6 +17,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.health.myapplication.Database.DatabaseHelper;
+import com.health.myapplication.Database.SleepDbHelper;
 import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.R;
 import com.health.myapplication.UnlockReceiver;
@@ -31,7 +32,7 @@ public class AddSleep extends AppCompatActivity {
  String sleep_time,wake_upTime;
  TextView start_time,end_time;
  Button save,ask;
- DatabaseHelper db;
+SleepDbHelper db;
    Calendar sleep,wake;
     private BubblesManager bubblesManager;
     private NotificationBadge mBadge;
@@ -39,7 +40,7 @@ public class AddSleep extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sleep);
-        db=new DatabaseHelper(this);
+        db=new SleepDbHelper(this);
         start_time=(TextView)findViewById(R.id.txt_StartTimeS);
         end_time=(TextView)findViewById(R.id.txt_EndTimeS);
         save=(Button)findViewById(R.id.btn_saveS);

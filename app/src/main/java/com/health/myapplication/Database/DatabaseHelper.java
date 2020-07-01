@@ -42,90 +42,14 @@ public    class DatabaseHelper {
                default: break;
            }
         }
-        public void updateSleepLog(String quality)
-        {
-            Calendar wake_up=Calendar.getInstance();
 
 
 
-            SQLiteDatabase db = myhelper.getWritableDatabase();
-            Cursor cursor =db.query("SleepLogs",null,null,null,null,null,null);
-            cursor.moveToLast();
-            int duration=(int)(wake_up.getTimeInMillis()-Long.parseLong(cursor.getString(cursor.getColumnIndex("STARTTIME"))));
-            int hour=duration/3600000;
-            int minutes=(duration%3600000)/60000;
 
-            //   String strFilter = "ID=" + id;
-            String strFilter = "ID=" +cursor.getString(cursor.getColumnIndex("ID")) ;
-            ContentValues args = new ContentValues();
-            args.put("ENDTIME",  ""+wake_up.getTimeInMillis());
-            args.put("QUALITYOFSLEEP",  quality);
-            args.put("DURATION",  ""+hour+":"+minutes);
-            args.put("DATE",  wake_up.getTimeInMillis());
-            Log.d("WhatsnEWs",""+  db.update("SleepLogs", args, strFilter, null));
-            cursor =db.query("SleepLogs",null,null,null,null,null,null);
-            cursor.moveToLast();
-            Log.d("cursor",""+cursor.getString(cursor.getColumnIndex("DURATION")));
-        }
-    public int insertSleepReminder(String sleep,String wake_up )
-    {
-        SQLiteDatabase dbb = myhelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
 
-        contentValues.put("SLEEPTIME", sleep);
-        contentValues.put("WAKEUPTIME", wake_up);
 
-        int id = Integer.parseInt(""+dbb.insert("SleepReminder", null , contentValues));
-        return id;
-    }
-        public long insertSleepLog(sleep_model Log)
-        {
-            SQLiteDatabase dbb = myhelper.getWritableDatabase();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("STARTTIME", Log.getSleepTime());
-            contentValues.put("NIGHTWOKEUP", "0");
-            long id = dbb.insert("SleepLogs", null , contentValues);
-            return id;
-        }
-        public int updateNightWakeUp()
-        {
-            SQLiteDatabase db = myhelper.getWritableDatabase();
-            Cursor cursor =db.query("SleepLogs",null,null,null,null,null,null);
-            cursor.moveToLast();
-           ;
-         //   String strFilter = "ID=" + id;
-            String strFilter = "ID=" +cursor.getString(cursor.getColumnIndex("ID")) ;
-            ContentValues args = new ContentValues();
-            args.put("NIGHTWOKEUP",  (Integer.parseInt(cursor.getString(cursor.getColumnIndex("NIGHTWOKEUP")))+1));
 
-            Log.d("WhatsnEWs",""+  db.update("SleepLogs", args, strFilter, null));
-             cursor =db.query("SleepLogs",null,null,null,null,null,null);
-            cursor.moveToLast();
-            Log.d("HowMANYTIMES",cursor.getString(cursor.getColumnIndex("NIGHTWOKEUP")));
-            return 1;
-        }
 
-/*
-
-        public  int delete(String uname)
-        {
-            SQLiteDatabase db = myhelper.getWritableDatabase();
-            String[] whereArgs ={uname};
-
-            int count =db.delete(myDbHelper.TABLE_NAME ,myDbHelper.NAME+" = ?",whereArgs);
-            return  count;
-        }
-
-        public int updateName(String oldName , String newName)
-        {
-            SQLiteDatabase db = myhelper.getWritableDatabase();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(myDbHelper.NAME,newName);
-            String[] whereArgs= {oldName};
-            int count =db.update(myDbHelper.TABLE_NAME,contentValues, myDbHelper.NAME+" = ?",whereArgs );
-            return count;
-        }
-*/
         static class myDbHelper extends SQLiteOpenHelper
         {
             private static final String DATABASE_NAME = "Health";    // DatabaseHelper Name
@@ -138,8 +62,7 @@ public    class DatabaseHelper {
                 final String Groups = "CREATE TABLE  GROUPS(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(255));";
                 //REMINDER
 
-                final String Reminder = "CREATE TABLE REMINDER( ID INTEGER PRIMARY KEY AUTOINCREMENT, CATEGORY VARCHAR(255) ,NAME VARCHAR(225)," +
-                        "   STATUS VARCHAR(2), FREQUENCY VARCHAR(255),STARTDATE VARCHAR(20), ENDDATE VARCHAR(20),TIME VARCHAR(10) );";
+                final String OVERVIEW = "CREATE TABLE OVERVIEW( ID INTEGER ,NAME VARCHAR(200),TIME VARCHAR(50),DATE VARCHAR(50),STATUS VARCHAR(2));";
                 //Id, SleepTime,WakeUpTime,Date,Duration,QualityOfSleep,NightWokeUp, Note;
                 final String SleepReminder="Create Table SleepReminder(ID INTEGER PRIMARY KEY AUTOINCREMENT,SLEEPTIME VARCHAR(100)," +
                         "WAKEUPTIME VARCHAR(100));";
@@ -148,15 +71,16 @@ public    class DatabaseHelper {
 
                 final String ReminderTimes="Create table REMINDER(ID INTEGER PRIMARY KEY AUTOINCREMENT,IDR INTEGER,ALARMTIME VARCHAR(50)" +
                         ",FREQUENCY VARCHAR(50));";
-
+            final String ReminderSymptom="Create table REMINDERSYMPTOM(ID INTEGER PRIMARY KEY AUTOINCREMENT,IDR INTEGER,ALARMTIME VARCHAR(50)" +
+                    ",FREQUENCY VARCHAR(50));";
                 final String MedicationReminder="CREATE TABLE MEDREMINDER(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME VARCHAR(250),UNIT VARCHAR(50)," +
                         "DOZE VARCHAR(50),STARTDATE VARCHAR(50),ENDDATE VARCHAR(50),FREQUENCY VARCHAR(50),DESCRIPTION VARCHAR(1000));";
                 final String DROP_TABLE_1="DROP TABLE IF EXISTS SleepReminder";
                 final String DROP_TABLE_2="DROP TABLE IF EXISTS  SleepLogs";
                 final String DROP_TABLE_3="DROP TABLE IF EXISTS REMINDER";
                 final String DROP_TABLE_4="DROP TABLE IF EXISTS MEDREMINDER";
-                final String DROP_TABLE_5="DROP TABLE IF EXISTS SUBCATEGORIES";
-
+                final String DROP_TABLE_5="DROP TABLE IF EXISTS REMINDERSYMPTOM";
+            final String DROP_TABLE_6="DROP TABLE IF EXISTS OVERVIEW";
 
 
             private Context context;
@@ -173,6 +97,8 @@ public    class DatabaseHelper {
                     db.execSQL(SleepLogs);
                     db.execSQL(ReminderTimes);
                     db.execSQL(MedicationReminder);
+                    db.execSQL(ReminderSymptom);
+                    db.execSQL(OVERVIEW);
 
                 } catch (Exception e) {
 
@@ -189,6 +115,7 @@ public    class DatabaseHelper {
                     db.execSQL(DROP_TABLE_3);
                     db.execSQL(DROP_TABLE_4);
                     db.execSQL(DROP_TABLE_5);
+                    db.execSQL(DROP_TABLE_6);
                     onCreate(db);
                 }catch (Exception e) {
 

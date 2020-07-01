@@ -182,31 +182,5 @@ public class symptom_buble {
         });
         return mRelativeLayout;
     }
-   void self_log(String command)
-   {
 
-       Calendar sleep,wake;
-       sleep_model sleep_time=new sleep_model();
-       switch (command){
-           case "sleep":
-               sleep_time.setSleepTime(""+Calendar.getInstance().getTimeInMillis());
-          Log.d("IDSLEEP",""+db.insertSleepLog(sleep_time));
-               break;
-           case "nightWokeUp":
-               Log.d("CEERS","come");
-              db.updateNightWakeUp();
-               break;
-
-
-       }
-
-     /*  Long x1=Long.parseLong("1593261077883");
-      Long x=sleep.getTimeInMillis()-x1;
-      Long hour=x/3600000;
-      Long minutes=(x/60000)%60;
-       Log.d("time",""+hour+" :"+minutes );*/
-
-
-
-   }
 }

@@ -78,7 +78,9 @@ public class AddReminderActivity extends AppCompatActivity {
 
               mdb.insertMedReminder(txt_medicationname.getText().toString(),txtunit.getText().toString(),txt_Count.getText().toString(),""+startDate.getTimeInMillis(),
                       ""+endDate.getTimeInMillis(),txt_Period.getText().toString(),desc.getText().toString(),times);
-
+                Intent intent2 = new Intent(AddReminderActivity.this,Reminder.class);
+                startActivity(intent2);
+                finish();
 
                 Log.d("timesLength",""+times.size());
             }
@@ -87,9 +89,10 @@ public class AddReminderActivity extends AppCompatActivity {
         adapter=new AdapterTime(this,times);
 //        Log.d("what",""+db.getReminders().get(db.getReminders().size()-1).getSleep_log().getSleepTime());
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setAdapter(adapter);
-
+        startDate=Calendar.getInstance();
+txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)+"/"+startDate.get(Calendar.YEAR));
         txt_SDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +114,8 @@ public class AddReminderActivity extends AppCompatActivity {
 
             }
         });
+        endDate=Calendar.getInstance();
+        endDate.set(endDate.get(Calendar.DATE),endDate.get(Calendar.MONTH),endDate.get(Calendar.YEAR)+1);
         txt_EDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

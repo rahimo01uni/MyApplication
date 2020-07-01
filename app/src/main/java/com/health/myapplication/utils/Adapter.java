@@ -26,6 +26,7 @@ import com.health.myapplication.Database.ReminderOverviewDbHelper;
 import com.health.myapplication.Database.general_model;
 import com.health.myapplication.Database.medication_model;
 import com.health.myapplication.Database.sleep_model;
+import com.health.myapplication.Database.symptom_model;
 import com.health.myapplication.R;
 import com.health.myapplication.Reminder.AddReminderActivity;
 import com.health.myapplication.Reminder.Reminder;
@@ -41,6 +42,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 
+import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -77,7 +79,9 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
      if(models.get(position).getType().equals("sleep"))  sleep_lay(holder,models.get(position).getSleep_log());
-     else med_lay(holder,models.get(position).getMedication_log());
+     else
+         if(models.get(position).getType().equals("Symptom"))symptom_lay(holder,models.get(position).getSymptom_log());
+             else med_lay(holder,models.get(position).getMedication_log());
     }
 });
         }
@@ -94,7 +98,7 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
             private ConstraintLayout sleep;
             private ToggleButton ring;
             TextView start_time,end_time;
-            Button save;
+            Button save,saveS;
             //private ImageView pic;
 
             //med
@@ -115,8 +119,10 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
             MedicationDbHelber mdb;
             TextView txtperiod;
             TextView desc;
-            CardView medView;
-
+            CardView medView,symptom;
+//symptom
+            TextView Time;
+            RecyclerView checktimes;
             public myViewHolder(View itemView) {
                 super(itemView);
                 ring=(ToggleButton)itemView.findViewById(R.id.toggle);
@@ -141,15 +147,22 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
                 saveMed=itemView.findViewById(R.id.btn_save);
                 medView=itemView.findViewById(R.id.cardView);
 
+                //symptom
+               Time=itemView.findViewById(R.id.txt_TimeM);
+               symptom=itemView.findViewById(R.id.cardViewsym);
+               checktimes=itemView.findViewById(R.id.recyclerViewsym);
+               saveS=itemView.findViewById(R.id.btn_saveM);
+
             }
         }
         public void setData(ArrayList<general_model> food) {
             models = food;
             notifyDataSetChanged();
         }
+        Calendar timeSleep,timeWake;
      void sleep_lay(final myViewHolder holder, final sleep_model item){
-            final Calendar timeSleep=Calendar.getInstance();
-         final Calendar timeWake=Calendar.getInstance();
+        timeSleep=Calendar.getInstance();
+        timeWake=Calendar.getInstance();
             if(holder.ring.isChecked()){
              holder.sleep.setVisibility(View.GONE);
              holder.ring.setChecked(false);
@@ -170,9 +183,13 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
                  TimePickerDialog timePickerDialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
                      @Override
                      public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                       timeSleep=Calendar.getInstance();
                          timeSleep.set(timeSleep.get(Calendar.YEAR), timeSleep.get(Calendar.MONTH),
                                  timeSleep.get(Calendar.DATE),hourOfDay,minutes,0);
-
+                      if(timeSleep.getTimeInMillis()<Calendar.getInstance().getTimeInMillis()){
+                          timeSleep.set(timeSleep.get(Calendar.YEAR), timeSleep.get(Calendar.MONTH),
+                                  timeSleep.get(Calendar.DATE)+1,hourOfDay,minutes,0);
+                      }
                          holder.start_time.setText(TimeFormat(hourOfDay,minutes));
                      }
                  }, 0, 0, false);
@@ -185,9 +202,14 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
                  TimePickerDialog timePickerDialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
                      @Override
                      public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                     timeWake=Calendar.getInstance();
                          timeWake.set(timeWake.get(Calendar.YEAR), timeWake.get(Calendar.MONTH),
                                  timeWake.get(Calendar.DATE),hourOfDay,minutes,0);
-
+                     if(timeWake.getTimeInMillis()<Calendar.getInstance().getTimeInMillis())
+                     {
+                         timeWake.set(timeWake.get(Calendar.YEAR), timeWake.get(Calendar.MONTH),
+                                 timeWake.get(Calendar.DATE)+1,hourOfDay,minutes,0);
+                     }
                          holder.end_time.setText(TimeFormat(hourOfDay,minutes));
                      }
                  }, 0, 0, false);
@@ -382,6 +404,56 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
          holder.recyclerView.setLayoutManager(new GridLayoutManager(context,2));
          holder.recyclerView.setAdapter(adapter);
      }
+        Calendar timeCheck;
+     void symptom_lay(final myViewHolder holder, final symptom_model item)
+     {
+         timeCheck=Calendar.getInstance();
+         if(holder.ring.isChecked()){
+             holder.symptom.setVisibility(View.GONE);
+             holder.ring.setChecked(false);
+         } else {
+             holder.symptom.setVisibility(View.VISIBLE);
+             holder.ring.setChecked(true);
+
+         }
+
+         holder.Time.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 { TimePickerDialog timePickerDialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+                     @Override
+                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                         timeCheck = Calendar.getInstance();
+                         timeCheck.set(timeCheck.get(Calendar.YEAR), timeCheck.get(Calendar.MONTH), timeCheck.get(Calendar.DATE),hourOfDay,minutes,0);
+                         int i=0;
+                         while ( timeCheck.getTimeInMillis()<=Calendar.getInstance().getTimeInMillis()) {
+                             i++;
+                             timeCheck.set(timeCheck.get(Calendar.YEAR), timeCheck.get(Calendar.MONTH), timeCheck.get(Calendar.DATE) + i, hourOfDay, minutes, 0);
+                         }
+                         item.getTimes().add(""+timeCheck.getTimeInMillis());
+
+                         adapter.setData(  item.getTimes());
+                     }
+                 }, 0, 0, false);
+                     timePickerDialog.show();}
+
+     }});
+         Log.d("ISITFUCK?",""+item.getTimes().size());
+         adapter=new AdapterTime(context,item.getTimes());
+//        Log.d("what",""+db.getReminders().get(db.getReminders().size()-1).getSleep_log().getSleepTime());
+
+         holder.checktimes.setLayoutManager(new GridLayoutManager(context,2));
+         holder.checktimes.setAdapter(adapter);
+         holder.saveS.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Log.d("Result",""+holder.start_time.getText().toString()+" ");
+
+                db.EditSymptomReminder(item.getTimes());
+
+             }
+         });
+     }
 private  String TimeFormat(int hourOfDay, int minutes){
 
     String hours=""+hourOfDay,
@@ -390,6 +462,10 @@ private  String TimeFormat(int hourOfDay, int minutes){
     if(minutess.length()==1)minutess="0"+minutess;
          return hours+":"+minutess;
 }
+        void remove()
+        {
+
+        }
     }
 
 

@@ -77,7 +77,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".SleepService" />
+        <service android:name=".FloatingButtonService" />
     </application>
 
 </manifest>

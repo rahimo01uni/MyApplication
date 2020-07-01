@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.health.myapplication.Database.DatabaseHelper;
+import com.health.myapplication.Database.SleepDbHelper;
 import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.MainActivity;
 import com.health.myapplication.R;
@@ -43,14 +44,14 @@ public class sleep_buble {
     View mPointer;
     Button mClose,con;
     Boolean sleeping=false;
- DatabaseHelper db;
+SleepDbHelper db;
     @RequiresApi(api = Build.VERSION_CODES.M)
     public sleep_buble(Context context, String wake_up_time){
         getmView(context,wake_up_time);
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
     View getmView(final Context context,String wake_up_time) {
-        db=new DatabaseHelper(context);
+        db=new SleepDbHelper(context);
         gestureDetector = new GestureDetector(new SingleTapConfirm());
         windowManager = (WindowManager) context.getSystemService(context.WINDOW_SERVICE);
 
@@ -103,14 +104,14 @@ public class sleep_buble {
             @Override
             public boolean onLongClick(View v) {
                 if(!sleeping){
-                    Handler handler=new Handler();
+               /*     Handler handler=new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             windowManager.removeView(mRelativeLayout);
                         }
                     },Long.parseLong(wake_up_time)-Calendar.getInstance().getTimeInMillis());
-
+*/
                     sleeping=true;
                     con.setText("Sleeping");
                     self_log("sleep");

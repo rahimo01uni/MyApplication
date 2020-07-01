@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class symptom_model {
-    String mood,note,date,time,status;
+    String id,mood,note,date,time,status;
     ArrayList<String> Symptoms;
+    ArrayList<String> times;
 
+    public symptom_model(){}
     public symptom_model(String mood, String note, String date, String time, String status, ArrayList<String> symptoms) {
         this.mood = mood;
         this.note = note;
@@ -14,6 +16,22 @@ public class symptom_model {
         this.time = time;
         this.status = status;
         Symptoms = symptoms;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public ArrayList<String> getTimes() {
+        return times;
+    }
+
+    public void setTimes(ArrayList<String> times) {
+        this.times = times;
     }
 
     public String getMood() {

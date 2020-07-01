@@ -68,6 +68,7 @@ ArrayList<general_model> list;
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            db.delete(list.get(viewHolder.getAdapterPosition()));
             list.remove(viewHolder.getAdapterPosition());
             adapter.notifyDataSetChanged();
 

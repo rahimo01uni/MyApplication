@@ -26,7 +26,9 @@ public class UnlockReceiver extends BroadcastReceiver {
         Log.d("changed",""+updateTime.getTime());
         db.nextDateAlarm(intent.getStringExtra("id"),"sleep",""+updateTime.getTimeInMillis());
         Log.v("Inside Receiver", "Starting service");
-        sleep_buble b=new sleep_buble(context,intent.getStringExtra("wake_up"));
+        Intent i1=new Intent(context,FloatingButtonService.class);
+        i1.putExtra("wake_up",intent.getStringExtra("wake_up"));
+        context.startService(i1);
 
 
     }

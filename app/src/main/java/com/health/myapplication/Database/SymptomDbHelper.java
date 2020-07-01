@@ -24,16 +24,13 @@ public class SymptomDbHelper {
     {
         SQLiteDatabase db = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        int id = Integer.parseInt(""+db.insert("MEDREMINDER", null , contentValues));
-//"Create table REMINDER(ID INTEGER PRIMARY KEY AUTOINCREMENT,TABLER VARCHAR(100),IDR INTEGER,ALARMTIME VARCHAR(50)" +
-//                        ",FREQUENCY VARCHAR(50));";
+        int    id=0;
         for(int i=0; i<times.size();i++)
         {
             contentValues = new ContentValues();
-
-            contentValues.put("TABLER", "Symtom");
             contentValues.put("ALARMTIME",times.get(i));
-            id = Integer.parseInt(""+db.insert("SYMPTOMREMINDER", null , contentValues));
+            contentValues.put("FREQUENCY",times.get(i));
+         id = Integer.parseInt(""+db.insert("REMINDERSYMPTOM", null , contentValues));
             Log.d("whatcomes1",""+id);
             setAlarm(times.get(i));
         }
