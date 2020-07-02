@@ -214,12 +214,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_medicationname"
+                app:layout_constraintTop_toBottomOf="@+id/txt_mood"
                 tools:ignore="MissingConstraints" />
 
 
             <EditText
-                android:id="@+id/txt_medicationname"
+                android:id="@+id/txt_mood"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="16dp"

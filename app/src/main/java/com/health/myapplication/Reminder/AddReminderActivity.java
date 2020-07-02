@@ -3,7 +3,6 @@ package com.health.myapplication.Reminder;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
@@ -19,7 +18,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -28,12 +26,10 @@ import android.widget.TimePicker;
 import com.google.android.material.snackbar.Snackbar;
 import com.health.myapplication.Database.MedicationDbHelber;
 import com.health.myapplication.R;
-import com.health.myapplication.utils.Adapter;
 import com.health.myapplication.utils.AdapterTime;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class AddReminderActivity extends AppCompatActivity {
     String[] listItems;
@@ -64,7 +60,7 @@ public class AddReminderActivity extends AppCompatActivity {
         mdb=new MedicationDbHelber(this);
         times=new ArrayList();
         delete=findViewById(R.id.delete);
-        txt_medicationname = findViewById(R.id.txt_medicationname);
+        txt_medicationname = findViewById(R.id.txt_mood);
         txt_Time=findViewById(R.id.txt_Time);
         txt_Count = findViewById(R.id.txt_Count);
         txt_SDate = findViewById(R.id.txt_SDate);

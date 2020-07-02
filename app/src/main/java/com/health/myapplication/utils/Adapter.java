@@ -5,7 +5,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +18,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.health.myapplication.Database.DatabaseHelper;
 import com.health.myapplication.Database.MedicationDbHelber;
 import com.health.myapplication.Database.ReminderOverviewDbHelper;
 import com.health.myapplication.Database.general_model;
@@ -28,21 +25,16 @@ import com.health.myapplication.Database.medication_model;
 import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.Database.symptom_model;
 import com.health.myapplication.R;
-import com.health.myapplication.Reminder.AddReminderActivity;
-import com.health.myapplication.Reminder.Reminder;
 
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.WindowDecorActionBar;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 
-import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -135,7 +127,7 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
                 //med
                 times=new ArrayList();
                 delete=itemView.findViewById(R.id.delete);
-                txt_medicationname = itemView.findViewById(R.id.txt_medicationname);
+                txt_medicationname = itemView.findViewById(R.id.txt_mood);
                 txt_Time=itemView.findViewById(R.id.txt_Time);
                 txt_unit=itemView.findViewById(R.id.txt_unit);
                 txt_Count = itemView.findViewById(R.id.txt_Count);
