@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.health.myapplication.Log.LogSleepActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/Card"
+        android:layout_width="351dp"
+        android:layout_height="497dp"
+        android:layout_gravity="center"
+        android:elevation="5dp"
+        app:cardCornerRadius="@dimen/CardRadius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:id="@+id/txt_SleepLogt"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="Log Name"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/txt_descLog"
+                android:layout_width="281dp"
+                android:layout_height="161dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_Doze" />
+
+            <TextView
+                android:id="@+id/txt_Doze"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:text="Doze"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_SleepLogt" />
+
+            <Button
+                android:id="@+id/btn_saveSleepLog"
+                android:layout_width="281dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:background="@drawable/btn_blue"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_descLog" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

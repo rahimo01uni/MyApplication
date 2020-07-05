@@ -1,14 +1,16 @@
 package com.health.myapplication.ConfirmActivity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.emoji.text.EmojiCompat;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import ro.andreidobrescu.emojilike.Emoji;
+import ro.andreidobrescu.emojilike.EmojiConfig;
+
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
-import android.view.ViewGroup;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageSwitcher;
@@ -18,7 +20,8 @@ import com.health.myapplication.R;
 import com.health.myapplication.TextDrawable;
 
 
-public class ConfirmSleepActivity extends AppCompatActivity {
+public class ConfirmSleepActivity extends AppCompatActivity  {
+
 Button btn_SConfirm;
 Button btn_SCancel;
 
@@ -52,4 +55,6 @@ Button btn_SCancel;
         };
         c.start();
     }
+
+
 }
