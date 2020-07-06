@@ -1,6 +1,8 @@
 package com.health.myapplication.bubles;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.util.Log;
@@ -12,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.health.myapplication.Database.DatabaseHelper;
 import com.health.myapplication.Database.SleepDbHelper;
@@ -52,7 +56,7 @@ public class wakeUp_buble {
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE,
                 PixelFormat.TRANSLUCENT);
 
   mRelativeLayout=start_sleep(context,params);
@@ -89,7 +93,13 @@ mRelativeLayout.addView(chatHead, buttonParams);
         final RelativeLayout innerRelativeLayout = new RelativeLayout(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
         mView = inflater.inflate(R.layout.activity_confirm_sleep, null);
+    final EditText editText=mView.findViewById(R.id.txt_regular);
+    editText.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
+        }
+    });
      //   mClose = (Button) mView.findViewById(R.id.buttonClose);
         con=(Button)mView.findViewById(R.id.btn_SConfirm);
 
@@ -98,7 +108,8 @@ mRelativeLayout.addView(chatHead, buttonParams);
             public void onClick(View v) {
                 // sleep information updated on SleepLog table; date,wokeup time, quality, duration
                 String quality="good";
-                db.updateSleepLog(quality);
+                String notes="notes";
+                db.updateSleepLog(quality,notes);
                 windowManager.removeView(mRelativeLayout);
             }
         });

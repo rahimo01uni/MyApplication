@@ -1,8 +1,13 @@
 package com.health.myapplication.bubles;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Build;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -15,16 +20,24 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.health.myapplication.Database.DatabaseHelper;
+import com.health.myapplication.Database.MedicationDbHelber;
 import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.R;
+import com.health.myapplication.Reminder.AddReminderActivity;
 
 import java.util.Calendar;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+
+import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 public class med_bubble {
     private WindowManager windowManager;
@@ -39,14 +52,14 @@ public class med_bubble {
     View mPointer;
     Button mClose,con;
     Boolean sleeping=false;
- DatabaseHelper db;
+ MedicationDbHelber db;
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public med_bubble(Context context, String type){
-        getmView(context,type);
+    public med_bubble(Context context, Intent intent){
+        getmView(context,intent);
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
-    View getmView(final Context context,String type) {
-        db=new DatabaseHelper(context);
+    View getmView(final Context context,Intent intent) {
+        db=new MedicationDbHelber(context);
         gestureDetector = new GestureDetector( new sleep_buble.SingleTapConfirm());
         windowManager = (WindowManager) context.getSystemService(context.WINDOW_SERVICE);
 
@@ -56,13 +69,13 @@ public class med_bubble {
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
-        if(type.equals("night"))check_symptom_wakeUp(context,params);
-  mRelativeLayout=check_symptom_wakeUp(context,params);
+
+  mRelativeLayout=check_symptom_wakeUp(context,params,intent);
 
         windowManager.addView(mRelativeLayout, params);
         return mRelativeLayout;
     }
-   RelativeLayout check_symptom_wakeUp(Context context,final WindowManager.LayoutParams params){
+   RelativeLayout check_symptom_wakeUp(Context context,final WindowManager.LayoutParams params,Intent intent){
         mRelativeLayout = new RelativeLayout(context);
 //
         RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
@@ -92,28 +105,24 @@ public class med_bubble {
         final RelativeLayout innerRelativeLayout = new RelativeLayout(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
         mView = inflater.inflate(R.layout.activity_confirm_medication, null);
-       TextView title=mView.findViewById(R.id.txt_title);
-       TextView time=mView.findViewById(R.id.txt_time);
-       TextView doze=mView.findViewById(R.id.txt_doze);
-       TextView unit=mView.findViewById(R.id.txt_unit);
+       final TextView title=mView.findViewById(R.id.title);
+       final TextView time=mView.findViewById(R.id.txt_time);
+       final TextView doze=mView.findViewById(R.id.txt_doze);
+       final TextView unit=mView.findViewById(R.id.txt_unit);
        EditText regular = (EditText)   mView.findViewById(R.id.txt_regular);
+       Calendar t=Calendar.getInstance();
+       t.setTimeInMillis(Long.parseLong(intent.getStringExtra("time")));
+       time.setText(t.get(Calendar.HOUR_OF_DAY)+":"+t.get(Calendar.MINUTE));
+       doze.setText(intent.getStringExtra("doze"));
+       title.setText(intent.getStringExtra("name"));
+       unit.setText(intent.getStringExtra("unit"));
+       seton(intent,time,doze,unit,title);
        Button btn_SyConfirm;
        Button btn_SyCancel;
        btn_SyConfirm = mView.findViewById(R.id.btn_MConfirm);
        btn_SyCancel = mView.findViewById(R.id.btn_SyCancel);
 
-     //   mClose = (Button) mView.findViewById(R.id.buttonClose);
-        /*con=(Button)mView.findViewById(R.id.btn_gosleep);
-        con.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-             sleeping=true;
-                con.setText("Sleeping");
-                self_log("sleep");
-                chatHead.setImageResource(R.drawable.moon);
-                return false;
-            }
-        });*/
+
 
 
 
@@ -121,6 +130,7 @@ public class med_bubble {
             @Override
             public void onClick(View v) {
                 //sleep information comes and inserts into database
+                db.insertMedLog(title.getText().toString(),unit.getText().toString(),doze.getText().toString(),"");
                 windowManager.removeView( mRelativeLayout);
 
             }
@@ -193,5 +203,9 @@ public class med_bubble {
 
 
 
+void seton(Intent intent, final TextView time, final TextView doze, final TextView unit,final TextView title)
+{
 
+
+}
 }

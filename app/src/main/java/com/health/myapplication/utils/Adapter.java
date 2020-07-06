@@ -66,6 +66,14 @@ import java.util.List;
 
             // we should change here later
 holder.txtTitle.setText(models.get(position).getType());
+holder.ring.setChecked(false);
+
+            holder.sleep.setVisibility(View.GONE);
+
+            holder.symptom.setVisibility(View.GONE);
+
+            holder.medView.setVisibility(View.GONE);
+
 
 holder.l1.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -76,7 +84,20 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
              else med_lay(holder,models.get(position).getMedication_log());
     }
 });
+            switch (models.get(position).getType()){
+                case "sleep":
+                    holder.ava.setImageResource(R.drawable.sleep);
+                    break;
+                case "Symptom":
+                    holder.ava.setImageResource(R.drawable.ic_mood_24px);
+                    break;
+                default:
+                    holder.ava.setImageResource(R.drawable.ic_medicinecolor);
+                    break;
+            }
+
         }
+
 
         @Override
         public int getItemCount() {
@@ -86,7 +107,7 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
         class myViewHolder extends RecyclerView.ViewHolder {
             private TextView txtTitle, txtCategory, time,date;
             private LinearLayout l1;
-
+            private  ImageView ava;
             private ConstraintLayout sleep;
             private ToggleButton ring;
             TextView start_time,end_time;
@@ -124,6 +145,7 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
                 start_time=(TextView)itemView.findViewById(R.id.txt_StartTimeS);
                 end_time=(TextView)itemView.findViewById(R.id.txt_EndTimeS);
                 save=(Button)itemView.findViewById(R.id.btn_saveS);
+                ava=itemView.findViewById(R.id.img_drug);
                 //med
                 times=new ArrayList();
                 delete=itemView.findViewById(R.id.delete);
@@ -290,17 +312,19 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 { TimePickerDialog timePickerDialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
                     @Override
-                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes)
+                    {
                         time = Calendar.getInstance();
                         time.set(start.get(Calendar.YEAR), start.get(Calendar.MONTH), start.get(Calendar.DATE),hourOfDay,minutes,0);
                        int i=0;
-                       while ( time.getTimeInMillis()<=Calendar.getInstance().getTimeInMillis()) {
+                       while ( time.getTimeInMillis()<=Calendar.getInstance().getTimeInMillis())
+                       {
                            i++;
                            time.set(start.get(Calendar.YEAR), start.get(Calendar.MONTH), start.get(Calendar.DATE) + i, hourOfDay, minutes, 0);
+
                        }
                        item.getTimes().add(""+time.getTimeInMillis());
-
-                        adapter.setData(  item.getTimes());
+                       adapter.setData(item.getTimes());
                     }
                 }, 0, 0, false);
                 timePickerDialog.show();}
@@ -454,10 +478,8 @@ private  String TimeFormat(int hourOfDay, int minutes){
     if(minutess.length()==1)minutess="0"+minutess;
          return hours+":"+minutess;
 }
-        void remove()
-        {
 
-        }
+
     }
 
 

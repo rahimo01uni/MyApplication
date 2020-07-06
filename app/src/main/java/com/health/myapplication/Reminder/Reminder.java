@@ -1,5 +1,6 @@
 package com.health.myapplication.Reminder;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.health.myapplication.Database.DatabaseHelper;
 import com.health.myapplication.Database.ReminderOverviewDbHelper;
 import com.health.myapplication.Database.general_model;
+import com.health.myapplication.MainActivity;
 import com.health.myapplication.R;
 import com.health.myapplication.bubles.med_bubble;
 import com.health.myapplication.bubles.sleep_buble;
@@ -21,6 +23,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.renderscript.RenderScript;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -49,9 +52,10 @@ ArrayList<general_model> list;
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                new med_bubble(Reminder.this,"");
+
+                Intent intent=new Intent(Reminder.this, AddReminderActivity.class);
+                startActivity(intent);
+               // new med_bubble(Reminder.this,"");
               //sleep_buble b=new sleep_buble(Reminder.this,"sleep" );
             }
         });
@@ -68,6 +72,7 @@ ArrayList<general_model> list;
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
             db.delete(list.get(viewHolder.getAdapterPosition()));
             list.remove(viewHolder.getAdapterPosition());
             adapter.notifyDataSetChanged();

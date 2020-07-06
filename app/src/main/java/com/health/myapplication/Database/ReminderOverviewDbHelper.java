@@ -12,6 +12,7 @@ import android.util.Log;
 import com.health.myapplication.MedReciever;
 import com.health.myapplication.Reminder.AddSleep;
 import com.health.myapplication.Reminder.Reminder;
+import com.health.myapplication.SymptomReciever;
 import com.health.myapplication.UnlockReceiver;
 import com.health.myapplication.WakeUpReceiver;
 
@@ -88,6 +89,7 @@ public class ReminderOverviewDbHelper {
         args.put("SLEEPTIME", sleep_time);
         args.put("WAKEUPTIME", wakeUp);
         db.update("SleepReminder", args, strFilter, null);
+        cancelAlarmSleep(id);
         setAlarmSleep(sleep_time,wakeUp,id);
         return true;
     }
@@ -116,9 +118,10 @@ public class ReminderOverviewDbHelper {
             contentValues.put("IDR", ""+id);
             contentValues.put("ALARMTIME",times.get(i));
             contentValues.put("FREQUENCY",frequency);
-            db.insert("REMINDER", null , contentValues);
+           int idr=(int)db.insert("REMINDER", null , contentValues);
             Log.d("whatcomes1",""+id);
-            setAlarm(name,doze,unit,times.get(i));
+
+            setAlarm(idr,name,doze,unit,times.get(i));
         }
         return 0;
 
@@ -134,9 +137,9 @@ public class ReminderOverviewDbHelper {
             ContentValues contentValues = new ContentValues();
             contentValues.put("ALARMTIME",times.get(i));
             contentValues.put("FREQUENCY","");
-            ;
+
             Log.d("WTFKU",""+db.insert("REMINDERSYMPTOM", null , contentValues));
-            setAlarm("","","",times.get(i));
+            setAlarmSymptom("",times.get(i));
         }
 
 
@@ -185,24 +188,42 @@ public class ReminderOverviewDbHelper {
 
     }
 
-
-    void setAlarm(String name,String doze,String unit,String time)
+    void setAlarmSymptom(String note,String time)
     {
-        Intent intent = new Intent(context, MedReciever.class);
-        intent.putExtra("name",""+name);
-        intent.putExtra("doze",""+doze);
-        intent.putExtra("unit",unit);
-        intent.putExtra("time",time);
+        Calendar i=Calendar.getInstance();
+        i.setTimeInMillis(Long.parseLong(time));
+        Log.d("times",""+i.getTime());
+        Intent intent = new Intent(context, SymptomReciever.class);
+
 
         PendingIntent intent1 = PendingIntent.getBroadcast(context,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
         alarmManager.setExact(AlarmManager.RTC, Long.parseLong(time),intent1);
 
     }
+    void setAlarm(int id,String name,String doze,String unit,String time)
+    {
+
+
+        Calendar i=Calendar.getInstance();
+        i.setTimeInMillis(Long.parseLong(time));
+        if(i.getTimeInMillis()<Calendar.getInstance().getTimeInMillis())i.set(i.get(Calendar.YEAR),i.get(Calendar.MONTH),i.get(Calendar.DATE)+1);
+        Log.d("times",""+i.getTime());
+        Intent intent = new Intent(context, MedReciever.class);
+        intent.putExtra("name",""+name);
+        intent.putExtra("doze",""+doze);
+        intent.putExtra("unit",unit);
+        intent.putExtra("time",time);
+
+        PendingIntent intent1 = PendingIntent.getBroadcast(context,id,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
+        alarmManager.setExact(AlarmManager.RTC, i.getTimeInMillis(),intent1);
+
+    }
 
     void setAlarmSleep(String sleep,String wake_up,String id)
     {
-
+        Log.d("SLEEPSETALARM",""+id);
         Calendar s=Calendar.getInstance();
         s.setTimeInMillis( Long.parseLong(sleep));
         Log.d("WTFUCCCK",""+s.getTime());
@@ -210,15 +231,16 @@ public class ReminderOverviewDbHelper {
         intent.putExtra("wake_up",wake_up);
         intent.putExtra("sleep",sleep);
         intent.putExtra("id",""+id );
-        PendingIntent intent1 = PendingIntent.getBroadcast(context,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent intent1 = PendingIntent.getBroadcast(context,Integer.parseInt(id),intent,PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
         alarmManager.setExact(AlarmManager.RTC, Long.parseLong(sleep),intent1);
+
         intent = new Intent(context, WakeUpReceiver.class);
         intent.putExtra("wake_up",wake_up);
         intent.putExtra("sleep",sleep);
         intent.putExtra("id",""+id);
 
-        intent1 = PendingIntent.getBroadcast(context,2,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        intent1 = PendingIntent.getBroadcast(context,Integer.parseInt(id),intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
         alarmManager.setExact(AlarmManager.RTC, Long.parseLong(wake_up),intent1);
 
@@ -227,7 +249,13 @@ public class ReminderOverviewDbHelper {
 
     public  int delete(String id)
     {
+        Log.d("what",id);
         SQLiteDatabase db = myhelper.getWritableDatabase();
+        Cursor cursor =db.query("REMINDER",null,"IDR=?",new String[]{id},null,null,null);
+        while (cursor.moveToNext())
+        {  Log.d("whatFUCK",cursor.getString(cursor.getColumnIndex("ID")));
+            cancelAlarmMed(cursor.getString(cursor.getColumnIndex("ID")));
+        }
         String[] whereArgs ={id};
 
         int count =db.delete("REMINDER" ,"IDR = ?",whereArgs);
@@ -237,7 +265,11 @@ public class ReminderOverviewDbHelper {
     {
         SQLiteDatabase db = myhelper.getWritableDatabase();
         String[] whereArgs ={};
-
+        Cursor cursor =db.query("REMINDER",null,null,null,null,null,null);
+        while (cursor.moveToNext())
+        {  Log.d("whatFUCK",cursor.getString(cursor.getColumnIndex("ID")));
+            cancelAlarmSymptom(cursor.getString(cursor.getColumnIndex("ID")));
+        }
         int count =db.delete("REMINDERSYMPTOM" ,null,null);
         return  count;
     }
@@ -249,6 +281,7 @@ public class ReminderOverviewDbHelper {
             id=item.getSleep_log().getId();
             String[] whereArgs ={id};
             int count =db.delete(table, "ID = ?",whereArgs);
+            cancelAlarmSleep(id);
         } else
             if (item.getType().equals("Symptom")){
                 table="REMINDERSYMPTOM";
@@ -269,5 +302,40 @@ public class ReminderOverviewDbHelper {
 
         return  0;
     }
+    void cancelAlarmSleep(String id)
+    {
 
+
+        Log.d("SLEEPCancelAlarm",""+id);
+        Intent intent = new Intent(context, UnlockReceiver.class);
+        PendingIntent intent1 = PendingIntent.getBroadcast(context,Integer.parseInt(id),intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
+      alarmManager.cancel(intent1);
+
+        intent = new Intent(context, WakeUpReceiver.class);
+        intent1 = PendingIntent.getBroadcast(context,Integer.parseInt(id),intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.cancel(intent1);
+
+
+    }
+
+    void cancelAlarmMed(String id)
+    {
+        Intent intent = new Intent(context, MedReciever.class);
+        PendingIntent intent1 = PendingIntent.getBroadcast(context,Integer.parseInt(id),intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
+        alarmManager.cancel(intent1);
+
+    }
+    void cancelAlarmSymptom(String id)
+    {
+
+        Intent intent = new Intent(context, SymptomReciever.class);
+
+
+        PendingIntent intent1 = PendingIntent.getBroadcast(context,Integer.parseInt(id),intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
+        alarmManager.cancel(intent1);
+
+    }
 }

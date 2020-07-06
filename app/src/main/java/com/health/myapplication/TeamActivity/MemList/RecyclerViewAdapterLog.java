@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.health.myapplication.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -18,9 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerViewAdapterLog extends RecyclerView.Adapter<RecyclerViewAdapterLog.ViewHolder> {
 
     private Activity context;
-    private List<CardModel> models;
+    private ArrayList<add_logMem_model> models;
 
-    public  RecyclerViewAdapterLog(Activity context, List<CardModel> models){
+    public  RecyclerViewAdapterLog(Activity context, ArrayList<add_logMem_model> models){
         this.context = context;
         this.models = models;
     }
@@ -33,11 +37,19 @@ public class RecyclerViewAdapterLog extends RecyclerView.Adapter<RecyclerViewAda
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CardModel model = models.get(position);
-        holder.txtRemainder.setText(model.getRemider());
-        holder.txtLeftDays.setText(model.getLeftdays());
+    public void onBindViewHolder(@NonNull ViewHolder holder,final int position) {
+  holder.txtRemainder.setText(models.get(position).getName());
+  holder.checkBox.setChecked(models.get(position).isChecked());
+
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               if(isChecked) models.get(position).setChecked(true);else models.get(position).setChecked(false);
+            }
+        });
     }
+
+
 
 
     @Override
@@ -48,11 +60,11 @@ public class RecyclerViewAdapterLog extends RecyclerView.Adapter<RecyclerViewAda
     public  class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtRemainder, txtLeftDays;
         private ConstraintLayout parent;
-
+        private CheckBox checkBox;
         public ViewHolder(View itemView) {
             super(itemView);
             txtRemainder = itemView.findViewById(R.id.txt_drug);
-            txtLeftDays = itemView.findViewById(R.id.txt_drug_instruction);
+             checkBox=itemView.findViewById(R.id.checkBox2);
         }
     }
 }

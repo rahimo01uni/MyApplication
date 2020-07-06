@@ -9,9 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.health.myapplication.MedReciever;
+import com.health.myapplication.SymptomReciever;
 import com.health.myapplication.bubles.symptom_buble;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class SymptomDbHelper {
     DatabaseHelper.myDbHelper myhelper;
@@ -38,9 +40,28 @@ public class SymptomDbHelper {
 
 
     }
+    public  void insertSymptomLog(String mood,ArrayList<String> symptoms)
+    {
+        Calendar ti=Calendar.getInstance();
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        int    id=0;
+        String sym="";
+if(symptoms.size()>0)        sym=symptoms.get(0);
+        for(int i=1; i<symptoms.size();i++)
+        {
+          sym=','+symptoms.get(i);
+        }
+        contentValues.put("MOOD",mood);
+        contentValues.put("SYMPTOMS",sym);
+        id = Integer.parseInt(""+db.insert("SymptomLog", null , contentValues));
+        OverviewDbHelper dbHelper=new OverviewDbHelper(context);
+        dbHelper.insert_overview(""+id,"Mood",""+ti.getTimeInMillis(),""+ti.getTimeInMillis(),"1");
+
+    }
     void setAlarm(String time)
     {
-        Intent intent = new Intent(context, symptom_buble.class);
+        Intent intent = new Intent(context, SymptomReciever.class);
         intent.putExtra("time",time);
 
         PendingIntent intent1 = PendingIntent.getBroadcast(context,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);

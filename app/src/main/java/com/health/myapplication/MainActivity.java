@@ -1,6 +1,8 @@
 package com.health.myapplication;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -50,12 +52,15 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                Intent intent=new Intent(MainActivity.this, AddReminderActivity.class);
-                startActivity(intent);
+
 
             }
         });
-
+        ComponentName receiver = new ComponentName(this, BootCompleted.class);
+        PackageManager pm = this.getPackageManager();
+        pm.setComponentEnabledSetting(receiver,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP);
         //Reminder
         final TextView reminderID = (TextView) findViewById(R.id.txt_reminder);
         reminderID.setOnClickListener(new View.OnClickListener() {

@@ -6,7 +6,17 @@ public class general_model {
     medication_model medication_log;
     String type;
     String time;
-    public general_model(String type,String time,sleep_model sleep_log) {
+    boolean open;
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    public general_model(String type, String time, sleep_model sleep_log) {
         this.sleep_log = sleep_log;
         this.type=type;
     }

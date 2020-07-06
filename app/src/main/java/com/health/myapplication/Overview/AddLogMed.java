@@ -1,10 +1,4 @@
-package com.health.myapplication.Reminder;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import biz.kasual.materialnumberpicker.MaterialNumberPicker;
+package com.health.myapplication.Overview;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -22,16 +16,23 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.health.myapplication.Database.MedicationDbHelber;
 import com.health.myapplication.R;
+import com.health.myapplication.Reminder.Reminder;
 import com.health.myapplication.utils.AdapterTime;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class AddReminderActivity extends AppCompatActivity {
+import biz.kasual.materialnumberpicker.MaterialNumberPicker;
+
+public class AddLogMed extends AppCompatActivity {
     String[] listItems;
     Button btnSym;
     Button btnSleep;
@@ -74,7 +75,7 @@ public class AddReminderActivity extends AppCompatActivity {
 
               mdb.insertMedReminder(txt_medicationname.getText().toString(),txtunit.getText().toString(),txt_Count.getText().toString(),""+startDate.getTimeInMillis(),
                       ""+endDate.getTimeInMillis(),txt_Period.getText().toString(),desc.getText().toString(),times);
-                Intent intent2 = new Intent(AddReminderActivity.this,Reminder.class);
+                Intent intent2 = new Intent(AddLogMed.this,Reminder.class);
                 startActivity(intent2);
                 finish();
 
@@ -97,7 +98,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
                 int month = cldr.get(Calendar.MONTH);
                 int year = cldr.get(Calendar.YEAR);
                 // date picker dialog
-                picker = new DatePickerDialog(AddReminderActivity.this,
+                picker = new DatePickerDialog(AddLogMed.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -120,7 +121,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
                 int month = cldr.get(Calendar.MONTH);
                 int year = cldr.get(Calendar.YEAR);
                 // date picker dialog
-                picker = new DatePickerDialog(AddReminderActivity.this,
+                picker = new DatePickerDialog(AddLogMed.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -135,7 +136,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
          txt_Time.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 TimePickerDialog timePickerDialog = new TimePickerDialog(AddReminderActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                 TimePickerDialog timePickerDialog = new TimePickerDialog(AddLogMed.this, new TimePickerDialog.OnTimeSetListener() {
                      @Override
                      public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                          sleep = Calendar.getInstance();
@@ -168,7 +169,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
         btnSym.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddReminderActivity.this, AddMood.class);
+                Intent intent = new Intent(AddLogMed.this, AddLogMood.class);
                 startActivity(intent);
             }
         });
@@ -178,7 +179,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
         btnSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddReminderActivity.this, AddSleep.class);
+                Intent intent = new Intent(AddLogMed.this, AddLogSleep.class);
                 startActivity(intent);
             }
         });
@@ -214,7 +215,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
             @Override
             public void onClick(View v) {
 
-                final   MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(AddReminderActivity.this)
+                final   MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(AddLogMed.this)
                         .minValue(1)
                         .maxValue(10)
                         .defaultValue(1)
@@ -226,7 +227,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
                         .wrapSelectorWheel(true)
                         .build();
 
-                new AlertDialog.Builder(AddReminderActivity.this, R.style.AlertDialogTheme)
+                new AlertDialog.Builder(AddLogMed.this, R.style.AlertDialogTheme)
                         .setTitle("Count")
                         .setView(numberPicker)
                         .setNegativeButton("ADD",
@@ -259,7 +260,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
             @Override
             public void onClick(View v) {
 
-               final NumberPicker picker = new NumberPicker(AddReminderActivity.this);
+               final NumberPicker picker = new NumberPicker(AddLogMed.this);
                 picker.setMinValue(0);
                 picker.setMaxValue(2);
                 picker.setDisplayedValues( new String[] { "Daily","Weekly", "Monthly" } );
@@ -272,7 +273,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
                     }
                 });
 
-                new AlertDialog.Builder(AddReminderActivity.this, R.style.AlertDialogTheme)
+                new AlertDialog.Builder(AddLogMed.this, R.style.AlertDialogTheme)
                         .setTitle("period")
                         .setView(picker)
                         .setNegativeButton("ADD",
@@ -307,7 +308,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
             @Override
             public void onClick(View v) {
 
-                final NumberPicker picker = new NumberPicker(AddReminderActivity.this);
+                final NumberPicker picker = new NumberPicker(AddLogMed.this);
                 picker.setMinValue(0);
                 picker.setMaxValue(2);
                 picker.setDisplayedValues( new String[] { "Pill","A", "B" } );
@@ -320,7 +321,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
                     }
                 });
 
-                new AlertDialog.Builder(AddReminderActivity.this,R.style.AlertDialogTheme)
+                new AlertDialog.Builder(AddLogMed.this,R.style.AlertDialogTheme)
                         .setTitle("Unit")
                         .setView(picker)
                         .setNegativeButton("ADD",

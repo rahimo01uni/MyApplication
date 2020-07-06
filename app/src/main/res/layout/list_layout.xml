@@ -48,6 +48,8 @@
 
 
             <ImageView
+                android:tint="@color/colorPrimary"
+
                 android:id="@+id/img_drug"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

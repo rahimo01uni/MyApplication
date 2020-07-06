@@ -2,6 +2,15 @@ package com.health.myapplication.Database;
 
 public class sleep_model {
 String Id, SleepTime,WakeUpTime,Date,Duration,QualityOfSleep,NightWokeUp, Note, Time;
+boolean open;
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
 
     public sleep_model(String sleepTime, String wakeUpTime) {
         SleepTime = sleepTime;

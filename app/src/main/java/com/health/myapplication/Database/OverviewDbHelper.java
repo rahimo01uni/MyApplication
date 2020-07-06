@@ -4,8 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class OverviewDbHelper {
 
@@ -22,7 +24,7 @@ public class OverviewDbHelper {
         SQLiteDatabase db = myhelper.getWritableDatabase();
         //SleepReminders
         model_overview item;
-        Cursor cursor =db.query("Overview",null,null,null,null,null,null);
+        Cursor cursor =db.query("Overview",null,"Date=?",new String[]{date},null,null,null);
         while (cursor.moveToNext())
         {
             item=new model_overview();
@@ -37,12 +39,14 @@ public class OverviewDbHelper {
         return  list;
     }
     public  static  void insert_overview(String id,String name,String time,String date,String status)
-    {
+     {
+         Calendar date1=Calendar.getInstance();
+         date1.setTimeInMillis(Long.parseLong(date));
         SQLiteDatabase db = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID", id);
         contentValues.put("NAME", name);
-        contentValues.put("DATE", date);
+        contentValues.put("DATE", date1.get(Calendar.DATE)+"/"+date1.get(Calendar.MONTH)+"/"+date1.get(Calendar.YEAR));
         contentValues.put("TIME", time);
         contentValues.put("STATUS", status);
 
@@ -56,4 +60,48 @@ public class OverviewDbHelper {
         args.put("STATUS", status);
         db.update("OVERVIEW", args, strFilter, null);
     }
+    public  sleep_model get_sleep(String id)
+    {
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        Cursor cursor =db.query("SleepLogs",null,"ID=?",new String[]{id},null,null,null);
+        cursor.moveToNext();
+        sleep_model item=new sleep_model();
+        item.setId(cursor.getString(cursor.getColumnIndex("ID")));
+        item.setSleepTime(cursor.getString(cursor.getColumnIndex("STARTTIME")));
+        item.setWakeUpTime(cursor.getString(cursor.getColumnIndex("ENDTIME")));
+        item.setNote(cursor.getString(cursor.getColumnIndex("NOTES")));
+        item.setDuration(cursor.getString(cursor.getColumnIndex("DURATION")));
+        item.setQualityOfSleep(cursor.getString(cursor.getColumnIndex("QUALITYOFSLEEP")));
+        item.setNightWokeUp(cursor.getString(cursor.getColumnIndex("NIGHTWOKEUP")));
+        return item;  }
+        public medication_model get_medic(String id)
+        {
+            Log.d("id",id);
+            SQLiteDatabase db = myhelper.getWritableDatabase();
+            Cursor cursor =db.query("MedLog",null,"ID=?",new String[]{id},null,null,null);
+            cursor.moveToNext();
+
+            medication_model item=new medication_model();
+            item.setId(cursor.getString(cursor.getColumnIndex("ID")));
+            item.setMed_name(cursor.getString(cursor.getColumnIndex("NAME")));
+            item.setDose(cursor.getString(cursor.getColumnIndex("DOSE")));
+            item.setUnit(cursor.getString(cursor.getColumnIndex("UNIT")));
+            item.setDescription(cursor.getString(cursor.getColumnIndex("NOTES")));
+            return item;
+        }
+        public  symptom_model get_symptom(String id)
+        {
+            SQLiteDatabase db = myhelper.getWritableDatabase();
+            Cursor cursor =db.query("SymptomLog",null,"ID=?",new String[]{id},null,null,null);
+            cursor.moveToNext();
+
+            symptom_model item=new symptom_model();
+            item.setId(cursor.getString(cursor.getColumnIndex("ID")));
+            item.setMood(cursor.getString(cursor.getColumnIndex("MOOD")));
+            item.setSymptom(cursor.getString(cursor.getColumnIndex("SYMPTOMS")));
+       //  item.setNote(cursor.getString(cursor.getColumnIndex("NOTES")));
+            item.setNote("");
+            return item;
+
+         }
 }

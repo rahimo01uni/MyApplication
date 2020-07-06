@@ -4,20 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.health.myapplication.Log.LogMoodActivity">
+    tools:context=".Reminder.AddReminderActivity">
+
+    <Button
+        android:id="@+id/btn_medication"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_blue"
+        android:drawableLeft="@drawable/ic_medicine"
+        android:padding="16dp"
+        android:text="Medication"
+        android:textColor="@color/bpWhite"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sym"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_sleep"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btn_simple"
+        android:drawableLeft="@drawable/ic_measure"
+        android:padding="16dp"
+        android:text="Sleep"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sym"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_medication" />
+
+    <Button
+        android:id="@+id/btn_sym"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+
+        android:padding="16dp"
+        android:background="@drawable/btn_blue"
+        android:text="Symptom check"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/Card"
         android:layout_width="351dp"
         android:layout_height="497dp"
-        android:layout_gravity="center"
+
         android:elevation="5dp"
         app:cardCornerRadius="@dimen/CardRadius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/btn_sleep">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -99,7 +148,7 @@
                 tools:layout_editor_absoluteY="36dp" />
 
             <TextView
-                android:id="@+id/txt_logmood"
+                android:id="@+id/txt_symptoms"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="16dp"
@@ -123,7 +172,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.514"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_logmood" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_symptoms" />
 
             <EditText
                 android:id="@+id/txt_descLogMood"
@@ -136,7 +185,7 @@
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="center_vertical"
-                android:hint="Description"
+                android:hint="Notes"
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -160,5 +209,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

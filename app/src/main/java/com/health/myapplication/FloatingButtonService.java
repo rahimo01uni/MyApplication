@@ -33,8 +33,10 @@ public class FloatingButtonService extends Service {
 
         @Override public void onCreate() {
             super.onCreate();
+
+
             Log.v("Service Created","Service Created");
-            sleep_buble b=new sleep_buble(getApplicationContext(),"32333434");
+
         }
 
         @Override
@@ -43,7 +45,14 @@ public class FloatingButtonService extends Service {
 
         }
 
-        private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        sleep_buble b=new sleep_buble(getApplicationContext(),intent.getStringExtra("wake_up"));
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
 
             @Override
             public boolean onSingleTapUp(MotionEvent event) {

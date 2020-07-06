@@ -48,7 +48,6 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/btn_simple"
-        android:drawableLeft="@drawable/ic_smile"
         android:padding="16dp"
         android:text="Symptom check"
         android:textSize="14sp"

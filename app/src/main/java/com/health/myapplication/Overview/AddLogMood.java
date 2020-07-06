@@ -1,14 +1,7 @@
-package com.health.myapplication.Reminder;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.health.myapplication.Overview;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,16 +9,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.ToggleButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.health.myapplication.Database.SymptomDbHelper;
 import com.health.myapplication.R;
+import com.health.myapplication.Reminder.Reminder;
 import com.health.myapplication.utils.AdapterTime;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class AddMood extends AppCompatActivity {
+public class AddLogMood extends AppCompatActivity {
 
     String[] listItems;
     Button btnReminder;
@@ -41,10 +40,11 @@ public class AddMood extends AppCompatActivity {
     DatePickerDialog picker;
     Calendar check,startDate,endDate;
     SymptomDbHelper db;
+    ToggleButton smile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.symptom_check);
+        setContentView(R.layout.activity_symptom_add);
         db=new SymptomDbHelper(this);
         txt_TimeM = findViewById(R.id.txt_TimeM);
         btn_saveM = findViewById(R.id.btn_saveM);
@@ -60,7 +60,7 @@ public class AddMood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 db.insertSymptomReminder(times);
-                Intent intent2 = new Intent(AddMood.this,Reminder.class);
+                Intent intent2 = new Intent(AddLogMood.this,Reminder.class);
                 startActivity(intent2);
                 finish();
             }
@@ -72,7 +72,7 @@ db.insertSymptomReminder(times);
         btnReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddMood.this, AddReminderActivity.class);
+                Intent intent = new Intent(AddLogMood.this, AddLogMed.class);
                 startActivity(intent);
             }
         });
@@ -82,7 +82,7 @@ db.insertSymptomReminder(times);
         btnSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddMood.this, AddSleep.class);
+                Intent intent = new Intent(AddLogMood.this, AddLogSleep.class);
                 startActivity(intent);
             }
         });
@@ -90,7 +90,7 @@ db.insertSymptomReminder(times);
         txt_TimeM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(AddMood.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddLogMood.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         check = Calendar.getInstance();

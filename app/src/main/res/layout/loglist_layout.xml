@@ -37,20 +37,6 @@
                 android:textSize="20sp" />
 
 
-            <TextView
-                android:id="@+id/txt_drug_instruction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="40dp"
-                android:text="Daily, 2 times a day"
-                android:textColor="@color/colorHighlight"
-                android:textSize="12sp"
-
-
-                />
-
-
             <ImageView
                 android:id="@+id/img_drug"
                 android:layout_width="30dp"

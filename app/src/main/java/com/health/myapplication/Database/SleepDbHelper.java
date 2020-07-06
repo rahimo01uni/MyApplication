@@ -18,7 +18,7 @@ public class SleepDbHelper {
         myhelper = new DatabaseHelper.myDbHelper(context);
     }
 
-    public void updateSleepLog(String quality)
+    public void updateSleepLog(String quality,String notes)
     {
         Calendar wake_up=Calendar.getInstance();
         SQLiteDatabase db = myhelper.getWritableDatabase();
@@ -33,8 +33,9 @@ public class SleepDbHelper {
         ContentValues args = new ContentValues();
         args.put("ENDTIME",  ""+wake_up.getTimeInMillis());
         args.put("QUALITYOFSLEEP",  quality);
-        args.put("DURATION",  ""+hour+":"+minutes);
+        args.put("DURATION",  TimeFormat(hour,minutes));
         args.put("DATE",  wake_up.getTimeInMillis());
+        args.put("NOTES",  notes);
         Log.d("WhatsnEWs",""+  db.update("SleepLogs", args, strFilter, null));
         cursor =db.query("SleepLogs",null,null,null,null,null,null);
         cursor.moveToLast();
@@ -43,7 +44,8 @@ public class SleepDbHelper {
         String time=""+wake_up.getTimeInMillis();
         String date=""+wake_up.getTimeInMillis();
         String status="1";
-        OverviewDbHelper.insert_overview(id,name,time,date,status);
+        OverviewDbHelper dbo=new OverviewDbHelper(context);
+        dbo.insert_overview(id,name,time,date,status);
         Log.d("cursor",""+cursor.getString(cursor.getColumnIndex("DURATION")));
     }
     public int insertSleepReminder(String sleep,String wake_up )
@@ -84,5 +86,13 @@ public class SleepDbHelper {
         cursor.moveToLast();
         Log.d("HowMANYTIMES",cursor.getString(cursor.getColumnIndex("NIGHTWOKEUP")));
         return 1;
+    }
+    private  String TimeFormat(int hourOfDay, int minutes){
+
+        String hours=""+hourOfDay,
+                minutess=""+minutes;
+        if(hours.length()==1) hours="0"+hours;
+        if(minutess.length()==1)minutess="0"+minutess;
+        return hours+":"+minutess;
     }
 }

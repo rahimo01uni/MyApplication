@@ -26,6 +26,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="404dp"
+                android:text="Add Contact"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></TextView>
+
             <EditText
                 android:id="@+id/txt_memEmail"
                 android:layout_width="281dp"
@@ -38,6 +52,7 @@
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:hint="Email"
+                android:textColor="@color/colorPrimary"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -56,9 +71,10 @@
                 android:layout_marginRight="35dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
+                android:textColor="@color/colorPrimary"
                 android:inputType="textPersonName"
                 android:paddingLeft="20dp"
-                android:text="Name"
+                android:hint="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.488"
                 app:layout_constraintStart_toStartOf="parent"

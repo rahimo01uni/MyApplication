@@ -18,9 +18,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.health.myapplication.Database.DatabaseHelper;
+import com.health.myapplication.Database.SymptomDbHelper;
 import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import androidx.annotation.RequiresApi;
@@ -38,14 +40,14 @@ public class symptom_buble {
     View mPointer;
     Button mClose,con;
     Boolean sleeping=false;
- DatabaseHelper db;
+ SymptomDbHelper db;
     @RequiresApi(api = Build.VERSION_CODES.M)
     public symptom_buble(Context context, String type){
         getmView(context,type);
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
     View getmView(final Context context,String type) {
-        db=new DatabaseHelper(context);
+        db=new SymptomDbHelper(context);
         gestureDetector = new GestureDetector( new sleep_buble.SingleTapConfirm());
         windowManager = (WindowManager) context.getSystemService(context.WINDOW_SERVICE);
 
@@ -120,6 +122,7 @@ public class symptom_buble {
             @Override
             public void onClick(View v) {
                 //sleep information comes and inserts into database
+             db.insertSymptomLog("good",new ArrayList<String>());
                 windowManager.removeView( mRelativeLayout);
 
             }

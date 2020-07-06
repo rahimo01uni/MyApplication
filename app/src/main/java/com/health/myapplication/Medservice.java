@@ -2,37 +2,31 @@ package com.health.myapplication;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Handler;
 import android.os.IBinder;
-
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 
+import com.health.myapplication.bubles.med_bubble;
 import com.health.myapplication.bubles.sleep_buble;
-
-import androidx.annotation.RequiresApi;
-
-import java.util.Calendar;
 
 /**
  * Created by graphics on 9/22/2016.
  */
-public class SleepService extends Service {
-
+public class Medservice extends Service {
 
 
         @Override public IBinder onBind(Intent intent) {
             // Not used
+           Log.d("what",intent.getStringExtra("wake_up"));
             return null;
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override public void onCreate() {
             super.onCreate();
+
+
             Log.v("Service Created","Service Created");
-
-
-
 
         }
 
@@ -42,18 +36,19 @@ public class SleepService extends Service {
 
         }
 
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-         Long off=  Long.parseLong(intent.getStringExtra("wake_up"))-Calendar.getInstance().getTimeInMillis();
-
-        new sleep_buble(getApplicationContext(),intent.getStringExtra("wake_up"));
+        new med_bubble(getApplicationContext(),intent);
         return super.onStartCommand(intent, flags, startId);
     }
+
+    private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent event) {
+                return true;
+            }
+        }
 }
-
-
-
-
 

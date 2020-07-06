@@ -104,14 +104,14 @@ SleepDbHelper db;
             @Override
             public boolean onLongClick(View v) {
                 if(!sleeping){
-               /*     Handler handler=new Handler();
+                 Handler handler=new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             windowManager.removeView(mRelativeLayout);
                         }
                     },Long.parseLong(wake_up_time)-Calendar.getInstance().getTimeInMillis());
-*/
+
                     sleeping=true;
                     con.setText("Sleeping");
                     self_log("sleep");

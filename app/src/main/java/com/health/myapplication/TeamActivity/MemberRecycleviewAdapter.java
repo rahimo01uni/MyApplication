@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.health.myapplication.Database.member_model;
 import com.health.myapplication.R;
 
 import java.util.List;
@@ -16,9 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MemberRecycleviewAdapter  extends RecyclerView.Adapter<MemberRecycleviewAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<GroupMember> mData;
+    private List<member_model> mData;
     private OnEditLisener mOnEditListener;
-    public MemberRecycleviewAdapter(Context mContext, List<GroupMember> mData, OnEditLisener onEditLisener) {
+    public MemberRecycleviewAdapter(Context mContext, List<member_model> mData, OnEditLisener onEditLisener) {
         this.mContext = mContext;
         this.mData = mData;
         this.mOnEditListener = onEditLisener;
@@ -36,7 +37,7 @@ public class MemberRecycleviewAdapter  extends RecyclerView.Adapter<MemberRecycl
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.group_title.setText(mData.get(position).getTitle());
+        holder.group_title.setText(mData.get(position).getName());
     }
 
     @Override

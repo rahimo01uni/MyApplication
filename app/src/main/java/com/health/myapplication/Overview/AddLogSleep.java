@@ -1,34 +1,29 @@
-package com.health.myapplication.Reminder;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.health.myapplication.Overview;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.health.myapplication.Database.DatabaseHelper;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.health.myapplication.Database.SleepDbHelper;
-import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.R;
+import com.health.myapplication.Reminder.Reminder;
 import com.health.myapplication.UnlockReceiver;
 import com.health.myapplication.WakeUpReceiver;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.txusballesteros.bubbles.BubblesManager;
 
 import java.util.Calendar;
-import java.util.TimeZone;
 
-public class AddSleep extends AppCompatActivity {
+public class AddLogSleep extends AppCompatActivity {
  String sleep_time,wake_upTime;
  TextView start_time,end_time;
  Button save,ask;
@@ -51,7 +46,7 @@ SleepDbHelper db;
             @Override
             public void onClick(View v) {
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(AddSleep.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddLogSleep.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         sleep = Calendar.getInstance();
@@ -79,7 +74,7 @@ SleepDbHelper db;
         end_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(AddSleep.this, R.style.MyDatePickerDialogTheme, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddLogSleep.this, R.style.MyDatePickerDialogTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         String hours=""+hourOfDay,minutess=""+minutes;
@@ -113,29 +108,29 @@ SleepDbHelper db;
 
                 if(wake!=null && sleep!=null){
                 int id= db.insertSleepReminder(""+sleep.getTimeInMillis(),""+wake.getTimeInMillis());
-               Intent intent = new Intent(AddSleep.this, UnlockReceiver.class);
+               Intent intent = new Intent(AddLogSleep.this, UnlockReceiver.class);
                intent.putExtra("wake_up",""+wake.getTimeInMillis());
                intent.putExtra("sleep",""+sleep.getTimeInMillis());
                intent.putExtra("id",""+id );
 
-                PendingIntent intent1 = PendingIntent.getBroadcast(AddSleep.this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent intent1 = PendingIntent.getBroadcast(AddLogSleep.this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                 alarmManager.setExact(AlarmManager.RTC, sleep.getTimeInMillis(),intent1);
 
-                    intent = new Intent(AddSleep.this, WakeUpReceiver.class);
+                    intent = new Intent(AddLogSleep.this, WakeUpReceiver.class);
                     intent.putExtra("wake_up",""+wake.getTimeInMillis());
                     intent.putExtra("sleep",""+sleep.getTimeInMillis());
                     intent.putExtra("id",""+id);
 
-                    intent1 = PendingIntent.getBroadcast(AddSleep.this,2,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                    intent1 = PendingIntent.getBroadcast(AddLogSleep.this,2,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
                  alarmManager.setExact(AlarmManager.RTC, wake.getTimeInMillis(),intent1);
 
-                Intent intent2 = new Intent(AddSleep.this,Reminder.class);
+                Intent intent2 = new Intent(AddLogSleep.this,Reminder.class);
                 startActivity(intent2);
                 finish();} else
            {
-               Toast.makeText(AddSleep.this,"Please,Enter Sleep and Wake Up Time!",Toast.LENGTH_SHORT).show();
+               Toast.makeText(AddLogSleep.this,"Please,Enter Sleep and Wake Up Time!",Toast.LENGTH_SHORT).show();
 
            }
 
@@ -147,7 +142,7 @@ SleepDbHelper db;
         btnReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddSleep.this, AddReminderActivity.class);
+                Intent intent = new Intent(AddLogSleep.this, AddLogMed.class);
                 startActivity(intent);
             }
         });
@@ -157,7 +152,7 @@ SleepDbHelper db;
         btnMood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddSleep.this, AddMood.class);
+                Intent intent = new Intent(AddLogSleep.this, AddLogMood.class);
                 startActivity(intent);
             }
         });
