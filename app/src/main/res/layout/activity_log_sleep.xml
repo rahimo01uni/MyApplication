@@ -7,18 +7,67 @@
     tools:context="com.health.myapplication.Log.LogSleepActivity">
 
 
+    <Button
+        android:id="@+id/btn_medicationS"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_simple"
+        android:drawableLeft="@drawable/ic_medicinecolor"
+        android:padding="16dp"
+        android:text="Medication"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sym"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_sleepS"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btn_blue"
+        android:drawableLeft="@drawable/ic_measure"
+        android:padding="16dp"
+        android:text="Sleep"
+        android:textColor="@color/bpWhite"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_medicationS" />
+
+    <Button
+        android:id="@+id/btn_symS"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/btn_simple"
+
+        android:padding="16dp"
+        android:text="Symptom check"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/Card"
         android:layout_width="351dp"
-        android:layout_height="497dp"
+        android:layout_height="322dp"
         android:layout_gravity="center"
         android:elevation="5dp"
         app:cardCornerRadius="@dimen/CardRadius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/btn_sleepS">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,26 +75,10 @@
 
 
             <EditText
-                android:id="@+id/txt_SleepLogt"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/btn_simpleborder"
-                android:ems="10"
-                android:gravity="center_vertical"
-                android:hint="Log Name"
-                android:inputType="textMultiLine"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.514"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
                 android:id="@+id/txt_descLog"
-                android:layout_width="265dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="28dp"
+                android:layout_width="290dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="center_vertical"
@@ -53,34 +86,73 @@
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_Doze" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogQualityS" />
 
             <TextView
-                android:id="@+id/txt_Doze"
-                android:layout_width="281dp"
+                android:id="@+id/txt_LogQualityS"
+                android:layout_width="128dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
-                android:text="Doze"
+                android:text="Quality"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_LogDurationS"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogEndTimeS" />
+
+            <TextView
+                android:id="@+id/txt_LogDurationS"
+                android:layout_width="128dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_simpleborder"
+                android:text="Duration"
+                app:layout_constraintBottom_toTopOf="@+id/txt_descLog"
+                app:layout_constraintEnd_toStartOf="@+id/txt_LogQualityS"
+                app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_SleepLogt" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogStartTimeS"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txt_LogStartTimeS"
+                android:layout_width="128dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:text="Start Time"
+                app:layout_constraintEnd_toStartOf="@+id/txt_LogEndTimeS"
+                app:layout_constraintHorizontal_bias="0.462"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_LogEndTimeS"
+                android:layout_width="128dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:text="End Time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_LogStartTimeS"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btn_saveSleepLog"
                 android:layout_width="281dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="43dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/btn_blue"
                 android:text="Save"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_descLog" />
         </androidx.constraintlayout.widget.ConstraintLayout>

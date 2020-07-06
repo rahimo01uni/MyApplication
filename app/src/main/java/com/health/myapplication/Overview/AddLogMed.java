@@ -68,7 +68,7 @@ public class AddLogMed extends AppCompatActivity {
         txt_EDate = findViewById(R.id.txt_EDate);
         txt_Period = findViewById(R.id.txt_Period);
         desc=findViewById(R.id.txt_desc);
-        save=findViewById(R.id.btn_save);
+        save=findViewById(R.id.btn_savelogM);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

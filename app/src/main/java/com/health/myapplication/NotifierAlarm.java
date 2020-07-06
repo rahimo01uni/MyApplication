@@ -25,10 +25,6 @@ public class NotifierAlarm extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-
-
-
-
         Uri alarmsound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 
         Intent intent1 = new Intent(context, AddSleep.class);

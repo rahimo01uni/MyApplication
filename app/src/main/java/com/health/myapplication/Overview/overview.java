@@ -7,6 +7,8 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.health.myapplication.Database.OverviewDbHelper;
+import com.health.myapplication.Log.LogMedicationActivity;
+import com.health.myapplication.Log.LogMoodActivity;
 import com.health.myapplication.R;
 import com.health.myapplication.Reminder.AddReminderActivity;
 import com.health.myapplication.Reminder.Reminder;
@@ -46,7 +48,7 @@ public class overview extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(overview.this, AddLogMood.class);
+                Intent intent=new Intent(overview.this, LogMedicationActivity.class);
                 startActivity(intent);
 
                 // new med_bubble(Reminder.this,"");

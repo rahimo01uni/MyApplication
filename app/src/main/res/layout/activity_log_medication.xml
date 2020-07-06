@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.health.myapplication.Log.LogMedicationActivity">
+
+    <Button
+        android:id="@+id/btn_Logmedication"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_blue"
+        android:drawableLeft="@drawable/ic_medicine"
+        android:padding="16dp"
+        android:text="Medication"
+        android:textColor="@color/bpWhite"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Logsym"
+        app:layout_constraintHorizontal_bias="0.574"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_Logsleep"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btn_simple"
+        android:drawableLeft="@drawable/ic_measure"
+        android:padding="16dp"
+        android:text="Sleep"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Logmedication" />
+
+    <Button
+        android:id="@+id/btn_Logsym"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_simple"
+        android:padding="16dp"
+        android:text="Symptom check"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/Card"
+        android:layout_width="361dp"
+        android:layout_height="339dp"
+        android:layout_gravity="center"
+        android:elevation="5dp"
+        android:paddingBottom="20dp"
+        app:cardCornerRadius="@dimen/CardRadius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Logsleep">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/txt_LogDozeM"
+                android:layout_width="96dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:text="Doze"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogNameM" />
+
+            <EditText
+                android:id="@+id/txt_LogdesM"
+                android:layout_width="309dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.571"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogDozeM" />
+
+            <TextView
+                android:id="@+id/txt_LogTimeM"
+                android:layout_width="96dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:text="Time"
+                app:layout_constraintStart_toEndOf="@+id/txt_LogunitM"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogNameM" />
+
+            <EditText
+                android:id="@+id/txt_LogNameM"
+                android:layout_width="309dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:hint="Medication Name"
+                android:inputType="textPersonName"
+                android:text="Medicine Name"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_LogunitM"
+                android:layout_width="96dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:text="Unit"
+                android:textColor="@color/ampm_text_color"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/txt_LogDozeM"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogNameM" />
+
+            <Button
+                android:id="@+id/btn_savelogM"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/btn_blue"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogdesM" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

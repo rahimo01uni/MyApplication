@@ -158,7 +158,7 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
                 txt_Period =itemView. findViewById(R.id.txt_Period);
                 recyclerView=(RecyclerView)itemView.findViewById(R.id.recyclerView);
                 desc=itemView.findViewById(R.id.txt_desc);
-                saveMed=itemView.findViewById(R.id.btn_save);
+                saveMed=itemView.findViewById(R.id.btn_savelogM);
                 medView=itemView.findViewById(R.id.cardView);
 
                 //symptom
