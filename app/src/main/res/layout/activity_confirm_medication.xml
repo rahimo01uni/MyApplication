@@ -22,8 +22,8 @@
         app:layout_constraintVertical_bias="0.298">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="374dp"
-            android:layout_height="236dp">
+            android:layout_width="380dp"
+            android:layout_height="425dp">
 
 
             <TextView
@@ -39,6 +39,25 @@
                 android:hint="Doze"
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_notes"
+                android:layout_width="279dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="168dp"
+                android:layout_marginEnd="51dp"
+                android:layout_marginBottom="201dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="NOTES"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,7 +101,6 @@
                 android:layout_width="90dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="189dp"
-                android:layout_marginTop="176dp"
 
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="28dp"
@@ -92,16 +110,16 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.363"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_doze2"
+                app:layout_constraintVertical_bias="0.453" />
 
             <Button
                 android:id="@+id/btn_MCancel"
                 android:layout_width="80dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="66dp"
-                android:layout_marginTop="172dp"
                 android:layout_marginEnd="228dp"
                 android:layout_marginBottom="28dp"
                 android:background="@drawable/btn_red"
@@ -110,13 +128,15 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_doze2"
+                app:layout_constraintVertical_bias="0.437" />
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="152dp"
-                android:layout_height="65dp"
+                android:layout_width="217dp"
+                android:layout_height="54dp"
                 android:layout_marginStart="152dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="152dp"

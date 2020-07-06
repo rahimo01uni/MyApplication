@@ -80,18 +80,25 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="36dp"
                 android:background="@drawable/ic_love"
+                android:checked="false"
                 android:textColor="#FFEB3B"
+                android:textOff=""
+                android:textOn=""
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="36dp" />
 
             <ToggleButton
                 android:id="@+id/TB_Smile"
                 android:layout_width="36dp"
+
                 android:layout_height="36dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/ic_smile"
-                android:checked="true"
+                android:foregroundTint="@color/colorPrimary"
+                android:checked="false"
+                android:textOff=""
+                android:textOn=""
                 android:textColor="#FFEB3B"
                 app:layout_constraintStart_toEndOf="@+id/TB_love"
                 tools:layout_editor_absoluteY="36dp" />
@@ -99,11 +106,15 @@
             <ToggleButton
                 android:id="@+id/TB_confuse"
                 android:layout_width="36dp"
+                android:checked="false"
                 android:layout_height="36dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/ic_confuse"
-                android:checked="true"
+
+                android:textOff=""
+
+                android:textOn=""
                 android:textColor="#FFEB3B"
                 app:layout_constraintStart_toEndOf="@+id/TB_Smile"
                 tools:layout_editor_absoluteY="36dp" />
@@ -115,7 +126,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/ic_sad"
-                android:checked="true"
+
+                android:checked="false"
+                android:textOff=""
+                android:textOn=""
                 android:textColor="#FFEB3B"
                 app:layout_constraintStart_toEndOf="@+id/TB_confuse"
                 tools:layout_editor_absoluteY="36dp" />
@@ -128,7 +142,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/ic_sick"
-                android:checked="true"
+                android:checked="false"
+                android:textOff=""
+                android:textOn=""
                 android:textColor="#FFEB3B"
                 app:layout_constraintStart_toEndOf="@+id/TB_sad"
                 tools:layout_editor_absoluteY="36dp" />
@@ -140,7 +156,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/ic_sleep"
-                android:checked="true"
+                android:checked="false"
+                android:textOff=""
+                android:textOn=""
                 android:textColor="#FFEB3B"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.09"

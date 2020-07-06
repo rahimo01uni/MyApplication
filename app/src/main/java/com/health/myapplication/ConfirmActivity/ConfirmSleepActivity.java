@@ -31,7 +31,7 @@ Button btn_SCancel;
         setContentView(R.layout.activity_confirm_sleep);
 
         btn_SConfirm = findViewById(R.id.btn_SConfirm);
-        btn_SCancel = findViewById(R.id.btn_SCancel);
+       // btn_SCancel = findViewById(R.id.btn_SCancel);
 
 
         EditText regular = (EditText) findViewById(R.id.txt_regular);

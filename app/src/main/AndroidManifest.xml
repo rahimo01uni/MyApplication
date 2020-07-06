@@ -4,9 +4,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Log.LogMoodActivity"></activity>
@@ -31,6 +31,9 @@
         <activity android:name=".TeamActivity.TeamActivity" />
         <activity android:name=".Reminder.AddMood" />
         <activity android:name=".Reminder.AddReminderActivity" />
+        <activity android:name=".Overview.AddLogMood" />
+        <activity android:name=".Overview.AddLogSleep" />
+        <activity android:name=".Overview.AddLogMed" />
         <activity
             android:name=".splashActivity"
             android:theme="@style/AppTheme.NoActionBar">

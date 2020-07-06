@@ -18,6 +18,7 @@ import com.health.myapplication.Reminder.AddSleep;
 import com.health.myapplication.bubles.sleep_buble;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
@@ -27,7 +28,7 @@ public class UnlockReceiver extends BroadcastReceiver {
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onReceive(Context context, Intent intent) {
-        Uri alarmsound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        Uri alarmsound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         Intent intent1 = new Intent(context, AddSleep.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -46,8 +47,8 @@ public class UnlockReceiver extends BroadcastReceiver {
         }
 
         Notification notification = builder.setContentTitle("Reminder")
-                .setContentText(intent.getStringExtra("Message")).setAutoCancel(true)
-                .setSound(alarmsound).setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentText("Time to go sleep").setAutoCancel(true)
+                .setSound(alarmsound).setSmallIcon(R.drawable.ic_logo)
                 .setContentIntent(intent2)
                 .setChannelId("my_channel_01")
                 .build();
@@ -56,7 +57,8 @@ public class UnlockReceiver extends BroadcastReceiver {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationManager.createNotificationChannel(channel);
         }
-        notificationManager.notify(1, notification);
+        Random r=new Random();
+        notificationManager.notify(r.nextInt(1000), notification);
 
 
 

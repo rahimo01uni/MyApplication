@@ -58,6 +58,8 @@ public class symptom_buble {
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
         if(type.equals("night"))check_symptom_wakeUp(context,params);
+        params.x=-558;
+        params.y=100;
   mRelativeLayout=check_symptom_wakeUp(context,params);
 
         windowManager.addView(mRelativeLayout, params);
@@ -74,7 +76,7 @@ public class symptom_buble {
         //  mRelativeLayout=inflater.inflate(R.layout.floating, null);
 
         chatHead = new ImageView(context);
-        chatHead.setImageResource(R.drawable.launcher);
+        chatHead.setImageResource(R.drawable.ic_smile);
         chatHead.setId(View.generateViewId());
         chatHead.setElevation(5.0f);
         chatHead.setPadding(20, 16, 16, 16);
@@ -88,7 +90,7 @@ public class symptom_buble {
        buttonParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         buttonParams.setMargins(0, 0, 0, 0);
 
-     //   mRelativeLayout.addView(chatHead, buttonParams);
+        mRelativeLayout.addView(chatHead, buttonParams);
 
         final RelativeLayout innerRelativeLayout = new RelativeLayout(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
@@ -128,7 +130,7 @@ public class symptom_buble {
             }
         });
         innerRelativeLayout.addView(mView,params);
-
+       innerRelativeLayout.setVisibility(View.GONE);
 
         innerRelativeLayout.setElevation(5.0f);
         RelativeLayout.LayoutParams irlp = new RelativeLayout.LayoutParams(
@@ -151,11 +153,17 @@ public class symptom_buble {
                     if(!sleeping){
                     if (isLayoutVisible) {
                         innerRelativeLayout.setVisibility(View.GONE);
+                        params.x=-558;
+                        params.y=100;
+                        windowManager.updateViewLayout(mRelativeLayout, params);
                         //   mPointer.setVisibility(View.GONE);
                         isLayoutVisible = false;
                     } else {
                         innerRelativeLayout.setVisibility(View.VISIBLE);
                         //      mPointer.setVisibility(View.VISIBLE);
+                        params.x=0;
+                        params.y=0;
+                        windowManager.updateViewLayout(mRelativeLayout, params);
                         isLayoutVisible = true;
                     }} else {
 

@@ -4,8 +4,10 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -40,26 +42,55 @@ public class AddLogMood extends AppCompatActivity {
     DatePickerDialog picker;
     Calendar check,startDate,endDate;
     SymptomDbHelper db;
-    ToggleButton smile;
+    ToggleButton smile,lovely,confuse,bad,dontknow,sick,sleepy;
+    EditText note;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptom_add);
         db=new SymptomDbHelper(this);
-        txt_TimeM = findViewById(R.id.txt_TimeM);
-        btn_saveM = findViewById(R.id.btn_saveM);
-        times=new ArrayList();
-        recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
-        adapter=new AdapterTime(this,times);
-//        Log.d("what",""+db.getReminders().get(db.getReminders().size()-1).getSleep_log().getSleepTime());
-
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        recyclerView.setAdapter(adapter);
+        txt_TimeM = findViewById(R.id.txt_TimeLogMood);
+        btn_saveM = findViewById(R.id.btn_saveMoodLog);
+        note=findViewById(R.id.txt_descLogMood);
+        smile=findViewById(R.id.TB_Smile);
+        lovely=findViewById(R.id.TB_love);
+        confuse=findViewById(R.id.TB_confuse);
+        bad=findViewById(R.id.TB_sad);
+        sick=findViewById(R.id.TB_sick);
+        sleepy=findViewById(R.id.TB_sleep);
+     smile.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+         @Override
+         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+             Log.d("whatf",""+isChecked);
+             if(isChecked){
+                 Log.d("whatf",""+smile.getLayoutParams().height);
+                 smile.getLayoutParams().height=45;
+                 smile.getLayoutParams().width=45;
+             }else
+             {
+                 smile.getLayoutParams().height=36;
+                 smile.getLayoutParams().width=36;
+             }
+         }
+     });
+        lovely.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    lovely.getLayoutParams().height=45;
+                    lovely.getLayoutParams().width=45;
+                } else
+                {
+                    lovely.getLayoutParams().height=36;
+                    lovely.getLayoutParams().width=36;
+                }
+            }
+        });
 
         btn_saveM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-db.insertSymptomReminder(times);
+//db.insertSymptomReminder(times);
                 Intent intent2 = new Intent(AddLogMood.this,Reminder.class);
                 startActivity(intent2);
                 finish();
@@ -68,7 +99,7 @@ db.insertSymptomReminder(times);
 
 
         //go to AddReminder Activity
-        btnReminder = findViewById(R.id.btn_medicationM);
+        btnReminder = findViewById(R.id.btn_medication);
         btnReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +109,7 @@ db.insertSymptomReminder(times);
         });
 
         //go to AddLogSleep Activity
-        btnSleep = findViewById(R.id.btn_sleepM);
+        btnSleep = findViewById(R.id.btn_sleep);
         btnSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,9 +134,7 @@ db.insertSymptomReminder(times);
                         check.set(check.get(Calendar.YEAR),  check.get(Calendar.MONTH),  check.get(Calendar.DATE),hourOfDay,minutes,0);
                         if(check.getTimeInMillis()<=Calendar.getInstance().getTimeInMillis())
                             check.set( check.get(Calendar.YEAR),  check.get(Calendar.MONTH),  check.get(Calendar.DATE)+1,hourOfDay,minutes,0);
-                        times.add(""+check.getTimeInMillis());
-                        recyclerView.setVisibility( View.VISIBLE);
-                        adapter.setData(times);
+                     txt_TimeM.setText(hours+":"+minutess);
                     }
                 }, 0, 0, false);
                 timePickerDialog.show();

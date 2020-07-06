@@ -46,7 +46,7 @@ public class overview extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(overview.this, AddReminderActivity.class);
+                Intent intent=new Intent(overview.this, AddLogMood.class);
                 startActivity(intent);
 
                 // new med_bubble(Reminder.this,"");

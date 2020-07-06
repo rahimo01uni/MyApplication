@@ -56,8 +56,9 @@ public class wakeUp_buble {
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
+        params.softInputMode=WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE;
 
   mRelativeLayout=start_sleep(context,params);
 
@@ -67,6 +68,8 @@ public class wakeUp_buble {
    RelativeLayout start_sleep(final Context context, final WindowManager.LayoutParams params){
         mRelativeLayout = new RelativeLayout(context);
 //
+      WindowManager.LayoutParams p=params;
+
         RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         rlp.setMargins(16, 16, 16, 16);
@@ -75,7 +78,7 @@ public class wakeUp_buble {
         //  mRelativeLayout=inflater.inflate(R.layout.floating, null);
 
         chatHead = new ImageView(context);
-        chatHead.setImageResource(R.drawable.launcher);
+        chatHead.setImageResource(R.drawable.sun);
         chatHead.setId(View.generateViewId());
         chatHead.setElevation(5.0f);
         chatHead.setPadding(20, 16, 16, 16);
@@ -108,7 +111,7 @@ mRelativeLayout.addView(chatHead, buttonParams);
             public void onClick(View v) {
                 // sleep information updated on SleepLog table; date,wokeup time, quality, duration
                 String quality="good";
-                String notes="notes";
+                String notes=editText.getText().toString();
                 db.updateSleepLog(quality,notes);
                 windowManager.removeView(mRelativeLayout);
             }
@@ -123,6 +126,7 @@ mRelativeLayout.addView(chatHead, buttonParams);
 
             }
         });*/
+       innerRelativeLayout.setVisibility(View.GONE);
         innerRelativeLayout.addView(mView,params);
 
 
@@ -150,10 +154,29 @@ mRelativeLayout.addView(chatHead, buttonParams);
                     if (isLayoutVisible) {
                         innerRelativeLayout.setVisibility(View.GONE);
                         //   mPointer.setVisibility(View.GONE);
+                   /* p = new WindowManager.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                                PixelFormat.TRANSLUCENT);*/
+
+
+                        windowManager.updateViewLayout(mRelativeLayout, params);
                         isLayoutVisible = false;
                     } else {
                         innerRelativeLayout.setVisibility(View.VISIBLE);
                         //      mPointer.setVisibility(View.VISIBLE);
+                        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE,
+                                PixelFormat.TRANSLUCENT);
+
+                        params.x=0;
+                        params.y=0;
+                        windowManager.updateViewLayout(mRelativeLayout, params);
                         isLayoutVisible = true;
                     }} else {
                         symptom_buble b=new symptom_buble(context,"night");

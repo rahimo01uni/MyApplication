@@ -69,7 +69,8 @@ public class med_bubble {
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
-
+        params.x=-558;
+        params.y=300;
   mRelativeLayout=check_symptom_wakeUp(context,params,intent);
 
         windowManager.addView(mRelativeLayout, params);
@@ -86,7 +87,7 @@ public class med_bubble {
         //  mRelativeLayout=inflater.inflate(R.layout.floating, null);
 
         chatHead = new ImageView(context);
-        chatHead.setImageResource(R.drawable.launcher);
+        chatHead.setImageResource(R.drawable.ic_medicinecolor);
         chatHead.setId(View.generateViewId());
         chatHead.setElevation(5.0f);
         chatHead.setPadding(20, 16, 16, 16);
@@ -144,6 +145,7 @@ public class med_bubble {
       //  irlp.setMargins(16, 16, 16, 16);
         irlp.addRule(RelativeLayout.BELOW, chatHead.getId());
         Log.d("cht he", "" + chatHead.getId());
+       innerRelativeLayout.setVisibility(View.GONE);
         mRelativeLayout.addView(innerRelativeLayout, irlp);
 
         mRelativeLayout.setLayoutParams(params);
@@ -159,11 +161,17 @@ public class med_bubble {
                     if(!sleeping){
                     if (isLayoutVisible) {
                         innerRelativeLayout.setVisibility(View.GONE);
+                        params.x=-558;
+                        params.y=250;
+                        windowManager.updateViewLayout(mRelativeLayout, params);
                         //   mPointer.setVisibility(View.GONE);
                         isLayoutVisible = false;
                     } else {
                         innerRelativeLayout.setVisibility(View.VISIBLE);
                         //      mPointer.setVisibility(View.VISIBLE);
+                        params.x=0;
+                        params.y=0;
+                        windowManager.updateViewLayout(mRelativeLayout, params);
                         isLayoutVisible = true;
                     }} else {
 
@@ -184,6 +192,7 @@ public class med_bubble {
                         case MotionEvent.ACTION_MOVE:
                             params.x = initialX + (int) (event.getRawX() - initialTouchX);
                             params.y = initialY + (int) (event.getRawY() - initialTouchY);
+                            Log.d("Motion",params.x+ " "+ params.y);
                             windowManager.updateViewLayout(mRelativeLayout, params);
                             return true;
                     }

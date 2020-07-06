@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.renderscript.RenderScript;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -72,11 +73,13 @@ ArrayList<general_model> list;
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
-            db.delete(list.get(viewHolder.getAdapterPosition()));
-            list.remove(viewHolder.getAdapterPosition());
-            adapter.notifyDataSetChanged();
-
+            Log.d("direction",""+direction);
+            if(direction==8) {
+                Log.d("directionx",""+direction);
+                db.delete(list.get(viewHolder.getAdapterPosition()));
+                list.remove(viewHolder.getAdapterPosition());
+                adapter.notifyDataSetChanged();
+            }
         }
     };
 

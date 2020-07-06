@@ -466,6 +466,7 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
                  Log.d("Result",""+holder.start_time.getText().toString()+" ");
 
                 db.EditSymptomReminder(item.getTimes());
+                holder.symptom.setVisibility(View.GONE);
 
              }
          });

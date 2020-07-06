@@ -61,7 +61,8 @@ SleepDbHelper db;
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
-
+        params.x=-558;
+        params.y=0;
   mRelativeLayout=start_sleep(context,params,wake_up_time);
 
         windowManager.addView(mRelativeLayout, params);
@@ -78,7 +79,7 @@ SleepDbHelper db;
         //  mRelativeLayout=inflater.inflate(R.layout.floating, null);
 
         chatHead = new ImageView(context);
-        chatHead.setImageResource(R.drawable.launcher);
+        chatHead.setImageResource(R.drawable.ic_sleep);
         chatHead.setId(View.generateViewId());
         chatHead.setElevation(5.0f);
         chatHead.setPadding(20, 16, 16, 16);
