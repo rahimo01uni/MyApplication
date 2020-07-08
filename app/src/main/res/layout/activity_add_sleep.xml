@@ -76,28 +76,60 @@
 
 
             <TextView
-                android:id="@+id/txt_StartTimeS"
+                android:id="@+id/textView22"
                 android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="52dp"
-                android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_clock_three"
+                android:layout_height="22dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="35dp"
+                android:paddingLeft="10dp"
                 android:text="Start Time"
+                android:textColor="@color/Labale"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView23"
+                android:layout_width="281dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="35dp"
+                android:paddingLeft="10dp"
+                android:text="Start Time"
+                android:textColor="@color/Labale"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_StartTimeS" />
+
+            <TextView
+                android:id="@+id/txt_StartTimeS"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:drawableTint="@color/Labale"
+                android:text="Start Time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+            <TextView
                 android:id="@+id/txt_EndTimeS"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="2dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
+                android:drawableTint="@color/Labale"
                 android:text="End Time"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.536"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_StartTimeS" />
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
             <Button
                 android:id="@+id/btn_saveS"
