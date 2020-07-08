@@ -26,7 +26,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/gg2" />
+                 />
 
             <TextView
                 android:id="@+id/time"
@@ -275,7 +275,6 @@ android:visibility="gone"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="56dp"
                 android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_angle_down"
                 android:text="Duration"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_SleepTime" />
@@ -346,8 +345,7 @@ android:visibility="gone"
                 android:layout_marginTop="56dp"
                 android:layout_marginEnd="48dp"
                 android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_angle_down"
-                android:text="Quality"
+                 android:text="Quality"
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"

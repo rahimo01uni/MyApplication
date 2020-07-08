@@ -3,16 +3,23 @@ package com.health.myapplication.Log;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.health.myapplication.Overview.AddLogSleep;
 import com.health.myapplication.R;
+import com.health.myapplication.Reminder.AddSleep;
+
+import java.util.Calendar;
 
 public class LogSleepActivity extends AppCompatActivity {
 
@@ -22,6 +29,7 @@ public class LogSleepActivity extends AppCompatActivity {
     TextView txt_LogQualityS;
     TextView txt_descLog;
     Button Save;
+    Calendar sleep,wake;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +37,13 @@ public class LogSleepActivity extends AppCompatActivity {
 
         txt_LogStartTimeS = findViewById(R.id.txt_LogStartTimeS);
         txt_LogEndTimeS = findViewById(R.id.txt_LogEndTimeS);
-        txt_LogDurationS = findViewById(R.id.txt_LogDurationS);
-        txt_LogQualityS = findViewById(R.id.txt_LogQualityS);
-        txt_descLog = findViewById(R.id.txt_LogQualityS);
+
         Save = findViewById(R.id.btn_saveSleepLog);
+        sleep=Calendar.getInstance();
+        wake=Calendar.getInstance();
+        final String date=getIntent().getStringExtra("date");
+        sleep.setTimeInMillis(Long.parseLong(date));
+        wake.setTimeInMillis(Long.parseLong(date));
 
         //go to LogMedication Activity
         Button btnmedicationS = findViewById(R.id.btn_medicationS);
@@ -40,7 +51,10 @@ public class LogSleepActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogSleepActivity.this, LogMedicationActivity.class);
+                intent.putExtra("date",date);
+
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -50,53 +64,59 @@ public class LogSleepActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogSleepActivity.this, LogMoodActivity.class);
+                intent.putExtra("date",date);
+
                 startActivity(intent);
+
+                finish();
             }
         });
 
 
-
-        //Quqlity
-        final String[] pickerValsUnit = new String[] { "Good","Bad", "So So" };
-
-        txt_LogQualityS.setOnClickListener(new View.OnClickListener() {
-
+        txt_LogStartTimeS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final NumberPicker picker = new NumberPicker(LogSleepActivity.this);
-                picker.setMinValue(0);
-                picker.setMaxValue(2);
-                picker.setDisplayedValues( new String[] { "Good","Bad", "So So" } );
-
-                picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(LogSleepActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
-                    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                        int valuePicker1 = picker.getValue();
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        String hours=""+hourOfDay,minutess=""+minutes;
+                        if(hourOfDay==0)hours="00";
+                        if(minutes==0)minutess="00";
+                        if(hours.length()==1) hours="0"+hours;
+                        if(minutess.length()==1)minutess="0"+minutess;
+                        txt_LogStartTimeS.setText(hours+":"+minutess);
+                        sleep.set(sleep.get(Calendar.YEAR), sleep.get(Calendar.MONTH), sleep.get(Calendar.DATE),hourOfDay,minutes,0);
 
                     }
-                });
+                }, 0, 0, false);
+                timePickerDialog.show();
 
-                new AlertDialog.Builder(LogSleepActivity.this,R.style.AlertDialogTheme)
-                        .setTitle("Unit")
-                        .setView(picker)
-                        .setNegativeButton("ADD",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                })
-                        .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Snackbar.make(findViewById(R.id.txt_LogQualityS), "You picked : " + pickerValsUnit[picker.getValue()], Snackbar.LENGTH_LONG).show();
-                                txt_LogQualityS.setText(String.valueOf(pickerValsUnit[picker.getValue()]));
-                            }
-                        })
-                        .show();
-
+            }
+        });
+        txt_LogEndTimeS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(LogSleepActivity.this, R.style.MyDatePickerDialogTheme, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        String hours=""+hourOfDay,minutess=""+minutes;
+                        if(hourOfDay==0)hours="00";
+                        if(minutes==0)minutess="00";
+                        if(hours.length()==1) hours="0"+hours;
+                        if(minutess.length()==1)minutess="0"+minutess;
+                        txt_LogEndTimeS.setText(hours+":"+minutess);
+                        wake.set(wake.get(Calendar.YEAR), wake.get(Calendar.MONTH), wake.get(Calendar.DATE),hourOfDay,minutes,0);
+                    }
+                }, 0, 0, false);
+                timePickerDialog.show();
             }
 
         });
+
+
+
+
+
     }
 }

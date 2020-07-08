@@ -159,7 +159,7 @@ dialog(context);
             {
                 Toast.makeText(context,"Please, Select your mood!",Toast.LENGTH_LONG).show();
             }
-                else{db.insertSymptomLog(smileyRating.getSelectedSmiley().toString(),notes.getText().toString(),add_symptoms.getText().toString());
+                else{db.insertSymptomLog(smileyRating.getSelectedSmiley().toString(),notes.getText().toString(),add_symptoms.getText().toString(),"");
                 windowManager.removeView( mRelativeLayout);}
 
             }

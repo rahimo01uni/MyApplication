@@ -24,7 +24,7 @@ public class SleepDbHelper {
         SQLiteDatabase db = myhelper.getWritableDatabase();
         Cursor cursor =db.query("SleepLogs",null,null,null,null,null,null);
         cursor.moveToLast();
-        if(cursor.getString(cursor.getColumnIndex("ENDTIME")).length()==0)
+        if(cursor.getString(cursor.getColumnIndex("ENDTIME"))!=null)
         {
             ContentValues args = new ContentValues();
             args.put("STARTTIME",  "?");

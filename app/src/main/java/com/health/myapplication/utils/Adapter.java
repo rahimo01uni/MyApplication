@@ -14,11 +14,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
 import com.health.myapplication.Database.MedicationDbHelber;
 import com.health.myapplication.Database.ReminderOverviewDbHelper;
 import com.health.myapplication.Database.general_model;
@@ -26,6 +28,7 @@ import com.health.myapplication.Database.medication_model;
 import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.Database.symptom_model;
 import com.health.myapplication.R;
+import com.health.myapplication.Reminder.AddReminderActivity;
 
 
 import androidx.appcompat.app.AlertDialog;
@@ -121,7 +124,7 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
             Button saveMed;
             EditText txt_medicationname;
             TextView txt_unit;
-            TextView txt_Count;
+            EditText txt_Count;
             TextView txt_SDate;
             TextView txt_EDate;
             TextView txt_Period;
@@ -338,20 +341,33 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
          holder.txt_unit.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
-                 mBuilder.setTitle("Choose an item");
-                 mBuilder.setPositiveButton("Add", null);
-                 mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+                 final NumberPicker picker = new NumberPicker(context);
+                 picker.setMinValue(0);
+                 picker.setMaxValue(2);
+                 picker.setDisplayedValues( new String[] { "Pill","A", "B" } );
+
+                 picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                      @Override
-                     public void onClick(DialogInterface dialogInterface, int i) {
-                         holder.txt_unit.setText(listItems[i]);
-                         dialogInterface.dismiss();
+                     public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                         int valuePicker1 = picker.getValue();
+
                      }
                  });
 
-                 AlertDialog mDialog = mBuilder.create();
-                 mDialog.show();
+                 new AlertDialog.Builder(context,R.style.AlertDialogTheme)
+                         .setTitle("Unit")
+                         .setView(picker)
+                         .setPositiveButton(context.getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+                             @Override
+                             public void onClick(DialogInterface dialog, int which) {
+
+                                 holder.txt_unit.setText(String.valueOf(listItems[picker.getValue()]));
+                             }
+                         })
+                         .show();
+
              }
+
          });
          holder.txt_Count.setOnClickListener(new View.OnClickListener() {
 

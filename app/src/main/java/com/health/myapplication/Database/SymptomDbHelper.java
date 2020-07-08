@@ -77,9 +77,10 @@ public class SymptomDbHelper {
         }
 
     }
-    public  void insertSymptomLog(String mood,String notes,String symptoms)
+    public  void insertSymptomLog(String mood,String notes,String symptoms,String time)
     {
         Calendar ti=Calendar.getInstance();
+        if(time.length()>0)ti.setTimeInMillis(Long.parseLong(time));
         SQLiteDatabase db = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         int    id=0;

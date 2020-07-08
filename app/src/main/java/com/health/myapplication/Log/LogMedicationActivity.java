@@ -70,7 +70,9 @@ public class LogMedicationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogMedicationActivity.this, LogMoodActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -80,7 +82,9 @@ public class LogMedicationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogMedicationActivity.this, LogSleepActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
+                finish();
             }
         });
 

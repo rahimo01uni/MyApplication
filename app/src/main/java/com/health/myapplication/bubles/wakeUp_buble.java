@@ -23,6 +23,7 @@ import com.health.myapplication.Database.DatabaseHelper;
 import com.health.myapplication.Database.SleepDbHelper;
 import com.health.myapplication.Database.sleep_model;
 import com.health.myapplication.R;
+import com.hsalf.smileyrating.SmileyRating;
 
 import java.util.Calendar;
 
@@ -97,12 +98,9 @@ mRelativeLayout.addView(chatHead, buttonParams);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
         mView = inflater.inflate(R.layout.activity_confirm_sleep, null);
     final EditText editText=mView.findViewById(R.id.txt_regular);
-    editText.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+       final SmileyRating smileyRating=mView.findViewById(R.id.smile_rating);
 
-        }
-    });
+
      //   mClose = (Button) mView.findViewById(R.id.buttonClose);
         con=(Button)mView.findViewById(R.id.btn_SConfirm);
 
@@ -110,7 +108,8 @@ mRelativeLayout.addView(chatHead, buttonParams);
             @Override
             public void onClick(View v) {
                 // sleep information updated on SleepLog table; date,wokeup time, quality, duration
-                String quality="good";
+                String quality=smileyRating.getSelectedSmiley().toString();
+
                 String notes=editText.getText().toString();
                 db.updateSleepLog(quality,notes);
                 windowManager.removeView(mRelativeLayout);
