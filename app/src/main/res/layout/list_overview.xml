@@ -113,6 +113,7 @@
                 android:id="@+id/txt_desc"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
@@ -120,6 +121,7 @@
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView66"
                 tools:ignore="MissingConstraints" />
@@ -128,7 +130,8 @@
                 android:id="@+id/txt_unit"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="28dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:drawableTint="@color/Labale"
@@ -136,18 +139,19 @@
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView64" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_Count"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:drawableTint="@color/Labale"
                 android:text="Doze"
                 app:layout_constraintEnd_toStartOf="@+id/txt_unit"
-                app:layout_constraintHorizontal_bias="0.581"
+                app:layout_constraintHorizontal_bias="0.577"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView65" />
 
@@ -295,6 +299,7 @@
                 android:id="@+id/txt_mood"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:hint="Mood"
@@ -371,6 +376,7 @@
                 android:layout_width="103dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="36dp"
+                android:layout_marginTop="56dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:drawableTint="@color/Labale"
@@ -407,13 +413,14 @@
                 app:layout_constraintEnd_toStartOf="@+id/txt_QualityOfSleep"
                 app:layout_constraintHorizontal_bias="0.562"
                 app:layout_constraintStart_toEndOf="@+id/txt_Duration"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/txt_SleepTime"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/txt_SleepTime"
                 android:layout_width="140dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
                 android:drawableTint="@color/Labale"
@@ -439,11 +446,12 @@
                 android:id="@+id/txt_QualityOfSleep"
                 android:layout_width="103dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="56dp"
                 android:layout_marginEnd="48dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:drawableTint="@color/Labale"
-                android:text="Quality"
+                 android:text="Quality"
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"

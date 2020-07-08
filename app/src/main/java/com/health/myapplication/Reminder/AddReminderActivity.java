@@ -287,12 +287,6 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
                 new AlertDialog.Builder(AddReminderActivity.this,R.style.AlertDialogTheme)
                         .setTitle("Unit")
                         .setView(picker)
-                        .setNegativeButton("ADD",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                })
                         .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

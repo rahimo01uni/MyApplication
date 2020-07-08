@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.health.myapplication.Database.SymptomDbHelper;
 import com.health.myapplication.Database.selections_model;
@@ -40,7 +42,7 @@ public class LogMoodActivity extends AppCompatActivity {
     SmileyRating smileyRating;
     ArrayList<selections_model> selected;
     ArrayList<String>selections;
-
+    Calendar date1;
     SymptomDbHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,18 @@ public class LogMoodActivity extends AppCompatActivity {
         txt_descLogMood = findViewById(R.id.txt_descLogMood);
         Save = findViewById(R.id.btn_saveMoodLog);
         smileyRating=findViewById(R.id.smile_rating);
+        final String date=getIntent().getStringExtra("date");
+    Save.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            db.insertSymptomLog(smileyRating.getSelectedSmiley().toString(), txt_descLogMood.getText().toString(),txt_logmood.getText().toString(),""+date1.getTimeInMillis());
+           finish();
+        }
+    });
+
+
+        date1=Calendar.getInstance();
+   date1.setTimeInMillis(Long.parseLong(date));
         smileyRating.setSmileySelectedListener(new SmileyRating.OnSmileySelectedListener() {
             @Override
             public void onSmileySelected(SmileyRating.Type type) {
@@ -72,7 +86,9 @@ public class LogMoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogMoodActivity.this, LogMedicationActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
+                finish();
             }
         });
           txt_logmood.setOnClickListener(new View.OnClickListener() {
@@ -81,13 +97,33 @@ public class LogMoodActivity extends AppCompatActivity {
                   dialog();
               }
           });
-        //go to LogSleep Activity
+        txt_TimeLogMood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(LogMoodActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        txt_TimeLogMood.setText(TimeFormat(hourOfDay,minutes));
+                        date1.set(date1.get(Calendar.YEAR), date1.get(Calendar.MONTH),date1.get(Calendar.DATE),hourOfDay,minutes,0);
+
+
+                    }
+                }, 0, 0, false);
+                timePickerDialog.show();
+
+            }
+        });
+
+
+          //go to LogSleep Activity
         Button btnLogsleepM = findViewById(R.id.btn_LogsleepM);
         btnLogsleepM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogMoodActivity.this, LogSleepActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -140,7 +176,7 @@ public class LogMoodActivity extends AppCompatActivity {
                {
                    if(selected.get(i).isChecked())temp+=", "+selected.get(i).getName();
                }
-                txt_logmood.setText(temp);
+                if(temp.length()>0)txt_logmood.setText(temp.substring(1));
                 dialog.dismiss();
             }
         });
@@ -149,6 +185,13 @@ public class LogMoodActivity extends AppCompatActivity {
         dialog.show();
 
     }
+    private  String TimeFormat(int hourOfDay, int minutes){
 
+        String hours=""+hourOfDay,
+                minutess=""+minutes;
+        if(hours.length()==1) hours="0"+hours;
+        if(minutess.length()==1)minutess="0"+minutess;
+        return hours+":"+minutess;
+    }
 
 }

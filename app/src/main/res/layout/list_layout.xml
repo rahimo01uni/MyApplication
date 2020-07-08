@@ -91,76 +91,51 @@
             app:layout_constraintVertical_bias="1.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="355dp"
-                android:layout_height="147dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/textView52"
-                    android:layout_width="120dp"
-                    android:layout_height="23dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="44dp"
-                    android:paddingLeft="10dp"
-                    android:text="End Time"
-                    android:textColor="@color/Labale"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView53"
-                    android:layout_width="120dp"
-                    android:layout_height="23dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="16dp"
-                    android:paddingLeft="10dp"
-                    android:text="Start Date"
-                    android:textColor="@color/Labale"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
                     android:id="@+id/txt_StartTimeS"
                     android:layout_width="120dp"
                     android:layout_height="42dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/btn_simpleborder"
                     android:drawableRight="@drawable/ic_clock_three"
-                    android:drawableTint="@color/Labale"
                     android:gravity="center_vertical"
                     android:text="Start Time"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView52" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txt_EndTimeS"
                     android:layout_width="120dp"
                     android:layout_height="42dp"
                     android:layout_marginStart="30dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="28dp"
                     android:background="@drawable/btn_simpleborder"
                     android:drawableRight="@drawable/ic_clock_three"
-                    android:drawableTint="@color/Labale"
                     android:gravity="center_vertical"
                     android:text="End Time"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/txt_StartTimeS"
-                    app:layout_constraintTop_toBottomOf="@+id/textView52" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/btn_saveS"
                     android:layout_width="144dp"
                     android:layout_height="37dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/btn_blue"
                     android:text="Save"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.454"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_EndTimeS" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -171,8 +146,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/Card"
-        android:layout_width="370dp"
-        android:layout_height="484dp"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:elevation="5dp"
         android:visibility="gone"
@@ -185,151 +160,53 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="391dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingBottom="10dp">
 
-
-            <TextView
-                android:id="@+id/textView54"
-                android:layout_width="281dp"
-                android:layout_height="23dp"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="10dp"
-                android:text="Medication Name"
-                android:textColor="@color/Labale"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.359"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView55"
-                android:layout_width="281dp"
-                android:layout_height="23dp"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="10dp"
-                android:text="Description"
-                android:textColor="@color/Labale"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.363"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_mood" />
-
-            <TextView
-                android:id="@+id/textView56"
-                android:layout_width="130dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="10dp"
-                android:text="Doze"
-                android:textColor="@color/Labale"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
-
-            <TextView
-                android:id="@+id/textView58"
-                android:layout_width="130dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="10dp"
-                android:text="Frequency"
-                android:textColor="@color/Labale"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_SDate" />
-
-            <TextView
-                android:id="@+id/textView62"
-                android:layout_width="130dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="10dp"
-                android:text="Add Time"
-                android:textColor="@color/Labale"
-                app:layout_constraintStart_toEndOf="@+id/textView58"
-                app:layout_constraintTop_toBottomOf="@+id/txt_EDate" />
-
-            <TextView
-                android:id="@+id/textView61"
-                android:layout_width="130dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="10dp"
-                android:text="End Date"
-                android:textColor="@color/Labale"
-                app:layout_constraintStart_toEndOf="@+id/textView59"
-                app:layout_constraintTop_toBottomOf="@+id/txt_unit" />
-
-            <TextView
-                android:id="@+id/textView59"
-                android:layout_width="130dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="10dp"
-                android:text="Start Date"
-                android:textColor="@color/Labale"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_Count" />
-
-            <TextView
-                android:id="@+id/textView57"
-                android:layout_width="130dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="10dp"
-                android:text="Unit"
-                android:textColor="@color/Labale"
-                app:layout_constraintStart_toEndOf="@+id/textView56"
-                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
             <TextView
                 android:id="@+id/txt_EDate"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_calender"
-                android:drawableTint="@color/Labale"
                 android:text="End Date"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.252"
+                app:layout_constraintHorizontal_bias="0.434"
                 app:layout_constraintStart_toEndOf="@+id/txt_SDate"
-                app:layout_constraintTop_toBottomOf="@+id/textView61" />
-
+                app:layout_constraintTop_toBottomOf="@+id/txt_unit" />
 
             <TextView
                 android:id="@+id/txt_SDate"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_calender"
-                android:drawableTint="@color/Labale"
                 android:text="Start Date"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView59" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_Count" />
 
             <TextView
                 android:id="@+id/txt_Period"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
-                android:drawableTint="@color/Labale"
                 android:text="Frequency"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView58" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_SDate" />
 
             <EditText
                 android:id="@+id/txt_desc"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
@@ -337,15 +214,17 @@
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.363"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView55"
+                app:layout_constraintTop_toBottomOf="@+id/txt_mood"
                 tools:ignore="MissingConstraints" />
+
 
             <EditText
                 android:id="@+id/txt_mood"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:hint="Medication Name"
@@ -353,49 +232,49 @@
                 android:text="Medicine Name"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.363"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView54" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_Time"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
-                android:drawableTint="@color/Labale"
                 android:text="Add Time"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.219"
+                app:layout_constraintHorizontal_bias="0.434"
                 app:layout_constraintStart_toEndOf="@+id/txt_Period"
-                app:layout_constraintTop_toBottomOf="@+id/textView62" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_EDate" />
 
             <TextView
                 android:id="@+id/txt_unit"
                 android:layout_width="130dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
-                android:drawableTint="@color/Labale"
                 android:text="Unit"
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.23"
+                app:layout_constraintHorizontal_bias="0.456"
                 app:layout_constraintStart_toEndOf="@+id/txt_Count"
-                app:layout_constraintTop_toBottomOf="@+id/textView57" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
-            <TextView
+            <EditText
                 android:id="@+id/txt_Count"
                 android:layout_width="130dp"
+                android:inputType="numberDecimal"
                 android:layout_height="42dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_angle_down"
-                android:drawableTint="@color/Labale"
-                android:text="Doze"
+                android:hint="Doze"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView56" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -412,13 +291,13 @@
                 android:id="@+id/btn_savelogM"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/btn_blue"
                 android:text="Save"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.345"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
@@ -429,70 +308,66 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewsym"
         style="@style/Card"
+
         android:layout_width="385dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="17dp"
         android:layout_marginBottom="548dp"
         android:elevation="5dp"
-        android:visibility="gone"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:visibility="gone">
+        app:layout_constraintVertical_bias="0.0">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txt_TimeM"
+            android:layout_width="294dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_simpleborder"
+            android:drawableRight="@drawable/ic_clock_three"
+            android:gravity="center_vertical"
+            android:text="Add Time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewsym"
+            android:layout_width="294dp"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp">
+            android:layout_margin="5dp"
+            android:layout_marginTop="12dp"
+            android:padding="10dp"
 
-            <TextView
-                android:id="@+id/txt_TimeM"
-                android:layout_width="294dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_clock_three"
-                android:drawableTint="@color/Labale"
-                android:gravity="center_vertical"
-                android:text="Add Time"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.528"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_TimeM" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewsym"
-                android:layout_width="294dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginTop="12dp"
-                android:padding="10dp"
+        <Button
+            android:id="@+id/btn_saveM"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/btn_blue"
+            android:text="Save"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewsym"
+            app:layout_constraintVertical_bias="0.0" />
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.528"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_TimeM" />
-
-            <Button
-                android:id="@+id/btn_saveM"
-                android:layout_width="281dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/btn_blue"
-                android:text="Save"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewsym"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

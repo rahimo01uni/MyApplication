@@ -59,8 +59,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/Card"
-        android:layout_width="359dp"
-        android:layout_height="410dp"
+        android:layout_width="351dp"
+        android:layout_height="322dp"
         android:layout_gravity="center"
         android:elevation="5dp"
         app:cardCornerRadius="@dimen/CardRadius"
@@ -73,15 +73,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <com.hsalf.smileyrating.SmileyRating
+                android:id="@+id/smile_rating"
+                android:layout_width="351dp"
+                android:layout_height="104dp"
+                android:layout_marginBottom="295dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
                 android:id="@+id/txt_descLog"
                 android:layout_width="290dp"
                 android:layout_height="51dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="center_vertical"
-                android:hint="Description"
+                android:hint="Note"
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,11 +124,13 @@
                 app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView42" />
+                tools:layout_editor_absoluteY="152dp" />
 
             <TextView
                 android:id="@+id/txt_LogStartTimeS"
                 android:layout_width="128dp"
                 android:layout_height="42dp"
+                android:layout_marginTop="100dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableTint="@color/Labale"
                 android:drawableRight="@drawable/ic_clock_three"
@@ -203,7 +217,8 @@
                 android:id="@+id/txt_LogEndTimeS"
                 android:layout_width="128dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="72dp"
+                android:layout_marginTop="100dp"
+
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
                 android:drawableTint="@color/Labale"

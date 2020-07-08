@@ -33,10 +33,12 @@ public class AdapterOverview extends RecyclerView.Adapter<AdapterOverview.myView
     private List<model_overview> models;
     private  String fr;
     private OverviewDbHelper db;
+    Calendar sleep;
     public AdapterOverview(Activity context, List<model_overview> models) {
         this.context = context;
         this.models = models;
         this.db=new OverviewDbHelper(context);
+         sleep= Calendar.getInstance();
     }
 
     @Override
@@ -49,19 +51,13 @@ public class AdapterOverview extends RecyclerView.Adapter<AdapterOverview.myView
     @Override
     public void onBindViewHolder(final myViewHolder holder, final int position) {
 
-/*     Glide.with(context)
-            .load(context.getResources()
-                    .getIdentifier(models.get(position).getImg(), "drawable", context.getPackageName())).asBitmap().into(holder.icon);*/
 
-        // we should change here later
-       final Calendar sleep = Calendar.getInstance();
+
        sleep.setTimeInMillis(Long.parseLong(models.get(position).getTime()));
-      // sleep.setTimeInMillis();
         holder.l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        Log.d("wftk",models.get(position).getName());
-                if(models.get(position).getName().equals("Sleep")){
+           if(models.get(position).getName().equals("Sleep")){
                   sleepLay(holder,models.get(position).getId());
                  } else  if(models.get(position).getName().equals("Mood")) symptomLay(holder,models.get(position).getId());
                      else medLay(holder,models.get(position).getId());
@@ -69,19 +65,17 @@ public class AdapterOverview extends RecyclerView.Adapter<AdapterOverview.myView
         });
 holder.title.setText(models.get(position).getName());
 holder.time.setText(TimeFormat(sleep.get(Calendar.HOUR_OF_DAY),sleep.get(Calendar.MINUTE)));
+        Glide.with(context).load(R.drawable.gg2).into( holder.img);
 
 switch (models.get(position).getName()){
     case "Sleep":
         Glide.with(context).load(R.drawable.sleep).into( holder.ava);
-
         break;
     case "Mood":
         Glide.with(context).load(R.drawable.ic_mood_24px).into( holder.ava);
-
         break;
         default:
             Glide.with(context).load(R.drawable.ic_medicinecolor).into( holder.ava);
-
             break;
 }
 
@@ -103,6 +97,7 @@ switch (models.get(position).getName()){
         ImageView ava;
         TextView med_dose,med_unit,med_note;
         TextView mood,symptoms,notes;
+        ImageView img;
         //private ImageView pic;
 
         public myViewHolder(View itemView) {
@@ -112,6 +107,7 @@ switch (models.get(position).getName()){
             time=itemView.findViewById(R.id.time);
             ava=itemView.findViewById(R.id.img_drug);
              ring=itemView.findViewById(R.id.button);
+             img=itemView.findViewById(R.id.img_guide);
             //sleep
             sleepC=itemView.findViewById(R.id.cardViewSleep);
             sleep_time=itemView.findViewById(R.id.txt_SleepTime);
@@ -141,10 +137,13 @@ switch (models.get(position).getName()){
     void sleepLay(final myViewHolder holder,String id){
         sleep_model item=db.get_sleep(id);
         Calendar date=Calendar.getInstance();
-        date.setTimeInMillis(Long.parseLong(item.getSleepTime()));
+if(!item.getSleepTime().equals("?"))
+{
+    date.setTimeInMillis(Long.parseLong(item.getSleepTime()));
+        holder.sleep_time.setText(TimeFormat(date.get(Calendar.HOUR_OF_DAY),date.get(Calendar.MINUTE)));}
+
         if(holder.ring.isChecked()){holder.sleepC.setVisibility(View.GONE);holder.ring.setChecked(false);} else { holder.ring.setChecked(true);holder.sleepC.setVisibility(View.VISIBLE);}
-        holder.sleep_time.setText(TimeFormat(date.get(Calendar.HOUR_OF_DAY),date.get(Calendar.MINUTE)));
-        date.setTimeInMillis(Long.parseLong(item.getWakeUpTime()));
+       date.setTimeInMillis(Long.parseLong(item.getWakeUpTime()));
         holder.wake_time.setText(TimeFormat(date.get(Calendar.HOUR_OF_DAY),date.get(Calendar.MINUTE)));
         holder.quality.setText(item.getQualityOfSleep());
         holder.duration.setText(item.getDuration());
