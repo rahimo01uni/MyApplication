@@ -22,7 +22,7 @@ public class ConfirmSympthomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_sympthom);
 
         btn_SyConfirm = findViewById(R.id.btn_SyConfirm);
-        btn_SyCancel = findViewById(R.id.btn_SyCancel);
+
 
         EditText regular = (EditText) findViewById(R.id.txt_regular);
         regular.setCompoundDrawables(new TextDrawable(regular, "+61 "), null, new TextDrawable(regular, "\u2605"), null);

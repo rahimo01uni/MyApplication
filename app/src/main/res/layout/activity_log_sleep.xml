@@ -59,8 +59,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/Card"
-        android:layout_width="351dp"
-        android:layout_height="322dp"
+        android:layout_width="359dp"
+        android:layout_height="410dp"
         android:layout_gravity="center"
         android:elevation="5dp"
         app:cardCornerRadius="@dimen/CardRadius"
@@ -78,7 +78,6 @@
                 android:id="@+id/txt_descLog"
                 android:layout_width="290dp"
                 android:layout_height="51dp"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="center_vertical"
@@ -86,57 +85,128 @@
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_LogQualityS" />
+                app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
             <TextView
                 android:id="@+id/txt_LogQualityS"
                 android:layout_width="128dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
+                android:drawableTint="@color/Labale"
                 android:text="Quality"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/txt_LogDurationS"
-                app:layout_constraintTop_toBottomOf="@+id/txt_LogEndTimeS" />
+                app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
             <TextView
                 android:id="@+id/txt_LogDurationS"
                 android:layout_width="128dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/btn_simpleborder"
                 android:text="Duration"
-                app:layout_constraintBottom_toTopOf="@+id/txt_descLog"
                 app:layout_constraintEnd_toStartOf="@+id/txt_LogQualityS"
                 app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_LogStartTimeS"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
             <TextView
                 android:id="@+id/txt_LogStartTimeS"
                 android:layout_width="128dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="32dp"
                 android:background="@drawable/btn_simpleborder"
+                android:drawableTint="@color/Labale"
                 android:drawableRight="@drawable/ic_clock_three"
+
                 android:text="Start Time"
                 app:layout_constraintEnd_toStartOf="@+id/txt_LogEndTimeS"
                 app:layout_constraintHorizontal_bias="0.462"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="128dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="48dp"
+                android:paddingLeft="10dp"
+                android:text="Strat Time"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="128dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="48dp"
+                android:paddingLeft="10dp"
+                android:text="Strat Time"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="290dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="24dp"
+                android:paddingLeft="10dp"
+                android:text="Description"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogQualityS" />
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="128dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Duration"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogStartTimeS" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="128dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Quality"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toEndOf="@+id/textView42"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogEndTimeS" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="128dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="48dp"
+                android:paddingLeft="10dp"
+                android:text="End Time"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toEndOf="@+id/textView39"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_LogEndTimeS"
                 android:layout_width="128dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="72dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
+                android:drawableTint="@color/Labale"
                 android:text="End Time"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

@@ -85,6 +85,7 @@
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
                 android:gravity="center_vertical"
+                android:drawableTint="@color/Labale"
                 android:text="Add Time"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"

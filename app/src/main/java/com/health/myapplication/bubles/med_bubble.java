@@ -121,7 +121,7 @@ public class med_bubble {
        Button btn_SyConfirm;
        Button btn_SyCancel;
        btn_SyConfirm = mView.findViewById(R.id.btn_MConfirm);
-       btn_SyCancel = mView.findViewById(R.id.btn_SyCancel);
+
 
 
 

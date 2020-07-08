@@ -114,7 +114,7 @@ public class symptom_buble {
         final RelativeLayout innerRelativeLayout = new RelativeLayout(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
         mView = inflater.inflate(R.layout.activity_confirm_sympthom, null);
-       add_symptoms=mView.findViewById(R.id.sypmtoms);
+
        notes = (EditText)   mView.findViewById(R.id.notes);
        add_symptoms.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -127,7 +127,7 @@ dialog(context);
        Button btn_SyCancel;
        final SmileyRating smileyRating;
        btn_SyConfirm = mView.findViewById(R.id.btn_SyConfirm);
-       btn_SyCancel = mView.findViewById(R.id.btn_SyCancel);
+
         smileyRating=mView.findViewById(R.id.smile_rating);
 
        InputMethodManager inputMethodManager =

@@ -92,80 +92,12 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewMedication"
         style="@style/Card"
-        android:layout_width="334dp"
-        android:layout_height="130dp"
+        android:layout_width="337dp"
+        android:layout_height="198dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:elevation="5dp"
-android:visibility="gone"
-        app:cardCornerRadius="@dimen/CardRadius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp">
-
-
-            <TextView
-                android:id="@+id/txt_desc"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/btn_simpleborder"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="Description"
-                android:inputType="textMultiLine"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.509"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_unit"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/txt_unit"
-                android:layout_width="130dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="28dp"
-                android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_angle_down"
-                android:text="Unit"
-                android:textColor="@color/ampm_text_color"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/txt_Count"
-                android:layout_width="130dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_angle_down"
-                android:text="Doze"
-                app:layout_constraintEnd_toStartOf="@+id/txt_unit"
-                app:layout_constraintHorizontal_bias="0.577"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewSympthom"
-        style="@style/Card"
-        android:layout_width="353dp"
-        android:layout_height="228dp"
-        android:layout_gravity="center"
-        android:elevation="5dp"
-android:visibility="gone"
+        android:visibility="gone"
         app:cardCornerRadius="@dimen/CardRadius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -178,22 +110,9 @@ android:visibility="gone"
 
 
             <TextView
-                android:id="@+id/txt_Sympthom"
+                android:id="@+id/txt_desc"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/btn_simpleborder"
-                android:text="Sympthom"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.506"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_mood" />
-
-            <EditText
-                android:id="@+id/txt_descSym"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
@@ -201,16 +120,181 @@ android:visibility="gone"
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView66"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/txt_unit"
+                android:layout_width="130dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:drawableTint="@color/Labale"
+                android:text="Unit"
+                android:textColor="@color/ampm_text_color"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView64" />
+
+            <TextView
+                android:id="@+id/txt_Count"
+                android:layout_width="130dp"
+                android:layout_height="42dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:drawableTint="@color/Labale"
+                android:text="Doze"
+                app:layout_constraintEnd_toStartOf="@+id/txt_unit"
+                app:layout_constraintHorizontal_bias="0.581"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView65" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="130dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Unit"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toEndOf="@+id/textView65"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="130dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Doze"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView66"
+                android:layout_width="281dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Description"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_Count" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewSympthom"
+        style="@style/Card"
+        android:layout_width="360dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:elevation="5dp"
+        android:visibility="gone"
+        app:cardCornerRadius="@dimen/CardRadius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp">
+
+
+            <TextView
+                android:id="@+id/textView69"
+                android:layout_width="281dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Sympthom"
+                android:textColor="@color/Labale"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_mood" />
+
+            <TextView
+                android:id="@+id/textView70"
+                android:layout_width="281dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Description"
+                android:textColor="@color/Labale"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_Sympthom" />
+
+            <TextView
+                android:id="@+id/textView67"
+                android:layout_width="281dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="10dp"
+                android:text="Mood"
+                android:textColor="@color/Labale"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.513"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_Sympthom"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="281dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="20dp"
+
+                android:text="Mood"
+                android:paddingLeft="10dp"
+                android:textColor="@color/Labale"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.513"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_Sympthom"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:background="@drawable/btn_simpleborder"
+                android:text="Sympthom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView69" />
+
+            <EditText
+                android:id="@+id/txt_descSym"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:background="@drawable/btn_simpleborder"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView70"
                 tools:ignore="MissingConstraints" />
 
             <EditText
                 android:id="@+id/txt_mood"
                 android:layout_width="281dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:hint="Mood"
@@ -218,9 +302,9 @@ android:visibility="gone"
                 android:text="Mood"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.513"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView67" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -240,8 +324,8 @@ android:visibility="gone"
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewSleep"
         style="@style/Card"
-        android:layout_width="389dp"
-        android:layout_height="262dp"
+        android:layout_width="391dp"
+        android:layout_height="309dp"
         android:layout_gravity="center"
         android:elevation="5dp"
         android:visibility="gone"
@@ -251,19 +335,33 @@ android:visibility="gone"
         app:layout_constraintTop_toTopOf="@+id/cardViewMedication">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="385dp"
-            android:layout_height="262dp"
+            android:layout_width="380dp"
+            android:layout_height="match_parent"
             android:paddingBottom="10dp">
 
 
             <TextView
                 android:id="@+id/textView3"
+                android:layout_width="297dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Description"
+                android:textColor="@color/Labale"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_Duration" />
+
+            <TextView
+                android:id="@+id/textView71"
                 android:layout_width="100dp"
                 android:layout_height="21dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="32dp"
                 android:paddingLeft="10dp"
                 android:text="Duration"
+                android:textColor="@color/Labale"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_SleepTime" />
@@ -273,18 +371,17 @@ android:visibility="gone"
                 android:layout_width="103dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="56dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
+                android:drawableTint="@color/Labale"
                 android:text="Duration"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_SleepTime" />
+                app:layout_constraintTop_toBottomOf="@+id/textView71" />
 
             <TextView
                 android:id="@+id/txt_SleepNote"
                 android:layout_width="297dp"
                 android:layout_height="52dp"
-                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
@@ -292,16 +389,15 @@ android:visibility="gone"
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.443"
+                app:layout_constraintHorizontal_bias="0.433"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_Duration"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/nightWake"
                 android:layout_width="88dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="56dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
@@ -311,47 +407,47 @@ android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@+id/txt_QualityOfSleep"
                 app:layout_constraintHorizontal_bias="0.562"
                 app:layout_constraintStart_toEndOf="@+id/txt_Duration"
-                app:layout_constraintTop_toBottomOf="@+id/txt_SleepTime"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/txt_SleepTime"
                 android:layout_width="140dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="40dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
+                android:drawableTint="@color/Labale"
                 android:text="Sleep Time"
                 app:layout_constraintEnd_toStartOf="@+id/txt_WakeUpTime"
                 app:layout_constraintHorizontal_bias="0.631"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
                 android:id="@+id/txt_WakeUpTime"
                 android:layout_width="140dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="40dp"
                 android:layout_marginEnd="44dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
+                android:drawableTint="@color/Labale"
                 android:text="WakeUp Time"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <TextView
                 android:id="@+id/txt_QualityOfSleep"
                 android:layout_width="103dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="56dp"
                 android:layout_marginEnd="48dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
+                android:drawableTint="@color/Labale"
                 android:text="Quality"
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView2"
@@ -368,10 +464,12 @@ android:visibility="gone"
                 android:id="@+id/textView"
                 android:layout_width="140dp"
                 android:layout_height="21dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="32dp"
+
+                android:layout_marginTop="16dp"
                 android:paddingLeft="10dp"
                 android:text="Sleep Time"
+                android:textColor="@color/Labale"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -379,13 +477,14 @@ android:visibility="gone"
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="89dp"
-                android:layout_height="24dp"
+                android:layout_height="21dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
                 android:paddingLeft="5dp"
                 android:text="Night Wakeup"
+                android:textColor="@color/Labale"
                 android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintStart_toEndOf="@+id/textView71"
                 app:layout_constraintTop_toBottomOf="@+id/txt_SleepTime" />
 
             <TextView
@@ -395,6 +494,7 @@ android:visibility="gone"
                 android:layout_marginTop="32dp"
                 android:paddingLeft="10dp"
                 android:text="Quality"
+                android:textColor="@color/Labale"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.019"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -407,6 +507,7 @@ android:visibility="gone"
                 android:layout_marginTop="20dp"
                 android:paddingLeft="10dp"
                 android:text="WakeUp Time"
+                android:textColor="@color/Labale"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.342"

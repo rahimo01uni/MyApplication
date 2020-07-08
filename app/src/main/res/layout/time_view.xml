@@ -13,6 +13,7 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/btn_simpleborder"
         android:drawableLeft="@drawable/ic_clock_three"
+        android:drawableTint="@color/Labale"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
         android:text="20:43"

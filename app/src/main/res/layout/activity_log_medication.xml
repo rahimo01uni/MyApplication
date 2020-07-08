@@ -53,8 +53,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         style="@style/Card"
-        android:layout_width="361dp"
-        android:layout_height="339dp"
+        android:layout_width="354dp"
+        android:layout_height="391dp"
         android:layout_gravity="center"
         android:elevation="5dp"
         android:paddingBottom="20dp"
@@ -73,23 +73,83 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="309dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="28dp"
+                android:paddingLeft="10dp"
+                android:text="Email"
+                android:textColor="@color/Labale"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="309dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Description"
+                android:textColor="@color/Labale"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.533"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogunitM" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="96dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Doze"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogNameM" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="96dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Unit"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toEndOf="@+id/textView32"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogNameM" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="96dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="10dp"
+                android:text="Time"
+                android:textColor="@color/Labale"
+                app:layout_constraintStart_toEndOf="@+id/textView33"
+                app:layout_constraintTop_toBottomOf="@+id/txt_LogNameM" />
+
             <EditText
                 android:id="@+id/txt_LogDozeM"
                 android:layout_width="96dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="24dp"
                 android:background="@drawable/btn_simpleborder"
-                android:inputType="numberDecimal"
                 android:hint="Doze"
+                android:inputType="numberDecimal"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_LogNameM" />
+                app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
             <EditText
                 android:id="@+id/txt_LogdesM"
                 android:layout_width="309dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="start|top"
@@ -97,46 +157,44 @@
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.571"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_LogDozeM" />
+                app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
             <TextView
                 android:id="@+id/txt_LogTimeM"
                 android:layout_width="96dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_clock_three"
                 android:text="Time"
+                android:drawableTint="@color/Labale"
                 app:layout_constraintStart_toEndOf="@+id/txt_LogunitM"
-                app:layout_constraintTop_toBottomOf="@+id/txt_LogNameM" />
+                app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
             <EditText
                 android:id="@+id/txt_LogNameM"
                 android:layout_width="309dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="36dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:hint="Medication Name"
                 android:inputType="textPersonName"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
             <TextView
                 android:id="@+id/txt_LogunitM"
                 android:layout_width="96dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="44dp"
                 android:background="@drawable/btn_simpleborder"
                 android:drawableRight="@drawable/ic_angle_down"
                 android:text="Unit"
+                android:drawableTint="@color/Labale"
                 android:textColor="@color/ampm_text_color"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/txt_LogDozeM"

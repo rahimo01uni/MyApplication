@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -59,36 +58,67 @@
         android:id="@+id/sleep_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:context=".Reminder.AddSleep"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="10dp"
         android:visibility="gone"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:context=".Reminder.AddSleep">
 
+
+        <TextView
+            android:id="@+id/textView60"
+            android:layout_width="341dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="32dp"
+            android:paddingLeft="10dp"
+            android:text="Start Time"
+            android:textColor="@color/Labale"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_StartTimeS"
             android:layout_width="341dp"
             android:layout_height="42dp"
             android:layout_marginStart="38dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="122dp"
-            android:background="@color/Backgroundcolor"
+
+            android:background="@drawable/btn_simpleborder"
             android:drawableRight="@drawable/ic_clock_three"
+            android:drawableTint="@color/Labale"
             android:text="Start Time"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView60" />
 
         <TextView
             android:id="@+id/txt_EndTimeS"
             android:layout_width="341dp"
             android:layout_height="42dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/Backgroundcolor"
+
+            android:background="@drawable/btn_simpleborder"
             android:drawableRight="@drawable/ic_clock_three"
+            android:drawableTint="@color/Labale"
             android:text="End Time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView63" />
+
+        <TextView
+            android:id="@+id/textView63"
+            android:layout_width="341dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:text="Start Time"
+            android:textColor="@color/Labale"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.542"
             app:layout_constraintStart_toStartOf="parent"
