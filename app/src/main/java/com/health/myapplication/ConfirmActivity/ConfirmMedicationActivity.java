@@ -21,7 +21,7 @@ Button btn_MConfirm;
         setContentView(R.layout.activity_confirm_medication);
 
 
-        btn_MCancel = findViewById(R.id.btn_MCancel);
+
         btn_MConfirm = findViewById(R.id.btn_MConfirm);
 
 
