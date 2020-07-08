@@ -37,11 +37,11 @@ Button btn_SCancel;
         EditText regular = (EditText) findViewById(R.id.txt_regular);
         regular.setCompoundDrawables(new TextDrawable(regular, "+61 "), null, new TextDrawable(regular, "\u2605"), null);
 
-        TextView view = (TextView) findViewById(R.id.drawable_test);
+        EditText view = findViewById(R.id.notes);
         final TextDrawable textDrawable = new TextDrawable(view, "\u263A");
         textDrawable.setFillText(true);
         textDrawable.getPaint().setColor(Color.RED);
-        view.setBackgroundDrawable(textDrawable);
+
         CountDownTimer c = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

@@ -74,6 +74,7 @@ db.insertSymptomReminder(times);
             public void onClick(View v) {
                 Intent intent = new Intent(AddMood.this, AddReminderActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -84,6 +85,7 @@ db.insertSymptomReminder(times);
             public void onClick(View v) {
                 Intent intent = new Intent(AddMood.this, AddSleep.class);
                 startActivity(intent);
+                finish();
             }
         });
 

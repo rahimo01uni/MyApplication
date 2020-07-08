@@ -131,7 +131,7 @@ public class med_bubble {
             @Override
             public void onClick(View v) {
                 //sleep information comes and inserts into database
-                db.insertMedLog(title.getText().toString(),unit.getText().toString(),doze.getText().toString(),"");
+                db.insertMedLog(title.getText().toString(),unit.getText().toString(),doze.getText().toString(),"","");
                 windowManager.removeView( mRelativeLayout);
 
             }

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ReminderOverviewDbHelper {
-    DatabaseHelper.myDbHelper myhelper;
+   DatabaseHelper.myDbHelper myhelper;
     Context context;
     public ReminderOverviewDbHelper(Context context)
     { this.context=context;
@@ -28,8 +28,24 @@ public class ReminderOverviewDbHelper {
     }
     public ArrayList<general_model> getReminders()
     {
+
+
         ArrayList<general_model> list=new ArrayList<>();
+//
+//        myhelper.getReadableDatabase();
+
         SQLiteDatabase db = myhelper.getWritableDatabase();
+        symptom_model symptom=new symptom_model();
+        ArrayList<String> times=new ArrayList<>();
+        Cursor cursor1 =db.query("REMINDERSYMPTOM",null,null,null,null,null,null);
+        while (cursor1.moveToNext()){
+            times.add(cursor1.getString(cursor1.getColumnIndex("ALARMTIME")));
+
+        }
+        Log.d("FUCKBItch",""+times.size());
+        if (times.size()>0){
+            symptom.setTimes(times);
+            list.add(new general_model("Symptom","",symptom));}
         //SleepReminders
         sleep_model sleep_log;
         Cursor cursor =db.query("SleepReminder",null,null,null,null,null,null);
@@ -57,8 +73,8 @@ public class ReminderOverviewDbHelper {
           med.setFrequency(cursor.getString(cursor.getColumnIndex("FREQUENCY")));
           med.setDescription(cursor.getString(cursor.getColumnIndex("DESCRIPTION")));
             Log.d("medID",med.getId());
-          ArrayList<String> times=new ArrayList<>();
-            Cursor cursor1 =db.query("Reminder",null,"IDR=?",new String[]{med.getId()},null,null,null);
+            times=new ArrayList<>();
+            cursor1 =db.query("Reminder",null,"IDR=?",new String[]{med.getId()},null,null,null);
             while (cursor1.moveToNext()){
                 times.add(cursor1.getString(cursor1.getColumnIndex("ALARMTIME")));
             }
@@ -67,17 +83,7 @@ public class ReminderOverviewDbHelper {
         }
 
 
-        symptom_model symptom=new symptom_model();
-            ArrayList<String> times=new ArrayList<>();
-            Cursor cursor1 =db.query("REMINDERSYMPTOM",null,null,null,null,null,null);
-            while (cursor1.moveToNext()){
-                times.add(cursor1.getString(cursor1.getColumnIndex("ALARMTIME")));
 
-            }
-            Log.d("FUCKBItch",""+times.size());
-        if (times.size()>0){
-        symptom.setTimes(times);
-     list.add(new general_model("Symptom","",symptom));}
 
 
         return list;

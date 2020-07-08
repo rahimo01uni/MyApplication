@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.bumptech.glide.Glide;
 import com.health.myapplication.Database.DatabaseHelper;
 import com.health.myapplication.Database.OverviewDbHelper;
 import com.health.myapplication.Database.medication_model;
@@ -71,13 +72,16 @@ holder.time.setText(TimeFormat(sleep.get(Calendar.HOUR_OF_DAY),sleep.get(Calenda
 
 switch (models.get(position).getName()){
     case "Sleep":
-        holder.ava.setImageResource(R.drawable.sleep);
+        Glide.with(context).load(R.drawable.sleep).into( holder.ava);
+
         break;
     case "Mood":
-        holder.ava.setImageResource(R.drawable.ic_mood_24px);
+        Glide.with(context).load(R.drawable.ic_mood_24px).into( holder.ava);
+
         break;
         default:
-            holder.ava.setImageResource(R.drawable.ic_medicinecolor);
+            Glide.with(context).load(R.drawable.ic_medicinecolor).into( holder.ava);
+
             break;
 }
 

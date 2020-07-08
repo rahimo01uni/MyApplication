@@ -13,7 +13,7 @@
         android:id="@+id/cardView"
         style="@style/Card"
         android:layout_width="356dp"
-        android:layout_height="278dp"
+        android:layout_height="356dp"
         android:layout_gravity="center"
         android:elevation="5dp"
         app:cardCornerRadius="@dimen/CardRadius"
@@ -30,56 +30,60 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
-                android:layout_width="match_parent"
+                android:layout_width="362dp"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0">
+
+                <com.hsalf.smileyrating.SmileyRating
+                    android:id="@+id/smile_rating"
+                    android:layout_width="304dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="29dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                 <Button
                     android:id="@+id/btn_SyCancel"
                     android:layout_width="121dp"
                     android:layout_height="37dp"
-                    android:layout_marginStart="44dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="41dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="200dp"
+                    android:layout_marginBottom="37dp"
                     android:background="@drawable/btn_red"
                     android:text="Cancel"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_SConfirm"
-                    app:layout_constraintHorizontal_bias="0.82"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/drawable_test" />
+                    app:layout_constraintTop_toBottomOf="@+id/notes" />
 
                 <Button
                     android:id="@+id/btn_SyConfirm"
                     android:layout_width="121dp"
                     android:layout_height="37dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="44dp"
+                    android:layout_marginStart="185dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginBottom="41dp"
                     android:background="@drawable/btn_blue"
                     android:text="Confirm"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/btn_SyCancel"
-                    app:layout_constraintTop_toBottomOf="@+id/drawable_test" />
-
-                <EditText
-                    android:id="@+id/txt_regular"
-                    android:layout_width="280dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="8dp"
-                    android:hint="Regular EditText"
-                    android:padding="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.505"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/TB_confuse" />
+                    app:layout_constraintTop_toBottomOf="@+id/notes" />
+
+
 
                 <TextView
                     android:id="@+id/textView2"
@@ -96,93 +100,31 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/drawable_test"
+                    android:id="@+id/sypmtoms"
                     android:layout_width="284dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="49dp"
+                    android:hint="Add Symptoms"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.534"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_regular" />
+                    app:layout_constraintTop_toBottomOf="@+id/smile_rating" />
 
-                <ToggleButton
-                    android:id="@+id/TB_love"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/ic_verybad"
-                    android:textColor="#FFEB3B"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                <EditText
+                    android:id="@+id/notes"
+                    android:layout_width="284dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="29dp"
 
-                <ToggleButton
-                    android:id="@+id/TB_Smile"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/ic_sad"
-                    android:checked="true"
-                    android:textColor="#FFEB3B"
-                    app:layout_constraintStart_toEndOf="@+id/TB_love"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-                <ToggleButton
-                    android:id="@+id/TB_confuse"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/ic_sick"
-                    android:checked="true"
-                    android:textColor="#FFEB3B"
-                    app:layout_constraintStart_toEndOf="@+id/TB_Smile"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-                <ToggleButton
-                    android:id="@+id/TB_sad"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/ic_mutal"
-                    android:checked="true"
-                    android:textColor="#FFEB3B"
-                    app:layout_constraintStart_toEndOf="@+id/TB_confuse"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-                <ToggleButton
-                    android:id="@+id/TB_sick"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/ic_smile"
-                    android:checked="true"
-                    android:textColor="#FFEB3B"
-                    app:layout_constraintStart_toEndOf="@+id/TB_sad"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-                <ToggleButton
-                    android:id="@+id/TB_sleep"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/ic_love"
-                    android:checked="true"
-                    android:textColor="#FFEB3B"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="49dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.086"
-                    app:layout_constraintStart_toEndOf="@+id/TB_sick"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sypmtoms" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

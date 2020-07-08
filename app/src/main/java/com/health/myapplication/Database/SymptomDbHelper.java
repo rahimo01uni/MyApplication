@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -40,23 +41,58 @@ public class SymptomDbHelper {
 
 
     }
-    public  void insertSymptomLog(String mood,ArrayList<String> symptoms)
+    public ArrayList<selections_model> getSymptoms(){
+        ArrayList<selections_model> list=new ArrayList<>();
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        //SleepReminders
+        selections_model item;
+        Cursor cursor =db.query("Symptoms",null,null,null,null,null,"NAME");
+        while (cursor.moveToNext())
+        {
+            item=new selections_model();
+            item.setId(cursor.getString(cursor.getColumnIndex("ID")));
+            item.setName(cursor.getString(cursor.getColumnIndex("NAME")));
+            list.add(item);
+        }
+        return list;
+    }
+    static int id=0;
+    public void  insertSym(ArrayList<String> list)
+    {  list.add("headache");
+        list.add("madache");
+        list.add("bbdache");
+        list.add("sbdache");
+        list.add("gbdache");
+        list.add("dbdache");
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        for(int i=0; i<list.size();i++)
+        {
+            contentValues = new ContentValues();
+            contentValues.put("NAME",list.get(i));
+            contentValues.put("USED",0);
+       if(id<7)     id = Integer.parseInt(""+db.insert("SYMPTOMS", null , contentValues));
+
+        }
+
+    }
+    public  void insertSymptomLog(String mood,String notes,String symptoms)
     {
         Calendar ti=Calendar.getInstance();
         SQLiteDatabase db = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         int    id=0;
         String sym="";
-if(symptoms.size()>0)        sym=symptoms.get(0);
-        for(int i=1; i<symptoms.size();i++)
-        {
-          sym=','+symptoms.get(i);
-        }
+
         contentValues.put("MOOD",mood);
-        contentValues.put("SYMPTOMS",sym);
+        contentValues.put("NOTES",notes);
+        contentValues.put("SYMPTOMS",symptoms);
         id = Integer.parseInt(""+db.insert("SymptomLog", null , contentValues));
         OverviewDbHelper dbHelper=new OverviewDbHelper(context);
         dbHelper.insert_overview(""+id,"Mood",""+ti.getTimeInMillis(),""+ti.getTimeInMillis(),"1");
+        GroupDbHelper dbg=new GroupDbHelper(context);
+        dbg.insert_LogNames("MOOD");
 
     }
     void setAlarm(String time)

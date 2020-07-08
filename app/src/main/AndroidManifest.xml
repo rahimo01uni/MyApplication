@@ -3,7 +3,7 @@
     package="com.health.myapplication">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_logo"
@@ -34,7 +34,6 @@
         <activity android:name=".TeamActivity.TeamActivity" />
         <activity android:name=".Reminder.AddMood" />
         <activity android:name=".Reminder.AddReminderActivity" />
-        <activity android:name=".Overview.AddLogMood" />
         <activity android:name=".Overview.AddLogSleep" />
         <activity android:name=".Overview.AddLogMed" />
         <activity

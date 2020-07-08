@@ -16,11 +16,14 @@ import com.health.myapplication.utils.AdapterOverview;
 import com.shrikanthravi.collapsiblecalendarview.data.Day;
 import com.shrikanthravi.collapsiblecalendarview.widget.CollapsibleCalendar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +35,8 @@ public class overview extends AppCompatActivity {
     RecyclerView recyclerView;
     AdapterOverview adapterOverview;
     OverviewDbHelper db;
+    Calendar date;
+    public static Handler s1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,7 @@ public class overview extends AppCompatActivity {
                 (this,db.get_overview(""+Calendar.getInstance().get(Calendar.DATE)+"/"+Calendar.getInstance().get(Calendar.MONTH)+"/"+Calendar.getInstance().get(Calendar.YEAR)));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapterOverview);
+        date=Calendar.getInstance();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -49,13 +55,20 @@ public class overview extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent=new Intent(overview.this, LogMedicationActivity.class);
+                intent.putExtra("date",""+date.getTimeInMillis());
                 startActivity(intent);
+                finish();
 
                 // new med_bubble(Reminder.this,"");
                 //sleep_buble b=new sleep_buble(Reminder.this,"sleep" );
             }
         });
-
+     s1=new Handler(){
+         @Override
+         public void handleMessage(@NonNull Message msg) {
+             setData();
+         }
+     };
 
         final CollapsibleCalendar collapsibleCalendar = findViewById(R.id.calendarView);
 
@@ -70,6 +83,8 @@ Log.d("params",""+collapsibleCalendar.getLayoutParams().height);
             @Override
             public void onDaySelect() {
                 Day day = collapsibleCalendar.getSelectedDay();
+
+                date.set(day.getYear(),day.getMonth(),day.getDay());
                 Log.i(getClass().getName(), "Selected Day: "
                         + day.getYear() + "/" + (day.getMonth() + 1) + "/" + day.getDay());
                 adapterOverview.setData(db.get_overview(day.getDay()+"/"+day.getMonth()+"/"+day.getYear()));
@@ -99,5 +114,7 @@ Log.d("params",""+collapsibleCalendar.getLayoutParams().height);
 
 
     }
-
+    void setData(){
+      adapterOverview.setData(  db.get_overview(""+date.get(Calendar.DATE)+"/"+date.get(Calendar.MONTH)+"/"+date.get(Calendar.YEAR)));
+    }
 }

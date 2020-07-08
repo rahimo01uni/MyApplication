@@ -92,7 +92,7 @@
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-           android:id="@+id/overview"
+           android:id="@+id/Reminder"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -156,6 +156,7 @@
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Progress"
             android:layout_width="match_parent"
             android:layout_height="173dp">
 
@@ -222,6 +223,7 @@
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Team"
             android:layout_width="match_parent"
             android:layout_height="175dp">
 

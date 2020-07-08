@@ -21,10 +21,10 @@ public class OverviewDbHelper {
     }
     public ArrayList<model_overview> get_overview(String date)
     { ArrayList<model_overview> list=new ArrayList<>();
-        SQLiteDatabase db = myhelper.getWritableDatabase();
+     SQLiteDatabase db = myhelper.getWritableDatabase();
         //SleepReminders
         model_overview item;
-        Cursor cursor =db.query("Overview",null,"Date=?",new String[]{date},null,null,null);
+        Cursor cursor =db.query("Overview",null,"Date=?",new String[]{date},null,null,"TIME");
         while (cursor.moveToNext())
         {
             item=new model_overview();
@@ -99,8 +99,8 @@ public class OverviewDbHelper {
             item.setId(cursor.getString(cursor.getColumnIndex("ID")));
             item.setMood(cursor.getString(cursor.getColumnIndex("MOOD")));
             item.setSymptom(cursor.getString(cursor.getColumnIndex("SYMPTOMS")));
-       //  item.setNote(cursor.getString(cursor.getColumnIndex("NOTES")));
-            item.setNote("");
+           item.setNote(cursor.getString(cursor.getColumnIndex("NOTES")));
+
             return item;
 
          }

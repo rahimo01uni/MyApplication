@@ -6,54 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Reminder.AddReminderActivity">
 
-    <Button
-        android:id="@+id/btn_medication"
-        android:layout_width="166dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/btn_blue"
-        android:drawableLeft="@drawable/ic_medicine"
-        android:padding="16dp"
-        android:text="Medication"
-        android:textColor="@color/bpWhite"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_sym"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_sleep"
-        android:layout_width="166dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/btn_simple"
-        android:drawableLeft="@drawable/ic_measure"
-        android:padding="16dp"
-        android:text="Sleep"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_sym"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_medication" />
-
-    <Button
-        android:id="@+id/btn_sym"
-        android:layout_width="166dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-
-        android:padding="16dp"
-        android:background="@drawable/btn_blue"
-        android:text="Symptom check"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -72,144 +24,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <ToggleButton
-                android:id="@+id/TB_love"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="36dp"
-                android:background="@drawable/ic_love"
-                android:checked="false"
-                android:textColor="#FFEB3B"
-                android:textOff=""
-                android:textOn=""
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="36dp" />
-
-            <ToggleButton
-                android:id="@+id/TB_Smile"
-                android:layout_width="36dp"
-
-                android:layout_height="36dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/ic_smile"
-                android:foregroundTint="@color/colorPrimary"
-                android:checked="false"
-                android:textOff=""
-                android:textOn=""
-                android:textColor="#FFEB3B"
-                app:layout_constraintStart_toEndOf="@+id/TB_love"
-                tools:layout_editor_absoluteY="36dp" />
-
-            <ToggleButton
-                android:id="@+id/TB_confuse"
-                android:layout_width="36dp"
-                android:checked="false"
-                android:layout_height="36dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/ic_confuse"
-
-                android:textOff=""
-
-                android:textOn=""
-                android:textColor="#FFEB3B"
-                app:layout_constraintStart_toEndOf="@+id/TB_Smile"
-                tools:layout_editor_absoluteY="36dp" />
-
-            <ToggleButton
-                android:id="@+id/TB_sad"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/ic_sad"
-
-                android:checked="false"
-                android:textOff=""
-                android:textOn=""
-                android:textColor="#FFEB3B"
-                app:layout_constraintStart_toEndOf="@+id/TB_confuse"
-                tools:layout_editor_absoluteY="36dp" />
-
-
-            <ToggleButton
-                android:id="@+id/TB_sick"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/ic_sick"
-                android:checked="false"
-                android:textOff=""
-                android:textOn=""
-                android:textColor="#FFEB3B"
-                app:layout_constraintStart_toEndOf="@+id/TB_sad"
-                tools:layout_editor_absoluteY="36dp" />
-
-            <ToggleButton
-                android:id="@+id/TB_sleep"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/ic_sleep"
-                android:checked="false"
-                android:textOff=""
-                android:textOn=""
-                android:textColor="#FFEB3B"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.09"
-                app:layout_constraintStart_toEndOf="@+id/TB_sick"
-                tools:layout_editor_absoluteY="36dp" />
-
-            <TextView
-                android:id="@+id/txt_symptoms"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_angle_down"
-                android:gravity="center_vertical"
-                android:text="Add Additional Symptoms"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/TB_confuse" />
-
-            <TextView
-                android:id="@+id/txt_TimeLogMood"
-                android:layout_width="281dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/btn_simpleborder"
-                android:drawableRight="@drawable/ic_clock_three"
-                android:gravity="center_vertical"
-                android:text="Time"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.514"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_symptoms" />
+            <com.hsalf.smileyrating.SmileyRating
+                android:id="@+id/smile_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                tools:layout_editor_absoluteX="0dp" />
 
             <EditText
                 android:id="@+id/txt_descLogMood"
                 android:layout_width="279dp"
                 android:layout_height="75dp"
-                android:layout_marginStart="37dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginBottom="222dp"
                 android:background="@drawable/btn_simpleborder"
                 android:ems="10"
                 android:gravity="center_vertical"
                 android:hint="Notes"
                 android:inputType="textMultiLine"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:layout_editor_absoluteX="37dp"
+                tools:layout_editor_absoluteY="200dp" />
+
+            <TextView
+                android:id="@+id/txt_TimeLogMood"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_clock_three"
+                android:gravity="center_vertical"
+                android:text="Time"
+                tools:layout_editor_absoluteX="36dp"
+                tools:layout_editor_absoluteY="137dp" />
+
+            <TextView
+                android:id="@+id/txt_symptoms"
+                android:layout_width="281dp"
+                android:layout_height="42dp"
+                android:background="@drawable/btn_simpleborder"
+                android:drawableRight="@drawable/ic_angle_down"
+                android:gravity="center_vertical"
+                android:text="Add Additional Symptoms"
+                tools:layout_editor_absoluteX="36dp" />
 
             <Button
                 android:id="@+id/btn_saveMoodLog"

@@ -56,6 +56,7 @@ ArrayList<general_model> list;
 
                 Intent intent=new Intent(Reminder.this, AddReminderActivity.class);
                 startActivity(intent);
+                finish();
                // new med_bubble(Reminder.this,"");
               //sleep_buble b=new sleep_buble(Reminder.this,"sleep" );
             }

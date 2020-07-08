@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
+import com.bumptech.glide.Glide;
 import com.health.myapplication.Database.MedicationDbHelber;
 import com.health.myapplication.Database.ReminderOverviewDbHelper;
 import com.health.myapplication.Database.general_model;
@@ -86,14 +87,16 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
 });
             switch (models.get(position).getType()){
                 case "sleep":
-                    holder.ava.setImageResource(R.drawable.sleep);
+                    Glide.with(context).load(R.drawable.sleep).into(holder.ava);
                     break;
                 case "Symptom":
-                    holder.ava.setImageResource(R.drawable.ic_mood_24px);
+                    Glide.with(context).load(R.drawable.ic_mood_24px).into(holder.ava);
+
                     break;
                 default:
-                    holder.ava.setImageResource(R.drawable.ic_medicinecolor);
-                    break;
+                    Glide.with(context).load(R.drawable.ic_medicinecolor).into(holder.ava);
+
+                                        break;
             }
 
         }
@@ -408,6 +411,7 @@ holder.l1.setOnClickListener(new View.OnClickListener() {
               item.setStartDate(""+start.getTimeInMillis());
               item.setEndDate(""+end.getTimeInMillis());
               holder.txtTitle.setText(holder.txt_medicationname.getText().toString());
+
               db.EditMedReminder(item.getId(),holder.txt_medicationname.getText().toString(),holder.txt_unit.getText().toString(),holder.txt_Count.getText().toString(),""+start.getTimeInMillis(),
                       ""+end.getTimeInMillis(),holder.txt_Period.getText().toString(),holder.desc.getText().toString(),item.getTimes());
            Log.d("WTFUCKK",""+item.getTimes().size());

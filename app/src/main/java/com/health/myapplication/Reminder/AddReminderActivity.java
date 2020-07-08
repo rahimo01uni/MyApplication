@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 import com.google.android.material.snackbar.Snackbar;
@@ -28,6 +29,7 @@ import com.health.myapplication.Database.MedicationDbHelber;
 import com.health.myapplication.R;
 import com.health.myapplication.utils.AdapterTime;
 
+import java.security.spec.ECField;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -38,7 +40,7 @@ public class AddReminderActivity extends AppCompatActivity {
     Button save;
     EditText txt_medicationname;
     TextView txt_unit;
-    TextView txt_Count;
+    EditText txt_Count;
     TextView txt_SDate;
     TextView txt_EDate;
     TextView txt_Period;
@@ -71,7 +73,7 @@ public class AddReminderActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(AddReminderActivity.this,"time:"+endDate.getTime(),Toast.LENGTH_LONG).show();
               mdb.insertMedReminder(txt_medicationname.getText().toString(),txtunit.getText().toString(),txt_Count.getText().toString(),""+startDate.getTimeInMillis(),
                       ""+endDate.getTimeInMillis(),txt_Period.getText().toString(),desc.getText().toString(),times);
                 Intent intent2 = new Intent(AddReminderActivity.this,Reminder.class);
@@ -111,8 +113,8 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
             }
         });
         endDate=Calendar.getInstance();
-        endDate.set(endDate.get(Calendar.DATE),endDate.get(Calendar.MONTH),endDate.get(Calendar.YEAR)+1);
-        txt_EDate.setOnClickListener(new View.OnClickListener() {
+        endDate.set(endDate.get(Calendar.YEAR)+1,endDate.get(Calendar.MONTH)+1,endDate.get(Calendar.DATE));
+          txt_EDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Calendar cldr = Calendar.getInstance();
@@ -170,6 +172,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
             public void onClick(View v) {
                 Intent intent = new Intent(AddReminderActivity.this, AddMood.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -180,6 +183,7 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
             public void onClick(View v) {
                 Intent intent = new Intent(AddReminderActivity.this, AddSleep.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -208,46 +212,6 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
 //        });
 
        //count
-       final TextView txtCount = findViewById(R.id.txt_Count);
-        txtCount.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                final   MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(AddReminderActivity.this)
-                        .minValue(1)
-                        .maxValue(10)
-                        .defaultValue(1)
-                        .backgroundColor(Color.WHITE)
-                        .separatorColor(Color.TRANSPARENT)
-                        .textColor(Color.BLACK)
-                        .textSize(20)
-                        .enableFocusability(false)
-                        .wrapSelectorWheel(true)
-                        .build();
-
-                new AlertDialog.Builder(AddReminderActivity.this, R.style.AlertDialogTheme)
-                        .setTitle("Count")
-                        .setView(numberPicker)
-                        .setNegativeButton("ADD",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                })
-                        .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Snackbar.make(findViewById(R.id.txt_Count), "You picked : " + numberPicker.getValue(), Snackbar.LENGTH_LONG).show();
-                                txtCount.setText(String.valueOf(numberPicker.getValue()));
-
-                            }
-                        })
-                     .show();
-
-            }
-
-        });
 
 
         //period
@@ -342,52 +306,6 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
 
         });
 
-        //Repeat
-//        final TextView txtrepeat = findViewById(R.id.txt_Repeat);
-//        final String[] pickerValsRepeat = new String[] { "Every hour","Every two hours",
-//                                                         "Every three hours","Every 4 hours",
-//                                                         "Every 5 hours", "Every 6 hours","Every 8 hours","Every 12 hours"};
-//
-//        txtrepeat.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//
-//                final NumberPicker picker = new NumberPicker(AddLogMed.this);
-//                picker.setMinValue(0);
-//                picker.setMaxValue(7);
-//                picker.setDisplayedValues( new String[] { "Every hour","Every two hours",
-//                                                           "Every three hours","Every 4 hours",
-//                                                           "Every 5 hours", "Every 6 hours","Every 8 hours","Every 12 hours" } );
-//
-//                picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-//                    @Override
-//                    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-//                        int valuePicker1 = picker.getValue();
-//
-//                    }
-//                });
-//
-//                new AlertDialog.Builder(AddLogMed.this)
-//                        .setTitle("Repeat")
-//                        .setView(picker)
-//                        .setNegativeButton("ADD",
-//                                new DialogInterface.OnClickListener() {
-//                                    public void onClick(DialogInterface dialog, int id) {
-//                                        dialog.cancel();
-//                                    }
-//                                })
-//                        .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                Snackbar.make(findViewById(R.id.txt_Repeat), "You picked : " + pickerValsRepeat[picker.getValue()], Snackbar.LENGTH_LONG).show();
-//                                txtrepeat.setText(String.valueOf(pickerValsRepeat[picker.getValue()]));
-//                            }
-//                        })
-//                        .show();
-//
-//            }
-//
-//        });
+
     }
 }

@@ -152,8 +152,7 @@ SleepDbHelper db;
         btnMood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddLogSleep.this, AddLogMood.class);
-                startActivity(intent);
+
             }
         });
     }

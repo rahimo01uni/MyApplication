@@ -24,6 +24,18 @@ public class SleepDbHelper {
         SQLiteDatabase db = myhelper.getWritableDatabase();
         Cursor cursor =db.query("SleepLogs",null,null,null,null,null,null);
         cursor.moveToLast();
+        if(cursor.getString(cursor.getColumnIndex("ENDTIME")).length()==0)
+        {
+            ContentValues args = new ContentValues();
+            args.put("STARTTIME",  "?");
+            args.put("ENDTIME",  ""+wake_up.getTimeInMillis());
+            args.put("QUALITYOFSLEEP",  quality);
+            args.put("DURATION", "?" );
+            args.put("DATE",  wake_up.getTimeInMillis());
+            args.put("NOTES",  notes);
+
+            db.insert("SleepLogs", null ,args);
+        } else {
         int duration=(int)(wake_up.getTimeInMillis()-Long.parseLong(cursor.getString(cursor.getColumnIndex("STARTTIME"))));
         int hour=duration/3600000;
         int minutes=(duration%3600000)/60000;
@@ -36,16 +48,21 @@ public class SleepDbHelper {
         args.put("DURATION",  TimeFormat(hour,minutes));
         args.put("DATE",  wake_up.getTimeInMillis());
         args.put("NOTES",  notes);
-        Log.d("WhatsnEWs",""+  db.update("SleepLogs", args, strFilter, null));
+        Log.d("WhatsnEWs",""+  db.update("SleepLogs", args, strFilter, null));}
         cursor =db.query("SleepLogs",null,null,null,null,null,null);
         cursor.moveToLast();
+
         String id=cursor.getString(cursor.getColumnIndex("ID"));
         String name="Sleep";
         String time=""+wake_up.getTimeInMillis();
         String date=""+wake_up.getTimeInMillis();
         String status="1";
         OverviewDbHelper dbo=new OverviewDbHelper(context);
+
         dbo.insert_overview(id,name,time,date,status);
+        GroupDbHelper dbg=new GroupDbHelper(context);
+        dbg.insert_LogNames(name);
+
         Log.d("cursor",""+cursor.getString(cursor.getColumnIndex("DURATION")));
     }
     public int insertSleepReminder(String sleep,String wake_up )

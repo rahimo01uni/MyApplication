@@ -59,9 +59,10 @@ public class MedicationDbHelber {
 
 
     }
-    public  void insertMedLog(String name,String unit,String doze,String note)
+    public  void insertMedLog(String name,String unit,String doze,String note,String date1)
     {
         Calendar t=Calendar.getInstance();
+        if(date1.length()>0) t.setTimeInMillis(Long.parseLong(date1));
         String time=""+t.getTimeInMillis();
         String date=""+t.getTimeInMillis();
         SQLiteDatabase db = myhelper.getWritableDatabase();

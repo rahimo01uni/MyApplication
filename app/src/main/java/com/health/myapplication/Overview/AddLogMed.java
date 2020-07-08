@@ -169,8 +169,8 @@ txt_SDate.setText(startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
         btnSym.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddLogMed.this, AddLogMood.class);
-                startActivity(intent);
+
+
             }
         });
 

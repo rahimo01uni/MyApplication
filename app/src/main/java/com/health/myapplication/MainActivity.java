@@ -29,7 +29,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Handler handler;
-    ConstraintLayout overview;
+    ConstraintLayout overview,reminder,progress,team;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     overview=findViewById(R.id.overview);
+    reminder=findViewById(R.id.Reminder);
+    progress=findViewById(R.id.Progress);
+    team=findViewById(R.id.Team);
     overview.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -45,25 +48,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     });
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
-
-
-            }
-        });
         ComponentName receiver = new ComponentName(this, BootCompleted.class);
         PackageManager pm = this.getPackageManager();
         pm.setComponentEnabledSetting(receiver,
                 PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                 PackageManager.DONT_KILL_APP);
         //Reminder
-        final TextView reminderID = (TextView) findViewById(R.id.txt_reminder);
-        reminderID.setOnClickListener(new View.OnClickListener() {
+          reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -73,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Team
-        final TextView teamID = (TextView) findViewById(R.id.txt_team);
-        teamID.setOnClickListener(new View.OnClickListener() {
+
+       team.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -89,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //progress
-        final TextView progressID = (TextView) findViewById(R.id.txt_progress);
-        progressID.setOnClickListener(new View.OnClickListener() {
+
+        progress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -135,16 +127,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case 5469: {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if(Settings.canDrawOverlays(this)) {
-                        Toast.makeText(this,"Permission Granted!",Toast.LENGTH_SHORT).show();
+                    if (Settings.canDrawOverlays(this)) {
+                        Toast.makeText(this, "Permission Granted!", Toast.LENGTH_SHORT).show();
 
-                    }
-                    else {
-                        Toast.makeText(this,"Permission Not Granted!",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Permission Not Granted!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     return;

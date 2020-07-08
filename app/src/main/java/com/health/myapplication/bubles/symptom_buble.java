@@ -3,6 +3,9 @@ package com.health.myapplication.bubles;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
+import android.text.Editable;
+import android.text.Layout;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -16,16 +19,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.health.myapplication.Database.DatabaseHelper;
 import com.health.myapplication.Database.SymptomDbHelper;
+import com.health.myapplication.Database.selections_model;
 import com.health.myapplication.Database.sleep_model;
+import com.health.myapplication.Log.LogMoodActivity;
+import com.health.myapplication.Log.SymptomAdapter;
 import com.health.myapplication.R;
+import com.hsalf.smileyrating.SmileyRating;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class symptom_buble {
     private WindowManager windowManager;
@@ -40,6 +52,11 @@ public class symptom_buble {
     View mPointer;
     Button mClose,con;
     Boolean sleeping=false;
+    SmileyRating smileyRating;
+    ArrayList<selections_model> selected;
+    ArrayList<String>selections;
+    TextView add_symptoms;
+    EditText notes;
  SymptomDbHelper db;
     @RequiresApi(api = Build.VERSION_CODES.M)
     public symptom_buble(Context context, String type){
@@ -50,7 +67,9 @@ public class symptom_buble {
         db=new SymptomDbHelper(context);
         gestureDetector = new GestureDetector( new sleep_buble.SingleTapConfirm());
         windowManager = (WindowManager) context.getSystemService(context.WINDOW_SERVICE);
-
+        selected=new ArrayList<>();
+        selected=db.getSymptoms();
+        selections=new ArrayList<>();
         final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -65,7 +84,7 @@ public class symptom_buble {
         windowManager.addView(mRelativeLayout, params);
         return mRelativeLayout;
     }
-   RelativeLayout check_symptom_wakeUp(Context context,final WindowManager.LayoutParams params){
+   RelativeLayout check_symptom_wakeUp(final Context context, final WindowManager.LayoutParams params){
         mRelativeLayout = new RelativeLayout(context);
 //
         RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
@@ -95,11 +114,22 @@ public class symptom_buble {
         final RelativeLayout innerRelativeLayout = new RelativeLayout(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
         mView = inflater.inflate(R.layout.activity_confirm_sympthom, null);
-       EditText regular = (EditText)   mView.findViewById(R.id.txt_regular);
+       add_symptoms=mView.findViewById(R.id.sypmtoms);
+       notes = (EditText)   mView.findViewById(R.id.notes);
+       add_symptoms.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+dialog(context);
+           }
+       });
+
        Button btn_SyConfirm;
        Button btn_SyCancel;
+       final SmileyRating smileyRating;
        btn_SyConfirm = mView.findViewById(R.id.btn_SyConfirm);
        btn_SyCancel = mView.findViewById(R.id.btn_SyCancel);
+        smileyRating=mView.findViewById(R.id.smile_rating);
+
        InputMethodManager inputMethodManager =
                (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
        inputMethodManager.toggleSoftInputFromWindow(
@@ -124,8 +154,13 @@ public class symptom_buble {
             @Override
             public void onClick(View v) {
                 //sleep information comes and inserts into database
-             db.insertSymptomLog("good",new ArrayList<String>());
-                windowManager.removeView( mRelativeLayout);
+                Log.d("selectedSmiley",smileyRating.getSelectedSmiley().toString());
+            if(smileyRating.getSelectedSmiley().toString().equals("NONE"))
+            {
+                Toast.makeText(context,"Please, Select your mood!",Toast.LENGTH_LONG).show();
+            }
+                else{db.insertSymptomLog(smileyRating.getSelectedSmiley().toString(),notes.getText().toString(),add_symptoms.getText().toString());
+                windowManager.removeView( mRelativeLayout);}
 
             }
         });
@@ -161,6 +196,12 @@ public class symptom_buble {
                     } else {
                         innerRelativeLayout.setVisibility(View.VISIBLE);
                         //      mPointer.setVisibility(View.VISIBLE);
+                        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE,
+                                PixelFormat.TRANSLUCENT);
                         params.x=0;
                         params.y=0;
                         windowManager.updateViewLayout(mRelativeLayout, params);
@@ -193,5 +234,64 @@ public class symptom_buble {
         });
         return mRelativeLayout;
     }
+    void  dialog(Context context)
+    {
 
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.AlertDialogTheme);
+        //builder.setTitle("Add a new element");
+
+        // add a list
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE );
+        final View customLayout =  inflater.inflate(R.layout.symptoms, null);
+        builder.setView(customLayout);
+        final SymptomAdapter adapter=new SymptomAdapter(context,selected,selections);
+        RecyclerView recyclerView=customLayout.findViewById(R.id.log_recycleview);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        final EditText search=customLayout.findViewById(R.id.searchView);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ArrayList<selections_model> temp=new ArrayList<>();
+                if(s.length()>0){for(selections_model sel:selected){
+                    if(sel.getName().contains(s))temp.add(sel);
+                }  }else temp=selected;
+                for(selections_model s1:temp){
+                    if(s1.isChecked())Log.d("tempda",s1.getName());
+                }
+                adapter.setData(temp);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        final AlertDialog dialog = builder.create();
+        Button save=customLayout.findViewById(R.id.btn_AddLog);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String temp="";
+
+                for (int i=0; i<selected.size(); i++)
+                {
+                   if(selected.get(i).isChecked()) temp+=", "+selected.get(i).getName();
+                }
+
+                dialog.dismiss();
+                add_symptoms.setText(temp.substring(1));
+            }
+        });
+        // create and show the alert dialog
+
+        dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
+        dialog.show();
+
+    }
 }

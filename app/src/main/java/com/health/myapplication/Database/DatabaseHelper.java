@@ -50,8 +50,8 @@ public    class DatabaseHelper {
 
         static class myDbHelper extends SQLiteOpenHelper
         {
-            private static final String DATABASE_NAME = "Health";    // DatabaseHelper Name
-            private static final int DATABASE_Version = 5;    // DatabaseHelper Version
+            private static final String DATABASE_NAME = "Healt";    // DatabaseHelper Name
+            private static final int DATABASE_Version = 9;    // DatabaseHelper Version
             //Tables
             //People
                 final String Log_name="Create table Log_name(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(200) NOT NULL UNIQUE);";
@@ -75,7 +75,7 @@ public    class DatabaseHelper {
                 final String ReminderSymptom="Create table REMINDERSYMPTOM(ID INTEGER PRIMARY KEY AUTOINCREMENT,IDR INTEGER,ALARMTIME VARCHAR(50)" +
                     ",FREQUENCY VARCHAR(50));";
                 final String SymptomLog="Create table SymptomLog(ID INTEGER PRIMARY KEY AUTOINCREMENT,MOOD VARCHAR(20),SYMPTOMS TEXT,NOTES VARCHAR(500),DATE VARCHAR(50));";
-
+                final  String Symptoms="Create table Symptoms(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME VARCHAR(200) UNIQUE,USED INTEGER);";
                 final String DROP_TABLE_1="DROP TABLE IF EXISTS SleepReminder";
                 final String DROP_TABLE_2="DROP TABLE IF EXISTS  SleepLogs";
                 final String DROP_TABLE_3="DROP TABLE IF EXISTS REMINDER";
@@ -87,6 +87,7 @@ public    class DatabaseHelper {
             final String DROP_TABLE_9="DROP TABLE IF EXISTS people";
             final String DROP_TABLE_10="DROP TABLE IF EXISTS Log_name";
             final String DROP_TABLE_11="DROP TABLE IF EXISTS SELECTIONS";
+            final String DROP_TABLE_12="DROP TABLE IF EXISTS SYMPTOMS";
             private Context context;
 
             public myDbHelper(Context context) {
@@ -97,6 +98,7 @@ public    class DatabaseHelper {
             public void onCreate(SQLiteDatabase db) {
 
                 try {
+
                     db.execSQL(SleepReminder);
                     db.execSQL(SleepLogs);
                     db.execSQL(ReminderTimes);
@@ -108,6 +110,7 @@ public    class DatabaseHelper {
                     db.execSQL(People);
                     db.execSQL(Log_name);
                     db.execSQL(Selection);
+                    db.execSQL(Symptoms);
 
                 } catch (Exception e) {
 
@@ -130,6 +133,7 @@ public    class DatabaseHelper {
                     db.execSQL(DROP_TABLE_9);
                     db.execSQL(DROP_TABLE_10);
                     db.execSQL(DROP_TABLE_11);
+                    db.execSQL(DROP_TABLE_12);
                     onCreate(db);
                 }catch (Exception e) {
 

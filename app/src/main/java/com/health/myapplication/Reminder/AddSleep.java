@@ -118,7 +118,7 @@ SleepDbHelper db;
                intent.putExtra("sleep",""+sleep.getTimeInMillis());
                intent.putExtra("id",""+id );
 
-                PendingIntent intent1 = PendingIntent.getBroadcast(AddSleep.this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent intent1 = PendingIntent.getBroadcast(AddSleep.this,id,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                 alarmManager.setExact(AlarmManager.RTC, sleep.getTimeInMillis(),intent1);
 
@@ -127,7 +127,7 @@ SleepDbHelper db;
                     intent.putExtra("sleep",""+sleep.getTimeInMillis());
                     intent.putExtra("id",""+id);
 
-                    intent1 = PendingIntent.getBroadcast(AddSleep.this,2,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                    intent1 = PendingIntent.getBroadcast(AddSleep.this,id,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
                  alarmManager.setExact(AlarmManager.RTC, wake.getTimeInMillis(),intent1);
 
@@ -149,6 +149,7 @@ SleepDbHelper db;
             public void onClick(View v) {
                 Intent intent = new Intent(AddSleep.this, AddReminderActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -159,6 +160,7 @@ SleepDbHelper db;
             public void onClick(View v) {
                 Intent intent = new Intent(AddSleep.this, AddMood.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
